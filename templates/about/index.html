@@ -1,0 +1,336 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="section-title">
+        <h1 class="text-center"><i class="fas fa-user me-2"></i> About Me</h1>
+        <div class="divider mx-auto"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4 mb-md-0">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="profile-image-container position-relative">
+          <img
+            src="{% static 'Profile pictures/Me.jpg' %}"
+            class="profile-image card-img-top"
+            alt="Profile Photo"
+          />
+          <div class="position-absolute bottom-0 start-0 w-100">
+            <div class="bg-dark p-3">
+              <h6 class="card-title text-center text-white mb-0">
+                Developer & Freelancer - TUSHAR SINGH
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-grid gap-2 mt-3">
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">
+              <i class="fas fa-envelope me-2"></i> Contact Me
+            </a>
+            <a href="{% url 'freelancing' %}" class="btn btn-success btn-lg">
+              <i class="fas fa-briefcase me-2"></i> Hire Me
+            </a>
+            <a
+              href="{% static 'uploads/Document/Tushar Singh.pdf' %}"
+              class="btn btn-info btn-lg"
+              target="_blank"
+            >
+              <i class="fas fa-file-pdf me-2"></i> View Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <h2><i class="fas fa-id-card me-2"></i> Professional Summary</h2>
+          <div class="divider"></div>
+          <p class="lead">
+            A passionate Data Scientist and AI Agents Developer with expertise
+            in Python, Machine Learning, and building intelligent AI Agents. I
+            transform complex data into actionable insights and create smart
+            solutions that make a difference.
+          </p>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <h2><i class="fas fa-star me-2"></i> Skills & Expertise</h2>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Python Programming
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Machine Learning
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Data Analysis & Visualization
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Deep Learning & Neural Networks
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Natural Language Processing
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Web Development (Django, Flask)
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Database Design (MongoDB, PostgreSQL)
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Cloud Platforms (AWS, Azure)
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  AI Agents Development
+                </li>
+                <li class="mb-3">
+                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                  Automation Solutions
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <h2><i class="fas fa-graduation-cap me-2"></i> Education</h2>
+          <div class="divider"></div>
+          <div class="card border-0">
+            <div class="card-body">
+              <h4>Masters of Computer Application</h4>
+              <p class="mb-2">
+                <i class="fas fa-university me-2"></i> MIT ADT UNIVERSITY, Pune
+                ( 2024 - 2026 )
+              </p>
+              <p class="mb-0">
+                <i class="fas fa-award me-2"></i> InterCollage hackathon - 2023
+              </p>
+              <p class="mb-0"><i class="fas fa-book me-2"></i>CGPA - 7.9</p>
+            </div>
+          </div>
+          <div class="card border-0">
+            <div class="card-body">
+              <h4>Bachelors of Computer Application</h4>
+              <p class="mb-2">
+                <i class="fas fa-university me-2"></i> Institute of Technology
+                And Science, Ghaziyabad ( 2021-2024 )
+              </p>
+              <p class="mb-0">
+                <i class="fas fa-award me-2"></i> InterCollage hackathon - 2023
+              </p>
+              <p class="mb-0">
+                <i class="fas fa-book me-2"></i> Percentage - 72%
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h2><i class="fas fa-certificate me-2"></i> Certifications</h2>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fa fa-university me-2"></i> Data Structure -
+                    university of Michigan
+                  </h4>
+                  <div class="d-grid mt-3">
+                    <a
+                      href="{% static 'uploads\certification\Data structure.pdf' %}"
+                      class="btn btn-outline-success"
+                      target="_blank"
+                    >
+                      <i class="fas fa-eye me-2"></i> View Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fab fa-aws me-2"></i> AWS Certified Machine
+                    Learning Specialist
+                  </h4>
+                  <div class="d-grid mt-3">
+                    <a
+                      href="{% static 'uploads/certification/AWS.png' %}"
+                      class="btn btn-outline-success"
+                      target="_blank"
+                    >
+                      <i class="fas fa-eye me-2"></i> View Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fab fa-deloitte me-2"
+                      ><strong><b>D</b></strong></i
+                    >
+                    Deloitte Australia Data Analytics
+                  </h4>
+                  <div class="d-grid mt-3">
+                    <a
+                      href="{% static 'uploads/certification/Deloitte Australia Data Analytics Completion Certificate.pdf' %}"
+                      class="btn btn-outline-success"
+                      target="_blank"
+                    >
+                      <i class="fas fa-eye me-2"></i> View Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fab fa-google me-2"></i> Google Python & Machine
+                    Learning
+                  </h4>
+                  <div class="d-grid mt-3">
+                    <a
+                      href="{% static 'uploads/certification/Google Python & Machine Learning-1.png' %}"
+                      class="btn btn-outline-success"
+                      target="_blank"
+                    >
+                      <i class="fas fa-eye me-2"></i> View Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fas fa-code me-2"></i> Hackathon-ITS MOHAN NAGAR
+                  </h4>
+                  <div class="d-grid mt-3">
+                    <a
+                      href="{% static 'uploads/certification/Hackathon  ITS MOHAN NAGAR.pdf' %}"
+                      class="btn btn-outline-success"
+                      target="_blank"
+                    >
+                      <i class="fas fa-eye me-2"></i> View Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fab fa-ibm me-2"
+                      ><strong><b>IBM</b></strong></i
+                    >
+                    Tool for data science
+                  </h4>
+                  <div class="d-grid mt-3">
+                    <a
+                      href="{% static 'uploads/certification/Tool for data science.pdf' %}"
+                      class="btn btn-outline-success"
+                      target="_blank"
+                    >
+                      <i class="fas fa-eye me-2"></i> View Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fab fa-microsoft me-2"></i> Microsoft Python &
+                    Machine Learning
+                  </h4>
+                  <div class="d-grid mt-3">
+                    <a
+                      href="{% static 'uploads/certification/microsoft Python & Machine Learning.pdf' %}"
+                      class="btn btn-outline-success"
+                      target="_blank"
+                    >
+                      <i class="fas fa-eye me-2"></i> View Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body text-center p-5">
+          <h2 class="card-title">
+            <i class="fas fa-briefcase me-2"></i> Interested in Working
+            Together?
+          </h2>
+          <div class="divider mx-auto"></div>
+          <p class="card-text lead mb-4">
+            I'm available for freelance projects and full-time opportunities.
+            Let's discuss how I can help bring your ideas to life.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a
+              href="{% url 'contact' %}"
+              class="btn btn-primary btn-lg px-4 py-3"
+            >
+              <i class="fas fa-envelope me-2"></i> Get In Touch
+            </a>
+            <a
+              href="{% url 'freelancing' %}"
+              class="btn btn-success btn-lg px-4 py-3"
+            >
+              <i class="fas fa-calendar-check me-2"></i> View Freelancing
+              Options
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

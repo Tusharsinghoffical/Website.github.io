@@ -1,0 +1,514 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold"><i class="fas fa-briefcase me-2"></i> Freelancing Services</h1>
+        <p class="lead">
+            I offer professional freelancing services in data science, AI development, and web development. 
+            Whether you need a complete project or specific technical expertise, I can help bring your ideas to life.
+        </p>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 70px; height: 70px;">
+                            <i class="fas fa-laptop-code fa-lg"></i>
+                        </div>
+                    </div>
+                    <h5 class="card-title text-center mb-3">Project Development</h5>
+                    <p class="card-text text-center">Full development of custom projects from concept to deployment.</p>
+                    <ul class="list-unstyled text-center">
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Web Applications</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Mobile Apps</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Data Science Projects</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> AI Solutions</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="btn btn-primary w-100">
+                        <i class="fas fa-envelope me-2"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto" style="width: 70px; height: 70px;">
+                            <i class="fas fa-chart-line fa-lg"></i>
+                        </div>
+                    </div>
+                    <h5 class="card-title text-center mb-3">Consulting</h5>
+                    <p class="card-text text-center">Expert advice and guidance for your technical projects.</p>
+                    <ul class="list-unstyled text-center">
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Tech Stack Selection</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Architecture Design</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Code Reviews</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Performance Optimization</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="btn btn-success w-100">
+                        <i class="fas fa-envelope me-2"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center mx-auto" style="width: 70px; height: 70px;">
+                            <i class="fas fa-tools fa-lg"></i>
+                        </div>
+                    </div>
+                    <h5 class="card-title text-center mb-3">Maintenance & Support</h5>
+                    <p class="card-text text-center">Ongoing support and maintenance for existing projects.</p>
+                    <ul class="list-unstyled text-center">
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Bug Fixes</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Feature Updates</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Performance Tuning</li>
+                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Security Patches</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="btn btn-info w-100">
+                        <i class="fas fa-envelope me-2"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4"><i class="fas fa-sync-alt me-2"></i> How It Works</h3>
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-4">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                                <span class="h4 mb-0">1</span>
+                            </div>
+                            <h5 class="mb-2">Submit Request</h5>
+                            <p class="mb-0">Fill out the project form with your requirements</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                                <span class="h4 mb-0">2</span>
+                            </div>
+                            <h5 class="mb-2">Get Quote</h5>
+                            <p class="mb-0">Receive a detailed proposal and timeline</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                                <span class="h4 mb-0">3</span>
+                            </div>
+                            <h5 class="mb-2">Collaborate</h5>
+                            <p class="mb-0">Work together throughout the development process</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                                <span class="h4 mb-0">4</span>
+                            </div>
+                            <h5 class="mb-2">Delivery</h5>
+                            <p class="mb-0">Receive your completed project and ongoing support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4"><i class="fas fa-file-invoice-dollar me-2"></i> Payment Options</h3>
+                    <p class="text-center mb-4">
+                        I offer flexible payment options to accommodate your needs. Secure payments are processed through trusted payment gateways.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-4">
+                        <div class="text-center">
+                            <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
+                                <i class="fab fa-cc-visa"></i>
+                            </div>
+                            <small>Visa</small>
+                        </div>
+                        <div class="text-center">
+                            <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
+                                <i class="fab fa-cc-mastercard"></i>
+                            </div>
+                            <small>Mastercard</small>
+                        </div>
+                        <div class="text-center">
+                            <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
+                                <i class="fab fa-cc-paypal"></i>
+                            </div>
+                            <small>PayPal</small>
+                        </div>
+                        <div class="text-center">
+                            <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
+                                <i class="fab fa-cc-stripe"></i>
+                            </div>
+                            <small>Stripe</small>
+                        </div>
+                        <div class="text-center">
+                            <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <small>Bank Transfer</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel"><i class="fas fa-calendar-check me-2"></i> Book an Appointment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingName" class="form-label">Full Name *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="bookingName" required>
+                                <div class="invalid-feedback">Please enter your name.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingEmail" class="form-label">Email Address *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                <input type="email" class="form-control" id="bookingEmail" required>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingPhone" class="form-label">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                <input type="tel" class="form-control" id="bookingPhone">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingService" class="form-label">Service *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+                                <select class="form-select" id="bookingService" required>
+                                    <option value="">Select a service</option>
+                                    <option value="Project Development">Project Development</option>
+                                    <option value="Consulting">Consulting</option>
+                                    <option value="Maintenance & Support">Maintenance & Support</option>
+                                    <option value="Medical Website Development">Medical Website Development</option>
+                                    <option value="Food Delivery Platform">Food Delivery Platform</option>
+                                    <option value="Digital Marketing Solutions">Digital Marketing Solutions</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a service.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingDate" class="form-label">Preferred Date *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                <input type="date" class="form-control" id="bookingDate" required>
+                                <div class="invalid-feedback">Please select a date.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingTime" class="form-label">Preferred Time *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                <select class="form-select" id="bookingTime" required>
+                                    <option value="">Select a time</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a time.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="bookingMessage" class="form-label">Project Details *</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-comment"></i></span>
+                            <textarea class="form-control" id="bookingMessage" rows="4" placeholder="Please describe your project requirements in detail..." required></textarea>
+                            <div class="invalid-feedback">Please provide project details.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="bookingBudget" class="form-label">Estimated Budget (Optional)</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                            <input type="number" class="form-control" id="bookingBudget" placeholder="Enter your budget range">
+                        </div>
+                    </div>
+                </form>
+                
+                <div id="bookingSuccessMessage" class="alert alert-success mt-3 d-none" role="alert">
+                    <i class="fas fa-check-circle me-2"></i> Your appointment has been booked successfully! We will contact you shortly to confirm the details.
+                </div>
+                
+                <div id="bookingErrorMessage" class="alert alert-danger mt-3 d-none" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i> There was an error booking your appointment. Please try again.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="submitBooking">
+                    <i class="fas fa-paper-plane me-2"></i> Submit Booking
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel"><i class="fas fa-credit-card me-2"></i> Secure Payment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="paymentForm" novalidate>
+                    <div class="mb-3">
+                        <label for="cardNumber" class="form-label">Card Number *</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
+                            <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            <div class="invalid-feedback">Please enter a valid card number.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="expiryDate" class="form-label">Expiry Date *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                                <div class="invalid-feedback">Please enter expiry date.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="cvv" class="form-label">CVV *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                                <div class="invalid-feedback">Please enter CVV.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="cardName" class="form-label">Cardholder Name *</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" id="cardName" required>
+                            <div class="invalid-feedback">Please enter cardholder name.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount *</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                            <input type="number" class="form-control" id="amount" value="100" required>
+                            <div class="invalid-feedback">Please enter amount.</div>
+                        </div>
+                    </div>
+                </form>
+                
+                <div id="paymentSuccessMessage" class="alert alert-success mt-3 d-none" role="alert">
+                    <i class="fas fa-check-circle me-2"></i> Payment processed successfully! Thank you for your payment.
+                </div>
+                
+                <div id="paymentErrorMessage" class="alert alert-danger mt-3 d-none" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i> There was an error processing your payment. Please try again.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="processPayment">
+                    <i class="fas fa-check-circle me-2"></i> Process Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set minimum date for booking to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('bookingDate').min = today;
+        
+        // Handle service selection from cards
+        const bookButtons = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#bookingModal"]');
+        bookButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                if (service) {
+                    document.getElementById('bookingService').value = service;
+                }
+            });
+        });
+        
+        // Handle booking form submission
+        document.getElementById('submitBooking').addEventListener('click', function() {
+            const bookingForm = document.getElementById('bookingForm');
+            const successMessage = document.getElementById('bookingSuccessMessage');
+            const errorMessage = document.getElementById('bookingErrorMessage');
+            
+            if (!bookingForm.checkValidity()) {
+                bookingForm.classList.add('was-validated');
+                return;
+            }
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('bookingName').value,
+                email: document.getElementById('bookingEmail').value,
+                phone: document.getElementById('bookingPhone').value,
+                service: document.getElementById('bookingService').value,
+                date: document.getElementById('bookingDate').value,
+                time: document.getElementById('bookingTime').value,
+                message: document.getElementById('bookingMessage').value,
+                budget: document.getElementById('bookingBudget').value || null
+            };
+            
+            // Send AJAX request
+            fetch('{% url "booking_submit" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    successMessage.textContent = data.message;
+                    successMessage.classList.remove('d-none');
+                    errorMessage.classList.add('d-none');
+                    
+                    // Reset form
+                    bookingForm.reset();
+                    bookingForm.classList.remove('was-validated');
+                    
+                    // Hide modal after 3 seconds
+                    setTimeout(() => {
+                        bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
+                        successMessage.classList.add('d-none');
+                    }, 3000);
+                } else {
+                    // Show error message
+                    errorMessage.textContent = data.message;
+                    errorMessage.classList.remove('d-none');
+                    successMessage.classList.add('d-none');
+                }
+            })
+            .catch(error => {
+                // Show error message
+                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.classList.remove('d-none');
+                successMessage.classList.add('d-none');
+            });
+        });
+        
+        // Handle payment form submission
+        document.getElementById('processPayment').addEventListener('click', function() {
+            const paymentForm = document.getElementById('paymentForm');
+            const successMessage = document.getElementById('paymentSuccessMessage');
+            const errorMessage = document.getElementById('paymentErrorMessage');
+            
+            if (!paymentForm.checkValidity()) {
+                paymentForm.classList.add('was-validated');
+                return;
+            }
+            
+            // Get form data
+            const formData = {
+                card_number: document.getElementById('cardNumber').value,
+                expiry_date: document.getElementById('expiryDate').value,
+                cvv: document.getElementById('cvv').value,
+                card_name: document.getElementById('cardName').value,
+                amount: document.getElementById('amount').value,
+                payment_method: 'credit_card'
+            };
+            
+            // Send AJAX request
+            fetch('{% url "payment_process" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    successMessage.textContent = data.message;
+                    successMessage.classList.remove('d-none');
+                    errorMessage.classList.add('d-none');
+                    
+                    // Reset form
+                    paymentForm.reset();
+                    paymentForm.classList.remove('was-validated');
+                    
+                    // Hide modal after 3 seconds
+                    setTimeout(() => {
+                        bootstrap.Modal.getInstance(document.getElementById('paymentModal')).hide();
+                        successMessage.classList.add('d-none');
+                    }, 3000);
+                } else {
+                    // Show error message
+                    errorMessage.textContent = data.message;
+                    errorMessage.classList.remove('d-none');
+                    successMessage.classList.add('d-none');
+                }
+            })
+            .catch(error => {
+                // Show error message
+                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.classList.remove('d-none');
+                successMessage.classList.add('d-none');
+            });
+        });
+    });
+</script>
+{% endblock %}

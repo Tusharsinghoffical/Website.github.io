@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold"><i class="fas fa-cogs me-2"></i> My Services</h1>
+        <p class="lead">Specialized services in Data Science, AI, and Full-Stack Development</p>
+    </div>
+    
+    <div class="row">
+        {% for service in services %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-start">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <i class="{{ service.icon_class }}"></i>
+                        </div>
+                        <div>
+                            <h3 class="card-title mb-2">{{ service.name }}</h3>
+                            <p class="card-text">{{ service.description }}</p>
+                        </div>
+                    </div>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary w-100 mt-3">
+                        <i class="fas fa-envelope me-2"></i> Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="mb-3"><i class="fas fa-comment-dollar me-2"></i> Ready to Start Your Project?</h2>
+                    <p class="mb-4">
+                        Let's discuss your requirements and create a customized solution that fits your needs and budget.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-5 py-3">
+                        <i class="fas fa-envelope me-2"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
