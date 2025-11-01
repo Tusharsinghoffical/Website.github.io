@@ -38,6 +38,7 @@ def contact_submit(request):
             
             name = data.get('name')
             email = data.get('email')
+            phone = data.get('phone')
             subject = data.get('subject')
             message = data.get('message')
             
@@ -59,26 +60,18 @@ def contact_submit(request):
             contact_message.save()
             
             # Send email notification asynchronously
-            email_subject = f"New Contact Message: {subject}"
-            email_message = f"""Hello,
-
-You have received a new message from your website contact form.
-
-----------------------------------------------------
-
-Name: {name}
-Email: {email}
+            email_subject = f"Message form the website: {subject}"
+            email_message = f"""Hello Mr. Tushar Singh,
 Subject: {subject}
 
 Message:
 {message}
 
-----------------------------------------------------
-
-This message has also been saved to your database.
 
 Best regards,
-Your Website Contact System
+Name: {name}
+Email: {email}
+Phone: {phone if phone else 'Not provided'}
 """
             
             # Send email in a separate thread to avoid blocking the response
