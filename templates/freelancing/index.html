@@ -11,74 +11,26 @@
     </div>
     
     <div class="row">
+        {% for service in services %}
         <div class="col-md-4 mb-4">
             <div class="card h-100 border-0 shadow-sm">
                 <div class="card-body">
                     <div class="text-center mb-4">
                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 70px; height: 70px;">
-                            <i class="fas fa-laptop-code fa-lg"></i>
+                            <i class="{{ service.icon_class|default:'fas fa-briefcase' }} fa-lg"></i>
                         </div>
                     </div>
-                    <h5 class="card-title text-center mb-3">Project Development</h5>
-                    <p class="card-text text-center">Full development of custom projects from concept to deployment.</p>
-                    <ul class="list-unstyled text-center">
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Web Applications</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Mobile Apps</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Data Science Projects</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> AI Solutions</li>
-                    </ul>
-                    <a href="{% url 'contact' %}" class="btn btn-primary w-100">
-                        <i class="fas fa-envelope me-2"></i> Get in Touch
-                    </a>
+                    <h5 class="card-title text-center mb-3">{{ service.name }}</h5>
+                    <p class="card-text text-center">{{ service.description }}</p>
+                    <div class="d-grid mt-3">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="{{ service.name }}">
+                            <i class="fas fa-calendar-check me-2"></i> Book Now (${{ service.price }})
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="text-center mb-4">
-                        <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto" style="width: 70px; height: 70px;">
-                            <i class="fas fa-chart-line fa-lg"></i>
-                        </div>
-                    </div>
-                    <h5 class="card-title text-center mb-3">Consulting</h5>
-                    <p class="card-text text-center">Expert advice and guidance for your technical projects.</p>
-                    <ul class="list-unstyled text-center">
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Tech Stack Selection</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Architecture Design</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Code Reviews</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Performance Optimization</li>
-                    </ul>
-                    <a href="{% url 'contact' %}" class="btn btn-success w-100">
-                        <i class="fas fa-envelope me-2"></i> Get in Touch
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="text-center mb-4">
-                        <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center mx-auto" style="width: 70px; height: 70px;">
-                            <i class="fas fa-tools fa-lg"></i>
-                        </div>
-                    </div>
-                    <h5 class="card-title text-center mb-3">Maintenance & Support</h5>
-                    <p class="card-text text-center">Ongoing support and maintenance for existing projects.</p>
-                    <ul class="list-unstyled text-center">
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Bug Fixes</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Feature Updates</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Performance Tuning</li>
-                        <li class="mb-1"><i class="fas fa-check-circle text-success me-2"></i> Security Patches</li>
-                    </ul>
-                    <a href="{% url 'contact' %}" class="btn btn-info w-100">
-                        <i class="fas fa-envelope me-2"></i> Get in Touch
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     
     <div class="row mt-5">
@@ -212,12 +164,9 @@
                                 <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
                                 <select class="form-select" id="bookingService" required>
                                     <option value="">Select a service</option>
-                                    <option value="Project Development">Project Development</option>
-                                    <option value="Consulting">Consulting</option>
-                                    <option value="Maintenance & Support">Maintenance & Support</option>
-                                    <option value="Medical Website Development">Medical Website Development</option>
-                                    <option value="Food Delivery Platform">Food Delivery Platform</option>
-                                    <option value="Digital Marketing Solutions">Digital Marketing Solutions</option>
+                                    {% for service in services %}
+                                    <option value="{{ service.name }}">{{ service.name }}</option>
+                                    {% endfor %}
                                 </select>
                                 <div class="invalid-feedback">Please select a service.</div>
                             </div>

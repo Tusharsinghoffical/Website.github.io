@@ -24,7 +24,13 @@ def send_email_async(subject, message, from_email, recipient_list):
         print(f"Email sending failed: {e}")
 
 def index(request):
-    return render(request, 'contact/index.html')
+    # You can pass dynamic contact information here if needed
+    context = {
+        'email': 'tusharsinghkumar04@gmail.com',
+        'phone': '+91 8851619647',
+        'location': 'Delhi, India'
+    }
+    return render(request, 'contact/index.html', context)
 
 @csrf_exempt
 def contact_submit(request):

@@ -1,12 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.exceptions import ObjectDoesNotExist
 import json
 from .models import Booking, Payment, Service
 
 def index(request):
     # Get services from database
-    services = Service.objects.all()
+    services = Service.objects.all()  # pyright: ignore[reportAttributeAccessIssue]
     
     # If no services exist, create default ones
     if not services.exists():
@@ -15,32 +16,36 @@ def index(request):
                 'name': 'Medical Website Development',
                 'description': 'Creating secure and compliant healthcare websites with patient portals and telemedicine features.',
                 'price': 2500.00,
+                'icon_class': 'fas fa-laptop-medical',
                 'is_active': True
             },
             {
                 'name': 'Food Delivery Platform',
                 'description': 'Building end-to-end food delivery solutions with real-time tracking and payment integration.',
                 'price': 3500.00,
+                'icon_class': 'fas fa-utensils',
                 'is_active': True
             },
             {
                 'name': 'Digital Marketing Solutions',
                 'description': 'Comprehensive digital marketing services to grow your online presence and customer base.',
                 'price': 1500.00,
+                'icon_class': 'fas fa-bullhorn',
                 'is_active': True
             },
             {
                 'name': 'AI Agents Development',
                 'description': 'Developing intelligent AI agents and automation solutions for various business needs.',
                 'price': 4000.00,
+                'icon_class': 'fas fa-robot',
                 'is_active': True
             }
         ]
         
         for service_data in services_data:
-            Service.objects.create(**service_data)
+            Service.objects.create(**service_data)  # pyright: ignore[reportAttributeAccessIssue]
         
-        services = Service.objects.all()
+        services = Service.objects.all()  # pyright: ignore[reportAttributeAccessIssue]
     
     context = {
         'services': services,
@@ -126,10 +131,10 @@ def payment_process(request):
             
             # Update booking status
             try:
-                booking = Booking.objects.get(id=booking_id)
+                booking = Booking.objects.get(id=booking_id)  # pyright: ignore[reportAttributeAccessIssue]
                 booking.status = 'confirmed'
                 booking.save()
-            except Booking.DoesNotExist:
+            except ObjectDoesNotExist:
                 pass
             
             return JsonResponse({'success': True, 'message': 'Payment processed successfully! Thank you for your payment. Your booking is now confirmed.'})
