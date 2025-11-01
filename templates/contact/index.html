@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container mt-4">
@@ -41,22 +42,23 @@
                                 </div>
                                 <div>
                                     <h5 class="mb-0">Location</h5>
-                                    <p class="mb-0">City, Country</p>
+                                    <p class="mb-0">Delhi, India</p>
                                 </div>
                             </div>
                             
                             <h4 class="mt-4 mb-3">Follow Me</h4>
                             <div class="d-flex gap-2">
-                                <a href="#" class="btn btn-outline-primary"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" class="btn btn-outline-dark"><i class="fab fa-github"></i></a>
-                                <a href="#" class="btn btn-outline-info"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="btn btn-outline-danger"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/tusharsingh2011/" class="btn btn-outline-primary"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/Tusharsinghoffical" class="btn btn-outline-dark"><i class="fab fa-github"></i></a>
+                                <a href="https://www.youtube.com/@tusharsinghoffical" class="btn btn-outline-info"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.instagram.com/tusharsingh_2011/" class="btn btn-outline-danger"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <h3 class="mb-4">Send a Message</h3>
                             <form id="contactForm" novalidate>
+                                {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Full Name *</label>
                                     <input type="text" class="form-control" id="name" required>
@@ -127,12 +129,15 @@
                 message: document.getElementById('message').value
             };
             
+            // Get CSRF token from the form
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            
             // Send AJAX request
             fetch('{% url "contact_submit" %}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
+                    'X-CSRFToken': csrfToken
                 },
                 body: JSON.stringify(formData)
             })

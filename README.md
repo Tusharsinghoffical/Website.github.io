@@ -47,8 +47,20 @@ Portfolio/
 - **Project Showcase**: Organized display of AI Agents, Data Analysis, and Data Science projects
 - **Service Offerings**: Detailed information about available services
 - **Freelancing Platform**: Integrated booking system for freelance services
-- **Contact Form**: Easy communication channel
+- **Contact Form**: Easy communication channel with email notifications
 - **Admin Panel**: Content management system for easy updates
+
+## 📧 Email Configuration
+
+The contact form is configured to send email notifications using Gmail SMTP:
+
+- **Production**: Uses Gmail SMTP with App Password authentication
+- **Development**: Console backend for testing (emails displayed in terminal)
+
+To configure email for production:
+1. Enable 2-Factor Authentication on your Google account
+2. Generate an App Password for the application
+3. Update the EMAIL_HOST_PASSWORD in settings.py with your App Password
 
 ## 🎯 Services Highlighted
 
@@ -79,7 +91,7 @@ python manage.py runserver
 
 For business inquiries or collaborations, feel free to reach out:
 
-- Email: tusharsinghkumar04@gmail.com
+- Email: tusharsinghoffical@gmail.com
 - Phone: +91 8851619647
 - LinkedIn: [Tushar Singh](https://www.linkedin.com/in/tusharsingh2011/)
 - GitHub: [Tushar Singh](https://github.com/Tusharsinghoffical)
@@ -89,3 +101,7 @@ For business inquiries or collaborations, feel free to reach out:
 ## 📄 License
 
 © 2025 Code With Mr Singh. All rights reserved.
+
+## Admin Credentials
+Admin id:-tusharsinghkumar2002
+Password:- Tushar@2002

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -92,11 +93,11 @@ DATABASES = {
 #         "ENGINE": "djongo",
 #         "NAME": "portfolio_freelance_db",
 #         "CLIENT": {
-#             "host": "mongodb://127.0.0.1:27017",
-#             "port": 27017,
-#             "username": "your_username",
-#             "password": "your_password",
-#             "authMechanism": "SCRAM-SHA-1",
+#         "host": "mongodb://127.0.0.1:27017",
+#         "port": 27017,
+#         "username": "your_username",
+#         "password": "your_password",
+#         "authMechanism": "SCRAM-SHA-1",
 #         },
 #     }
 # }
@@ -145,3 +146,22 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Email configuration
+# For development, use console backend to see emails in the terminal
+# For production, configure with your email service provider
+
+# PRODUCTION SETTINGS (For production deployment)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'tusharsinghoffical@gmail.com'
+EMAIL_HOST_PASSWORD = 'cprzfpsrgpaxlixa'
+DEFAULT_FROM_EMAIL = 'Portfolio Contact <tusharsinghoffical@gmail.com>'
+CONTACT_EMAIL = 'tusharsinghoffical@gmail.com'
+
+# DEVELOPMENT SETTINGS (Commented out for production)
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# DEFAULT_FROM_EMAIL = 'Portfolio Contact <no-reply@portfoliowebsite.com>'
+# CONTACT_EMAIL = 'tusharsinghoffical@gmail.com'
