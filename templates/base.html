@@ -658,6 +658,19 @@
           padding: 1.5rem !important;
         }
       }
+
+      .nav-link.freelancing-highlight {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white !important;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      }
+
+      .nav-link.freelancing-highlight:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+      }
+
     </style>
   </head>
   <body>
@@ -698,7 +711,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link rounded-pill" href="{% url 'freelancing' %}">
+              <a class="nav-link rounded-pill freelancing-highlight" href="{% url 'freelancing' %}">
                 <i class="fas fa-briefcase me-1"></i> Freelancing
               </a>
             </li>
