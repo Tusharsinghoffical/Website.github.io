@@ -53,6 +53,20 @@ def index(request):
     
     return render(request, 'freelancing/index.html', context)
 
+def service_detail(request, service_id):
+    # Get the specific service
+    service = get_object_or_404(Service, id=service_id)  # pyright: ignore[reportAttributeAccessIssue]
+    
+    # Get all services for the booking modal
+    services = Service.objects.all()  # pyright: ignore[reportAttributeAccessIssue]
+    
+    context = {
+        'service': service,
+        'services': services,
+    }
+    
+    return render(request, 'freelancing/service_detail.html', context)
+
 @csrf_exempt
 def booking_submit(request):
     if request.method == 'POST':

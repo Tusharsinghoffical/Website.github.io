@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-l%y@vno^50mva&0r1qs34cgimeu_p197&s-g)88s)g!bimt99q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_extensions",  
     "home",
     "services",
     "projects",
     "about",
     "contact",
     "freelancing",
+    "chat",
 ]
 
 MIDDLEWARE = [
@@ -161,7 +163,4 @@ EMAIL_HOST_PASSWORD = 'cprzfpsrgpaxlixa'
 DEFAULT_FROM_EMAIL = 'Portfolio Contact <tusharsinghoffical@gmail.com>'
 CONTACT_EMAIL = 'tusharsinghoffical@gmail.com'
 
-# DEVELOPMENT SETTINGS (Commented out for production)
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# DEFAULT_FROM_EMAIL = 'Portfolio Contact <no-reply@portfoliowebsite.com>'
-# CONTACT_EMAIL = 'tusharsinghoffical@gmail.com'
+GEMINI_API_KEY = 'AIzaSyAq9Th8kseI7k-uo7XX9mstcJ92rGDn4DQ'  # Your provided API key

@@ -27,6 +27,14 @@
           </div>
         </div>
         <div class="card-body">
+          <div class="text-center mb-4">
+            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+              <i class="fas fa-award fa-lg"></i>
+            </div>
+            <h5 class="mb-2">Years of Experience</h5>
+            <p class="mb-0 display-6 text-primary">5+</p>
+          </div>
+          
           <div class="d-grid gap-2 mt-3">
             <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">
               <i class="fas fa-envelope me-2"></i> Contact Me
@@ -61,6 +69,13 @@
           <p class="lead">
             {{ profile.bio }}
           </p>
+          <div class="alert alert-info d-flex align-items-center" role="alert">
+            <i class="fas fa-lightbulb me-2 fa-lg"></i>
+            <div>
+              <strong>Passionate Problem Solver:</strong> I thrive on turning complex challenges into elegant solutions 
+              through innovative thinking and cutting-edge technology.
+            </div>
+          </div>
         </div>
       </div>
 
@@ -75,8 +90,17 @@
               <ul class="list-unstyled">
                 {% for skill in category.skills %}
                 <li class="mb-3">
-                  <i class="fas fa-chevron-circle-right text-primary me-2"></i>
-                  {{ skill.name }}
+                  <div class="d-flex align-items-center">
+                    <i class="fas fa-chevron-circle-right text-primary me-2"></i>
+                    <div>
+                      <strong>{{ skill.name }}</strong>
+                      {% if skill.level %}
+                      <div class="progress mt-1" style="height: 8px;">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{ skill.level }}%"></div>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
                 </li>
                 {% endfor %}
               </ul>
@@ -91,7 +115,7 @@
           <h2><i class="fas fa-graduation-cap me-2"></i> Education</h2>
           <div class="divider"></div>
           {% for edu in education %}
-          <div class="card border-0">
+          <div class="card border-0 mb-3">
             <div class="card-body">
               <h4>{{ edu.degree }}</h4>
               <p class="mb-2">
@@ -127,6 +151,11 @@
                   <p class="mb-0">
                     <i class="fas fa-calendar me-2"></i> {{ cert.issue_date|date:"F Y" }}
                   </p>
+                  {% if cert.credential_id %}
+                  <p class="mb-0 mt-2">
+                    <small class="text-muted">Credential ID: {{ cert.credential_id }}</small>
+                  </p>
+                  {% endif %}
                 </div>
               </div>
             </div>

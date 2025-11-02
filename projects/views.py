@@ -3,7 +3,7 @@ from .models import Project, ProjectCategory, ProjectFile
 
 def index(request):
     # Get projects from database
-    projects = Project.objects.all()
+    projects = Project.objects.all()  # type: ignore
     
     # If no projects exist, create default ones
     if not projects.exists():
@@ -55,9 +55,9 @@ def index(request):
         ]
         
         for project_data in projects_data:
-            Project.objects.create(**project_data)
+            Project.objects.create(**project_data)  # type: ignore
         
-        projects = Project.objects.all()
+        projects = Project.objects.all()  # type: ignore
     
     # Add files to each project (without direct assignment)
     projects_with_files = []
@@ -76,7 +76,7 @@ def index(request):
             'order': project.order,
             'created_at': project.created_at,
             'updated_at': project.updated_at,
-            'files': ProjectFile.objects.filter(project=project)
+            'files': ProjectFile.objects.filter(project=project)  # type: ignore
         }
         projects_with_files.append(project_dict)
     

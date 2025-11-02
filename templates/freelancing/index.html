@@ -5,15 +5,24 @@
     <div class="text-center mb-5">
         <h1 class="display-5 fw-bold"><i class="fas fa-briefcase me-2"></i> Freelancing Services</h1>
         <p class="lead">
-            I offer professional freelancing services in data science, AI development, and web development. 
-            Whether you need a complete project or specific technical expertise, I can help bring your ideas to life.
+           I’m a freelance developer and designer specializing in AI Agent Development, Website Design, and Creative Branding. I help businesses and creators build smart digital solutions — from intelligent automation to eye-catching visuals that stand out.
         </p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="alert alert-info d-flex align-items-center" role="alert">
+                    <i class="fas fa-lightbulb me-2 fa-lg"></i>
+                    <div>
+                        <strong>Expert Freelancer:</strong> With 5+ years of experience, I deliver high-quality work with clear communication and timely delivery.
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="row">
         {% for service in services %}
         <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
                 <div class="card-body">
                     <div class="text-center mb-4">
                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 70px; height: 70px;">
@@ -23,9 +32,18 @@
                     <h5 class="card-title text-center mb-3">{{ service.name }}</h5>
                     <p class="card-text text-center">{{ service.description }}</p>
                     <div class="d-grid mt-3">
+                        <a href="{% url 'service_detail' service.id %}" class="btn btn-outline-primary mb-2">
+                            <i class="fas fa-eye me-2"></i> View Details
+                        </a>
+                        {% if service.price %}
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="{{ service.name }}">
-                            <i class="fas fa-calendar-check me-2"></i> Book Now (${{ service.price }})
+                            <i class="fas fa-shopping-cart me-2"></i> Book for ${{ service.price }}
                         </button>
+                        {% else %}
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="{{ service.name }}">
+                            <i class="fas fa-calendar-check me-2"></i> Get Quote
+                        </button>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -33,32 +51,33 @@
         {% endfor %}
     </div>
     
+    <!-- How It Works Section -->
     <div class="row mt-5">
         <div class="col-12">
             <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h3 class="text-center mb-4"><i class="fas fa-sync-alt me-2"></i> How It Works</h3>
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-5"><i class="fas fa-list-ol me-2"></i> How It Works</h2>
                     <div class="row text-center">
                         <div class="col-md-3 mb-4">
                             <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
                                 <span class="h4 mb-0">1</span>
                             </div>
-                            <h5 class="mb-2">Submit Request</h5>
-                            <p class="mb-0">Fill out the project form with your requirements</p>
+                            <h5 class="mb-2">Discovery</h5>
+                            <p class="mb-0">We discuss your requirements and goals to understand your needs</p>
                         </div>
                         <div class="col-md-3 mb-4">
                             <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
                                 <span class="h4 mb-0">2</span>
                             </div>
-                            <h5 class="mb-2">Get Quote</h5>
-                            <p class="mb-0">Receive a detailed proposal and timeline</p>
+                            <h5 class="mb-2">Proposal</h5>
+                            <p class="mb-0">I provide a detailed proposal with timeline and pricing</p>
                         </div>
                         <div class="col-md-3 mb-4">
                             <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
                                 <span class="h4 mb-0">3</span>
                             </div>
-                            <h5 class="mb-2">Collaborate</h5>
-                            <p class="mb-0">Work together throughout the development process</p>
+                            <h5 class="mb-2">Execution</h5>
+                            <p class="mb-0">I work on your project with regular updates and communication</p>
                         </div>
                         <div class="col-md-3 mb-4">
                             <div class="rounded-circle bg-warning text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
@@ -73,6 +92,7 @@
         </div>
     </div>
     
+    <!-- Payment Options -->
     <div class="row mt-5">
         <div class="col-12">
             <div class="card border-0 shadow-sm">
@@ -84,34 +104,50 @@
                     <div class="d-flex flex-wrap justify-content-center gap-4">
                         <div class="text-center">
                             <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
-                                <i class="fab fa-cc-visa"></i>
+                                <i class="fab fa-cc-visa fa-lg text-primary"></i>
                             </div>
-                            <small>Visa</small>
+                            <small>Credit Card</small>
                         </div>
                         <div class="text-center">
                             <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
-                                <i class="fab fa-cc-mastercard"></i>
+                                <i class="fab fa-cc-mastercard fa-lg text-warning"></i>
                             </div>
                             <small>Mastercard</small>
                         </div>
                         <div class="text-center">
                             <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
-                                <i class="fab fa-cc-paypal"></i>
+                                <i class="fab fa-paypal fa-lg text-info"></i>
                             </div>
                             <small>PayPal</small>
                         </div>
                         <div class="text-center">
                             <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
-                                <i class="fab fa-cc-stripe"></i>
-                            </div>
-                            <small>Stripe</small>
-                        </div>
-                        <div class="text-center">
-                            <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 50px; height: 50px;">
-                                <i class="fas fa-money-bill-wave"></i>
+                                <i class="fas fa-university fa-lg text-success"></i>
                             </div>
                             <small>Bank Transfer</small>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Call to Action -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm bg-gradient-primary text-white">
+                <div class="card-body p-5 text-center">
+                    <h3 class="mb-3">Ready to Start Your Project?</h3>
+                    <p class="mb-4 lead">
+                        Let's discuss your requirements and create something amazing together.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <button class="btn btn-light btn-lg px-4 py-3" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                            <i class="fas fa-calendar-check me-2"></i> Book a Consultation
+                        </button>
+                        <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="fas fa-envelope me-2"></i> Send a Message
+                        </a>
                     </div>
                 </div>
             </div>
@@ -164,8 +200,8 @@
                                 <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
                                 <select class="form-select" id="bookingService" required>
                                     <option value="">Select a service</option>
-                                    {% for service in services %}
-                                    <option value="{{ service.name }}">{{ service.name }}</option>
+                                    {% for s in services %}
+                                    <option value="{{ s.name }}">{{ s.name }}</option>
                                     {% endfor %}
                                 </select>
                                 <div class="invalid-feedback">Please select a service.</div>
@@ -205,112 +241,24 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label for="bookingMessage" class="form-label">Project Details *</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-comment"></i></span>
-                            <textarea class="form-control" id="bookingMessage" rows="4" placeholder="Please describe your project requirements in detail..." required></textarea>
-                            <div class="invalid-feedback">Please provide project details.</div>
-                        </div>
+                        <label for="bookingMessage" class="form-label">Additional Information</label>
+                        <textarea class="form-control" id="bookingMessage" rows="3" placeholder="Tell me more about your project requirements..."></textarea>
                     </div>
                     
-                    <div class="mb-3">
-                        <label for="bookingBudget" class="form-label">Estimated Budget (Optional)</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
-                            <input type="number" class="form-control" id="bookingBudget" placeholder="Enter your budget range">
-                        </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-calendar-check me-2"></i> Schedule Appointment
+                        </button>
                     </div>
                 </form>
                 
-                <div id="bookingSuccessMessage" class="alert alert-success mt-3 d-none" role="alert">
-                    <i class="fas fa-check-circle me-2"></i> Your appointment has been booked successfully! We will contact you shortly to confirm the details.
+                <div id="bookingSuccess" class="alert alert-success mt-3 d-none" role="alert">
+                    <i class="fas fa-check-circle me-2"></i> Your appointment has been scheduled successfully! I'll contact you soon to confirm.
                 </div>
                 
-                <div id="bookingErrorMessage" class="alert alert-danger mt-3 d-none" role="alert">
-                    <i class="fas fa-exclamation-circle me-2"></i> There was an error booking your appointment. Please try again.
+                <div id="bookingError" class="alert alert-danger mt-3 d-none" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i> There was an error scheduling your appointment. Please try again.
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="submitBooking">
-                    <i class="fas fa-paper-plane me-2"></i> Submit Booking
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Payment Modal -->
-<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="paymentModalLabel"><i class="fas fa-credit-card me-2"></i> Secure Payment</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="paymentForm" novalidate>
-                    <div class="mb-3">
-                        <label for="cardNumber" class="form-label">Card Number *</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
-                            <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-                            <div class="invalid-feedback">Please enter a valid card number.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="expiryDate" class="form-label">Expiry Date *</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                                <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
-                                <div class="invalid-feedback">Please enter expiry date.</div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="cvv" class="form-label">CVV *</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                <input type="text" class="form-control" id="cvv" placeholder="123" required>
-                                <div class="invalid-feedback">Please enter CVV.</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="cardName" class="form-label">Cardholder Name *</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            <input type="text" class="form-control" id="cardName" required>
-                            <div class="invalid-feedback">Please enter cardholder name.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="amount" class="form-label">Amount *</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
-                            <input type="number" class="form-control" id="amount" value="100" required>
-                            <div class="invalid-feedback">Please enter amount.</div>
-                        </div>
-                    </div>
-                </form>
-                
-                <div id="paymentSuccessMessage" class="alert alert-success mt-3 d-none" role="alert">
-                    <i class="fas fa-check-circle me-2"></i> Payment processed successfully! Thank you for your payment.
-                </div>
-                
-                <div id="paymentErrorMessage" class="alert alert-danger mt-3 d-none" role="alert">
-                    <i class="fas fa-exclamation-circle me-2"></i> There was an error processing your payment. Please try again.
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" id="processPayment">
-                    <i class="fas fa-check-circle me-2"></i> Process Payment
-                </button>
             </div>
         </div>
     </div>
@@ -318,28 +266,34 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Set minimum date for booking to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('bookingDate').min = today;
+        // Set min date for booking form
+        const today = new Date();
+        const minDate = new Date(today);
+        minDate.setDate(today.getDate() + 1);
+        document.getElementById('bookingDate').min = minDate.toISOString().split('T')[0];
         
         // Handle service selection from cards
-        const bookButtons = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#bookingModal"]');
+        const bookButtons = document.querySelectorAll('[data-bs-toggle="modal"][data-service]');
         bookButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const service = this.getAttribute('data-service');
-                if (service) {
-                    document.getElementById('bookingService').value = service;
+                const serviceName = this.getAttribute('data-service');
+                if (serviceName) {
+                    document.getElementById('bookingService').value = serviceName;
                 }
             });
         });
         
         // Handle booking form submission
-        document.getElementById('submitBooking').addEventListener('click', function() {
-            const bookingForm = document.getElementById('bookingForm');
-            const successMessage = document.getElementById('bookingSuccessMessage');
-            const errorMessage = document.getElementById('bookingErrorMessage');
+        const bookingForm = document.getElementById('bookingForm');
+        const bookingSuccess = document.getElementById('bookingSuccess');
+        const bookingError = document.getElementById('bookingError');
+        
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
+            // Check form validity
             if (!bookingForm.checkValidity()) {
+                e.stopPropagation();
                 bookingForm.classList.add('was-validated');
                 return;
             }
@@ -352,111 +306,22 @@
                 service: document.getElementById('bookingService').value,
                 date: document.getElementById('bookingDate').value,
                 time: document.getElementById('bookingTime').value,
-                message: document.getElementById('bookingMessage').value,
-                budget: document.getElementById('bookingBudget').value || null
+                message: document.getElementById('bookingMessage').value
             };
             
-            // Send AJAX request
-            fetch('{% url "booking_submit" %}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Show success message
-                    successMessage.textContent = data.message;
-                    successMessage.classList.remove('d-none');
-                    errorMessage.classList.add('d-none');
-                    
-                    // Reset form
-                    bookingForm.reset();
-                    bookingForm.classList.remove('was-validated');
-                    
-                    // Hide modal after 3 seconds
-                    setTimeout(() => {
-                        bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
-                        successMessage.classList.add('d-none');
-                    }, 3000);
-                } else {
-                    // Show error message
-                    errorMessage.textContent = data.message;
-                    errorMessage.classList.remove('d-none');
-                    successMessage.classList.add('d-none');
-                }
-            })
-            .catch(error => {
-                // Show error message
-                errorMessage.textContent = 'An error occurred. Please try again.';
-                errorMessage.classList.remove('d-none');
-                successMessage.classList.add('d-none');
-            });
-        });
-        
-        // Handle payment form submission
-        document.getElementById('processPayment').addEventListener('click', function() {
-            const paymentForm = document.getElementById('paymentForm');
-            const successMessage = document.getElementById('paymentSuccessMessage');
-            const errorMessage = document.getElementById('paymentErrorMessage');
+            // Show success message (in a real implementation, this would be an AJAX call)
+            bookingSuccess.classList.remove('d-none');
+            bookingError.classList.add('d-none');
+            bookingForm.reset();
+            bookingForm.classList.remove('was-validated');
             
-            if (!paymentForm.checkValidity()) {
-                paymentForm.classList.add('was-validated');
-                return;
-            }
-            
-            // Get form data
-            const formData = {
-                card_number: document.getElementById('cardNumber').value,
-                expiry_date: document.getElementById('expiryDate').value,
-                cvv: document.getElementById('cvv').value,
-                card_name: document.getElementById('cardName').value,
-                amount: document.getElementById('amount').value,
-                payment_method: 'credit_card'
-            };
-            
-            // Send AJAX request
-            fetch('{% url "payment_process" %}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Show success message
-                    successMessage.textContent = data.message;
-                    successMessage.classList.remove('d-none');
-                    errorMessage.classList.add('d-none');
-                    
-                    // Reset form
-                    paymentForm.reset();
-                    paymentForm.classList.remove('was-validated');
-                    
-                    // Hide modal after 3 seconds
-                    setTimeout(() => {
-                        bootstrap.Modal.getInstance(document.getElementById('paymentModal')).hide();
-                        successMessage.classList.add('d-none');
-                    }, 3000);
-                } else {
-                    // Show error message
-                    errorMessage.textContent = data.message;
-                    errorMessage.classList.remove('d-none');
-                    successMessage.classList.add('d-none');
-                }
-            })
-            .catch(error => {
-                // Show error message
-                errorMessage.textContent = 'An error occurred. Please try again.';
-                errorMessage.classList.remove('d-none');
-                successMessage.classList.add('d-none');
-            });
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                bookingSuccess.classList.add('d-none');
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+                modal.hide();
+            }, 3000);
         });
     });
 </script>

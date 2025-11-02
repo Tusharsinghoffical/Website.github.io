@@ -18,7 +18,7 @@ class ServiceCategory(models.Model):
 class Service(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    category = models.CharField(max_length=20)
+    category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE, related_name='services')
     icon_class = models.CharField(max_length=50, help_text="Font Awesome icon class, e.g. 'fas fa-robot'")
     is_active = models.BooleanField()
     order = models.IntegerField()

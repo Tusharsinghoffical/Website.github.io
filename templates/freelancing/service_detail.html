@@ -1,0 +1,384 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'freelancing' %}">Freelancing</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ service.name }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-4" style="width: 80px; height: 80px; flex-shrink: 0;">
+                            <i class="{{ service.icon_class|default:'fas fa-briefcase' }} fa-2x"></i>
+                        </div>
+                        <div>
+                            <h1 class="mb-2">{{ service.name }}</h1>
+                            <p class="lead">{{ service.description }}</p>
+                            {% if service.price %}
+                            <h3 class="text-primary mb-0">${{ service.price }}</h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info d-flex align-items-center" role="alert">
+                        <i class="fas fa-lightbulb me-2 fa-lg"></i>
+                        <div>
+                            <strong>Expert Service:</strong> This service is backed by years of experience in {{ service.category.name }} solutions. 
+                            I ensure high-quality deliverables with clear communication throughout the project lifecycle.
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h3 class="mb-4"><i class="fas fa-info-circle me-2"></i> Service Details</h3>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 border-0 bg-light">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-clock me-2"></i> Delivery Time</h5>
+                                        <p class="card-text">Typically delivered within 7-14 business days depending on project complexity.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 border-0 bg-light">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Revisions</h5>
+                                        <p class="card-text">Includes up to 3 rounds of revisions to ensure your satisfaction.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 border-0 bg-light">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-headset me-2"></i> Support</h5>
+                                        <p class="card-text">30 days of complimentary support after project delivery.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 border-0 bg-light">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><i class="fas fa-file-contract me-2"></i> Agreement</h5>
+                                        <p class="card-text">Professional contract with clear terms and milestones.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h3 class="mb-4"><i class="fas fa-list-check me-2"></i> What's Included</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item py-3">
+                                <i class="fas fa-check-circle text-success me-3"></i> 
+                                <strong>Consultation & Planning</strong> - Initial discussion to understand your requirements
+                            </li>
+                            <li class="list-group-item py-3">
+                                <i class="fas fa-check-circle text-success me-3"></i> 
+                                <strong>Design & Development</strong> - Creation of your custom solution
+                            </li>
+                            <li class="list-group-item py-3">
+                                <i class="fas fa-check-circle text-success me-3"></i> 
+                                <strong>Testing & Quality Assurance</strong> - Thorough testing to ensure functionality
+                            </li>
+                            <li class="list-group-item py-3">
+                                <i class="fas fa-check-circle text-success me-3"></i> 
+                                <strong>Deployment</strong> - Launching your solution to production environment
+                            </li>
+                            <li class="list-group-item py-3">
+                                <i class="fas fa-check-circle text-success me-3"></i> 
+                                <strong>Documentation</strong> - Comprehensive documentation for your project
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h3 class="mb-4"><i class="fas fa-graduation-cap me-2"></i> Expertise & Technologies</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="mb-3">Technologies Used</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Python</li>
+                                    <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Machine Learning</li>
+                                    <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Data Science</li>
+                                    <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Web Development</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="mb-3">Methodologies</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Agile Development</li>
+                                    <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Data-Driven Approach</li>
+                                    <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> User-Centered Design</li>
+                                    <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Continuous Integration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h4 class="card-title mb-4"><i class="fas fa-shopping-cart me-2"></i> Book This Service</h4>
+                    
+                    <div class="d-grid mb-4">
+                        <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#bookingModal" data-service="{{ service.name }}">
+                            <i class="fas fa-calendar-check me-2"></i> Book Now
+                        </button>
+                    </div>
+                    
+                    <div class="text-center mb-4">
+                        <small class="text-muted">or</small>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <a href="{% url 'contact' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-envelope me-2"></i> Contact for Custom Quote
+                        </a>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <h5 class="mb-3"><i class="fas fa-question-circle me-2"></i> Have Questions?</h5>
+                    <p class="mb-3">If you have any questions about this service, feel free to reach out to me directly.</p>
+                    <div class="d-grid">
+                        <a href="{% url 'contact' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-comments me-2"></i> Ask a Question
+                        </a>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="text-center">
+                        <div class="rounded-circle bg-light mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                            <i class="fas fa-shield-alt text-primary fa-2x"></i>
+                        </div>
+                        <h6 class="mb-2">Satisfaction Guaranteed</h6>
+                        <p class="small text-muted mb-0">
+                            I'm committed to delivering high-quality work that exceeds your expectations. 
+                            If you're not satisfied, we'll work together to make it right.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel"><i class="fas fa-calendar-check me-2"></i> Book an Appointment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingName" class="form-label">Full Name *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="bookingName" required>
+                                <div class="invalid-feedback">Please enter your name.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingEmail" class="form-label">Email Address *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                <input type="email" class="form-control" id="bookingEmail" required>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingPhone" class="form-label">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                <input type="tel" class="form-control" id="bookingPhone">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingService" class="form-label">Service *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+                                <select class="form-select" id="bookingService" required>
+                                    <option value="">Select a service</option>
+                                    {% for s in services %}
+                                    <option value="{{ s.name }}" {% if s.id == service.id %}selected{% endif %}>{{ s.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="invalid-feedback">Please select a service.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingDate" class="form-label">Preferred Date *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                <input type="date" class="form-control" id="bookingDate" required>
+                                <div class="invalid-feedback">Please select a date.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="bookingTime" class="form-label">Preferred Time *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                <select class="form-select" id="bookingTime" required>
+                                    <option value="">Select a time</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a time.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="bookingMessage" class="form-label">Project Details *</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-comment"></i></span>
+                            <textarea class="form-control" id="bookingMessage" rows="4" placeholder="Please describe your project requirements in detail..." required></textarea>
+                            <div class="invalid-feedback">Please provide project details.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="bookingBudget" class="form-label">Estimated Budget (Optional)</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                            <input type="number" class="form-control" id="bookingBudget" placeholder="Enter your budget range">
+                        </div>
+                    </div>
+                </form>
+                
+                <div id="bookingSuccessMessage" class="alert alert-success mt-3 d-none" role="alert">
+                    <i class="fas fa-check-circle me-2"></i> Your appointment has been booked successfully! We will contact you shortly to confirm the details.
+                </div>
+                
+                <div id="bookingErrorMessage" class="alert alert-danger mt-3 d-none" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i> There was an error booking your appointment. Please try again.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="submitBooking">
+                    <i class="fas fa-paper-plane me-2"></i> Submit Booking
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set minimum date for booking to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('bookingDate').min = today;
+        
+        // Handle service selection from cards
+        const bookButtons = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#bookingModal"]');
+        bookButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                if (service) {
+                    document.getElementById('bookingService').value = service;
+                }
+            });
+        });
+        
+        // Handle booking form submission
+        document.getElementById('submitBooking').addEventListener('click', function() {
+            const bookingForm = document.getElementById('bookingForm');
+            const successMessage = document.getElementById('bookingSuccessMessage');
+            const errorMessage = document.getElementById('bookingErrorMessage');
+            
+            if (!bookingForm.checkValidity()) {
+                bookingForm.classList.add('was-validated');
+                return;
+            }
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('bookingName').value,
+                email: document.getElementById('bookingEmail').value,
+                phone: document.getElementById('bookingPhone').value,
+                service: document.getElementById('bookingService').value,
+                date: document.getElementById('bookingDate').value,
+                time: document.getElementById('bookingTime').value,
+                message: document.getElementById('bookingMessage').value,
+                budget: document.getElementById('bookingBudget').value || null
+            };
+            
+            // Send AJAX request
+            fetch('{% url "booking_submit" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    successMessage.textContent = data.message;
+                    successMessage.classList.remove('d-none');
+                    errorMessage.classList.add('d-none');
+                    
+                    // Reset form
+                    bookingForm.reset();
+                    bookingForm.classList.remove('was-validated');
+                    
+                    // Hide modal after 3 seconds
+                    setTimeout(() => {
+                        bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
+                        successMessage.classList.add('d-none');
+                    }, 3000);
+                } else {
+                    // Show error message
+                    errorMessage.textContent = data.message;
+                    errorMessage.classList.remove('d-none');
+                    successMessage.classList.add('d-none');
+                }
+            })
+            .catch(error => {
+                // Show error message
+                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.classList.remove('d-none');
+                successMessage.classList.add('d-none');
+            });
+        });
+    });
+</script>
+{% endblock %}

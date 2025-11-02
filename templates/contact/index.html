@@ -6,6 +6,14 @@
     <div class="text-center mb-5">
         <h1 class="display-5 fw-bold"><i class="fas fa-envelope me-2"></i> Contact Me</h1>
         <p class="lead">Feel free to reach out for collaborations, projects, or just to say hello!</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <p class="fs-6">
+                    I'm always open to discussing new opportunities, creative projects, or potential collaborations. 
+                    Whether you have a question or just want to connect, I'll do my best to get back to you within 24 hours.
+                </p>
+            </div>
+        </div>
     </div>
     
     <div class="row justify-content-center">
@@ -43,6 +51,13 @@
                                 <div>
                                     <h5 class="mb-0">Location</h5>
                                     <p class="mb-0">{{ location }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info d-flex align-items-center" role="alert">
+                                <i class="fas fa-clock me-2"></i>
+                                <div>
+                                    <strong>Response Time:</strong> I typically respond to emails within 24 hours during business days.
                                 </div>
                             </div>
                             
@@ -84,7 +99,7 @@
                                 
                                 <div class="mb-3">
                                     <label for="message" class="form-label">Message *</label>
-                                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    <textarea class="form-control" id="message" rows="4" required placeholder="Tell me about your project or how I can help you..."></textarea>
                                     <div class="invalid-feedback">Please enter your message.</div>
                                 </div>
                                 
@@ -96,13 +111,34 @@
                             </form>
                             
                             <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
-                                <i class="fas fa-check-circle me-2"></i> Your message has been sent successfully!
+                                <i class="fas fa-check-circle me-2"></i> Your message has been sent successfully! I'll get back to you soon.
                             </div>
                             
                             <div id="errorMessage" class="alert alert-danger mt-3 d-none" role="alert">
                                 <i class="fas fa-exclamation-circle me-2"></i> There was an error sending your message. Please try again.
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm bg-gradient-primary text-white">
+                <div class="card-body p-5 text-center">
+                    <h3 class="mb-3">Prefer a Direct Conversation?</h3>
+                    <p class="mb-4 lead">
+                        Schedule a call with me to discuss your project in detail and get personalized recommendations.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="https://calendly.com/tusharsinghoffical" class="btn btn-light btn-lg px-4 py-3" target="_blank">
+                            <i class="fas fa-calendar-check me-2"></i> Schedule a Call
+                        </a>
+                        <a href="https://wa.me/918851619647" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i> WhatsApp Chat
+                        </a>
                     </div>
                 </div>
             </div>

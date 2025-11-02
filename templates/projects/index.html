@@ -5,39 +5,87 @@
     <div class="text-center mb-5">
         <h1 class="display-5 fw-bold"><i class="fas fa-folder-open me-2"></i> My Projects</h1>
         <p class="lead">Showcasing my work in Data Science, AI, and Full-Stack Development</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <p class="fs-6">
+                    Explore a collection of projects that demonstrate my expertise in creating innovative solutions. 
+                    Each project represents a unique challenge and showcases my problem-solving approach and technical skills.
+                </p>
+            </div>
+        </div>
     </div>
     
     <div class="row">
         {% for project in projects %}
         <div class="col-md-6 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+            <div class="card h-100 border-0 shadow-sm hover-lift">
                 <div class="card-body">
-                    <h3 class="card-title mb-3">{{ project.name }}</h3>
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h3 class="card-title mb-0">{{ project.name }}</h3>
+                        {% if project.is_featured %}
+                        <span class="badge bg-warning text-dark">Featured</span>
+                        {% endif %}
+                    </div>
                     <p class="card-text">{{ project.description }}</p>
                     <p class="mb-3"><strong>Technologies:</strong> {{ project.technologies }}</p>
                     <div class="d-flex gap-2">
                         <a href="{{ project.project_url }}" class="btn btn-outline-primary">
                             <i class="fas fa-eye me-2"></i> View Details
                         </a>
+                        {% if project.github_url %}
                         <a href="{{ project.github_url }}" class="btn btn-outline-success">
                             <i class="fab fa-github me-2"></i> Source Code
                         </a>
+                        {% endif %}
                     </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <small class="text-muted">
+                        <i class="fas fa-calendar me-1"></i> {{ project.created_at|date:"M Y" }}
+                    </small>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
     
-    <div class="row mt-5">
-        <div class="col-12 text-center">
+    {% if not projects %}
+    <div class="row">
+        <div class="col-12">
             <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h2 class="mb-3"><i class="fas fa-lightbulb me-2"></i> Have a Project in Mind?</h2>
-                    <p class="mb-4">Let's collaborate to bring your ideas to life with my expertise in data science and AI development.</p>
-                    <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-5 py-3">
+                <div class="card-body text-center p-5">
+                    <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
+                        <i class="fas fa-folder-open fa-2x"></i>
+                    </div>
+                    <h3 class="mb-3">No Projects Available</h3>
+                    <p class="mb-4">
+                        I'm currently working on some exciting projects. Please check back soon to see my latest work.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">
                         <i class="fas fa-envelope me-2"></i> Get in Touch
                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <div class="card border-0 shadow-sm bg-gradient-primary text-white">
+                <div class="card-body p-5">
+                    <h3 class="mb-3">Have a Project in Mind?</h3>
+                    <p class="mb-4 lead">
+                        I'm always excited to work on new and challenging projects. Let's discuss how I can help bring your ideas to life.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="{% url 'contact' %}" class="btn btn-light btn-lg px-4 py-3">
+                            <i class="fas fa-paper-plane me-2"></i> Start a Project
+                        </a>
+                        <a href="{% url 'freelancing' %}" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="fas fa-briefcase me-2"></i> View Services
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
