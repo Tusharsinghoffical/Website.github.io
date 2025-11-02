@@ -67,12 +67,10 @@ def contact_submit(request):
             
             # Send email notification asynchronously
             email_subject = f"Message form the website: {subject}"
-            email_message = f"""Hello Mr. Tushar Singh,
+            email_message = f"""
 Subject: {subject}
 
-Message:
 {message}
-
 
 Best regards,
 Name: {name}
