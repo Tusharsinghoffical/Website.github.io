@@ -1,0 +1,28 @@
+PUSH TO GITHUB - STEP BY STEP
+==========================
+
+1. CREATE THE REPOSITORY ON GITHUB:
+   - Go to https://github.com/new
+   - Sign in with your GitHub account (Tusharsinghoffical)
+   - Name your repository exactly: "Website.github.io"
+   - Make it public
+   - DO NOT initialize with a README
+   - Click "Create repository"
+
+2. CREATE A PERSONAL ACCESS TOKEN:
+   - Go to https://github.com/settings/tokens
+   - Click "Generate new token" (classic)
+   - Give it a name like "Portfolio Website"
+   - Select scope "repo" (full control of repositories)
+   - Click "Generate token"
+   - COPY the generated token (you won't see it again)
+
+3. UPDATE THE REMOTE URL WITH YOUR TOKEN:
+   cd c:\Users\tusha\Desktop\Webite
+   git remote set-url origin https://YOUR_TOKEN_HERE@github.com/Tusharsinghoffical/Website.github.io.git
+
+4. PUSH YOUR CODE:
+   cd c:\Users\tusha\Desktop\Webite
+   git push -u origin main
+
+This should successfully push all your code to GitHub.
