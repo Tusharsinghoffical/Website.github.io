@@ -2,7 +2,7 @@ services:
   - type: web
     name: portfolio-website
     env: python
-    buildCommand: "./build.sh"
+    buildCommand: "chmod +x build.sh && ./build.sh"
     startCommand: "gunicorn portfolio_freelance.wsgi:application"
     envVars:
       - key: PYTHON_VERSION

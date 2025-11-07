@@ -6,6 +6,20 @@ A professional portfolio website showcasing projects, services, and skills as a 
 
 [Portfolio Website](http://127.0.0.1:8000)
 
+## 🌐 Deployment Options
+
+This portfolio website can be deployed to multiple platforms:
+
+- **Render** - Using the provided [render.yaml](render.yaml) configuration
+- **Heroku** - Using the provided [Procfile](Procfile)
+- **DigitalOcean** - Standard Django deployment
+- **AWS** - Elastic Beanstalk deployment
+- **GitHub Pages** - For static site version
+
+Detailed deployment instructions are available in:
+- [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) - Comprehensive guide for all platforms
+- [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md) - Specific instructions for Render
+
 ## 📋 Description
 
 This portfolio website highlights the work of Tushar Singh, a passionate Data Scientist and AI Agents Developer with expertise in Python, Machine Learning, and building intelligent AI Agents. The site transforms complex data into actionable insights and creates smart solutions that make a difference.
@@ -21,6 +35,10 @@ This portfolio website highlights the work of Tushar Singh, a passionate Data Sc
 - Responsive Design
 - Font Awesome icons
 - SQLite (Development Database)
+- Gunicorn (Production Server)
+- Whitenoise (Static File Serving)
+- dj-database-url (Database URL Parsing)
+- PostgreSQL (Production Database)
 
 ## 📁 Project Structure
 
