@@ -1,0 +1,23 @@
+CREATE GITHUB REPOSITORY INSTRUCTIONS
+===================================
+
+To fix the deployment issues, you need to create a new GitHub repository:
+
+1. CREATE A NEW REPOSITORY:
+   - Go to https://github.com/new
+   - Sign in with your GitHub account (Tusharsinghoffical)
+   - Name your repository "portfolio-website"
+   - Make it public or private as desired
+   - DO NOT initialize with a README
+   - Click "Create repository"
+
+2. PUSH YOUR CODE TO THE NEW REPOSITORY:
+   cd c:\Users\tusha\Desktop\Webite
+   git push -u origin main
+
+3. UPDATE RENDER TO USE THE NEW REPOSITORY:
+   - Go to your Render dashboard
+   - Update the GitHub repository URL to point to your new repository
+   - Trigger a new deployment
+
+This should resolve all the deployment issues you're experiencing.
