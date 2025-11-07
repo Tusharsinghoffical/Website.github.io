@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: portfolio-website
+    name: Freelancermrsingh
     env: python
     buildCommand: "chmod +x build.sh && ./build.sh"
     startCommand: "gunicorn portfolio_freelance.wsgi:application"
