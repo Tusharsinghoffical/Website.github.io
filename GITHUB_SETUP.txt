@@ -1,0 +1,19 @@
+GITHUB REPOSITORY SETUP INSTRUCTIONS
+=================================
+
+To push your code to GitHub, you need to:
+
+1. CREATE THE REPOSITORY ON GITHUB:
+   - Go to https://github.com/new
+   - Sign in with your GitHub account (Tusharsinghoffical)
+   - Name your repository "Website.github.io"
+   - Make it public
+   - DO NOT initialize with a README
+   - Click "Create repository"
+
+2. AFTER CREATING THE REPOSITORY, run these commands:
+   cd c:\Users\tusha\Desktop\Webite
+   git remote add origin https://github.com/Tusharsinghoffical/Website.github.io.git
+   git push -u origin main
+
+This should successfully push your code to GitHub.
