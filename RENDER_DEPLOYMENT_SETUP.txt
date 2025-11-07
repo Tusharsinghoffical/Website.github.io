@@ -1,0 +1,56 @@
+RENDER DEPLOYMENT SETUP - COMPLETE GUIDE
+=====================================
+
+1. CREATE A RENDER ACCOUNT:
+   - Go to https://render.com
+   - Sign up for a free account
+
+2. CONNECT YOUR GITHUB REPOSITORY:
+   - In Render Dashboard, click "New" → "Web Service"
+   - Connect your GitHub account
+   - Select your "Website.github.io" repository
+
+3. CONFIGURE YOUR WEB SERVICE:
+   - Name: portfolio-website
+   - Region: Choose the closest to your audience
+   - Branch: main
+   - Root Directory: Leave empty (root of repo)
+   - Environment: Python
+   - Build Command: chmod +x build.sh && ./build.sh
+   - Start Command: gunicorn portfolio_freelance.wsgi:application
+
+4. ADD ENVIRONMENT VARIABLES:
+   In the "Advanced" section, add these environment variables:
+   
+   Key: SECRET_KEY                 Value: [Generate a new Django secret key]
+   Key: DEBUG                      Value: False
+   Key: EMAIL_HOST_USER           Value: your-email@gmail.com
+   Key: EMAIL_HOST_PASSWORD       Value: your-app-password
+   Key: GEMINI_API_KEY            Value: your-gemini-api-key
+   Key: PYTHON_VERSION            Value: 3.12.0
+
+5. CREATE A POSTGRESQL DATABASE:
+   - In Render Dashboard, click "New" → "PostgreSQL"
+   - Name: portfolio-db
+   - Database: portfolio_db
+   - User: portfolio_user
+   - Plan: Free
+
+6. ADD DATABASE CONNECTION:
+   After creating the database, copy the "External Database URL" and add it as an environment variable to your web service:
+   
+   Key: DATABASE_URL              Value: [Your PostgreSQL connection URL]
+
+7. DEPLOY:
+   - Click "Create Web Service"
+   - Render will automatically start building and deploying
+
+8. POST-DEPLOYMENT:
+   - Run migrations manually if needed:
+     * Go to your web service
+     * Click "Connect" to open a shell
+     * Run: python manage.py migrate
+   - Create a superuser:
+     * In the shell, run: python manage.py createsuperuser
+
+Your website should be live at: https://portfolio-website.onrender.com
