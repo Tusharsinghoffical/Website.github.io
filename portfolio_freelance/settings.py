@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-l%y@vno^50mva&0r1qs34cgimeu_p197&s-g)88s)g!bimt99q"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'freelancemrsingh.com', '*']
 
 
 # Application definition
@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     "about",
     "contact",
     "freelancing",
-    "chat",
 ]
 
 MIDDLEWARE = [
@@ -82,12 +81,21 @@ WSGI_APPLICATION = "portfolio_freelance.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # For development purposes, use SQLite as default
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# For production, use PostgreSQL database provided by Render
+import dj_database_url
+
+database_url = os.environ.get('DATABASE_URL')
+if database_url:
+    DATABASES = {
+        'default': dj_database_url.parse(database_url)
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # If you want to use MongoDB, uncomment the following and provide proper credentials
 # DATABASES = {
@@ -140,6 +148,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
@@ -158,9 +167,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'tusharsinghoffical@gmail.com'
-EMAIL_HOST_PASSWORD = 'cprzfpsrgpaxlixa'
-DEFAULT_FROM_EMAIL = 'Portfolio Contact <tusharsinghoffical@gmail.com>'
-CONTACT_EMAIL = 'tusharsinghoffical@gmail.com'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'tusharsinghoffical@gmail.com')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'cprzfpsrgpaxlixa')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'Portfolio Contact <tusharsinghoffical@gmail.com>')
+CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'tusharsinghoffical@gmail.com')
 
-GEMINI_API_KEY = 'AIzaSyAq9Th8kseI7k-uo7XX9mstcJ92rGDn4DQ'  # Your provided API key
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyAq9Th8kseI7k-uo7XX9mstcJ92rGDn4DQ')  # Your provided API key

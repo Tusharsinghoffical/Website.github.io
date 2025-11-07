@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: portfolio-website
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn portfolio_freelance.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: SECRET_KEY
+        sync: false
+      - key: DEBUG
+        value: False
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+
+databases:
+  - name: portfolio-db
+    databaseName: portfolio_db
+    user: portfolio_user

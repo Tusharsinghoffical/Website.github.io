@@ -1,94 +1,81 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container mt-4">
-    <div class="text-center mb-5">
-        <h1 class="display-5 fw-bold"><i class="fas fa-folder-open me-2"></i> My Projects</h1>
-        <p class="lead">Showcasing my work in Data Science, AI, and Full-Stack Development</p>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <p class="fs-6">
-                    Explore a collection of projects that demonstrate my expertise in creating innovative solutions. 
-                    Each project represents a unique challenge and showcases my problem-solving approach and technical skills.
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        {% for project in projects %}
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 border-0 shadow-sm hover-lift">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <h3 class="card-title mb-0">{{ project.name }}</h3>
-                        {% if project.is_featured %}
-                        <span class="badge bg-warning text-dark">Featured</span>
-                        {% endif %}
-                    </div>
-                    <p class="card-text">{{ project.description }}</p>
-                    <p class="mb-3"><strong>Technologies:</strong> {{ project.technologies }}</p>
-                    <div class="d-flex gap-2">
-                        <a href="{{ project.project_url }}" class="btn btn-outline-primary">
-                            <i class="fas fa-eye me-2"></i> View Details
-                        </a>
-                        {% if project.github_url %}
-                        <a href="{{ project.github_url }}" class="btn btn-outline-success">
-                            <i class="fab fa-github me-2"></i> Source Code
-                        </a>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="card-footer bg-transparent border-0">
-                    <small class="text-muted">
-                        <i class="fas fa-calendar me-1"></i> {{ project.created_at|date:"M Y" }}
-                    </small>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    
-    {% if not projects %}
     <div class="row">
         <div class="col-12">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body text-center p-5">
-                    <div class="rounded-circle bg-light text-dark d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
-                        <i class="fas fa-folder-open fa-2x"></i>
-                    </div>
-                    <h3 class="mb-3">No Projects Available</h3>
-                    <p class="mb-4">
-                        I'm currently working on some exciting projects. Please check back soon to see my latest work.
-                    </p>
-                    <a href="{% url 'contact' %}" class="btn btn-primary">
-                        <i class="fas fa-envelope me-2"></i> Get in Touch
-                    </a>
-                </div>
+            <h1 class="text-center mb-5">My Projects</h1>
+        </div>
+    </div>
+    
+    <!-- Category Filter -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <a href="{% url 'projects:projects' %}" class="btn btn-outline-primary {% if not selected_category %}active{% endif %}">All Projects</a>
+                {% for category in categories %}
+                <a href="?category={{ category.id }}" class="btn btn-outline-primary {% if selected_category|add:'0' == category.id %}active{% endif %}">
+                    <i class="{{ category.icon_class }} me-1"></i> {{ category.name }}
+                </a>
+                {% endfor %}
             </div>
         </div>
     </div>
-    {% endif %}
     
-    <div class="row mt-5">
-        <div class="col-12 text-center">
-            <div class="card border-0 shadow-sm bg-gradient-primary text-white">
-                <div class="card-body p-5">
-                    <h3 class="mb-3">Have a Project in Mind?</h3>
-                    <p class="mb-4 lead">
-                        I'm always excited to work on new and challenging projects. Let's discuss how I can help bring your ideas to life.
-                    </p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="{% url 'contact' %}" class="btn btn-light btn-lg px-4 py-3">
-                            <i class="fas fa-paper-plane me-2"></i> Start a Project
-                        </a>
-                        <a href="{% url 'freelancing' %}" class="btn btn-outline-light btn-lg px-4 py-3">
-                            <i class="fas fa-briefcase me-2"></i> View Services
-                        </a>
+    <!-- Projects Grid -->
+    <div class="row">
+        {% if projects %}
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm hover-lift">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+                    {% elif project.image_url %}
+                    <img src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-folder fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text flex-grow-1">{{ project.description|truncatewords:20 }}</p>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-code me-1"></i> {{ project.technologies }}
+                            </small>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{% url 'projects:project_detail' project.id %}" class="btn btn-primary w-100">View Details</a>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <div class="d-flex justify-content-between">
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}" class="text-decoration-none" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            {% endif %}
+                            {% if project.live_url %}
+                            <a href="{{ project.live_url }}" class="text-decoration-none" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-folder-open fa-3x text-muted mb-3"></i>
+                    <h3 class="text-muted">No projects available</h3>
+                    <p class="text-muted">Check back later for updates.</p>
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

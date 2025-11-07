@@ -1,0 +1,37 @@
+[
+  {
+    "id": "TC001",
+    "title": "serve the home page",
+    "description": "Verify that the GET request to the '/' endpoint successfully serves the home page with correct content and status code."
+  },
+  {
+    "id": "TC002",
+    "title": "serve the about page",
+    "description": "Verify that the GET request to the '/about/' endpoint successfully serves the about page with correct owner information and status code."
+  },
+  {
+    "id": "TC003",
+    "title": "list all projects",
+    "description": "Verify that the GET request to the '/projects/' endpoint returns a list of all projects with their details, images, and descriptions."
+  },
+  {
+    "id": "TC004",
+    "title": "show details of a specific project",
+    "description": "Verify that the GET request to the '/projects/<id>/' endpoint returns the correct project details for a valid project ID and handles invalid IDs gracefully."
+  },
+  {
+    "id": "TC005",
+    "title": "list all services",
+    "description": "Verify that the GET request to the '/services/' endpoint returns a list of all services offered with their descriptions and categories."
+  },
+  {
+    "id": "TC006",
+    "title": "serve the contact form",
+    "description": "Verify that the GET request to the '/contact/' endpoint serves the contact form page correctly."
+  },
+  {
+    "id": "TC007",
+    "title": "handle contact form submission",
+    "description": "Verify that the POST request to the '/contact/' endpoint correctly processes the contact form submission, including validation and sending of messages."
+  }
+]

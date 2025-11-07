@@ -1,0 +1,1 @@
+web: gunicorn portfolio_freelance.wsgi:application --log-file -
