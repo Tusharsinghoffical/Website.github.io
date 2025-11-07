@@ -1,0 +1,31 @@
+GITHUB AUTHENTICATION INSTRUCTIONS
+================================
+
+The deployment is failing due to authentication issues with GitHub. Follow these steps:
+
+1. CHECK YOUR GITHUB REPOSITORY:
+   - Go to https://github.com/Tusharsinghoffical
+   - Verify if "Website.github.io" repository exists
+   - If it doesn't exist, create it:
+     * Go to https://github.com/new
+     * Name it "Website.github.io"
+     * Make it public
+     * DO NOT initialize with a README
+
+2. AUTHENTICATE WITH GITHUB:
+   Option A - Use Personal Access Token:
+   - Go to GitHub Settings > Developer Settings > Personal Access Tokens
+   - Generate a new token with "repo" permissions
+   - Update your remote URL with the token:
+     git remote set-url origin https://YOUR_TOKEN@github.com/Tusharsinghoffical/Website.github.io.git
+
+   Option B - Use SSH (recommended):
+   - Generate SSH keys if you don't have them
+   - Add your SSH key to GitHub
+   - Update remote URL to SSH:
+     git remote set-url origin git@github.com:Tusharsinghoffical/Website.github.io.git
+
+3. PUSH YOUR CODE:
+   git push -u origin main
+
+This should resolve the permission denied error.
