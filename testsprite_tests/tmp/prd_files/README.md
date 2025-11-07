@@ -94,7 +94,6 @@ For business inquiries or collaborations, feel free to reach out:
 - Email: tusharsinghoffical@gmail.com
 - Phone: +91 8851619647
 - LinkedIn: [Tushar Singh](https://www.linkedin.com/in/tusharsingh2011/)
-- GitHub: [Tushar Singh](https://github.com/Tusharsinghoffical)
 - YouTube: [Tushar Singh Official](https://www.youtube.com/@tusharsinghoffical)
 - Instagram: [tusharsingh_2011](https://www.instagram.com/tusharsingh_2011/)
 
