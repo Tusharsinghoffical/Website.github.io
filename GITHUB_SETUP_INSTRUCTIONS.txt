@@ -1,0 +1,26 @@
+GITHUB REPOSITORY SETUP INSTRUCTIONS
+===================================
+
+The deployment is failing because the GitHub repository is not properly configured.
+Follow these steps to fix the deployment:
+
+1. CREATE A NEW GITHUB REPOSITORY:
+   - Go to https://github.com/new
+   - Name your repository "PersonalWebsite" (without the trailing dash)
+   - Make it public or private as desired
+   - DO NOT initialize with a README
+   - Click "Create repository"
+
+2. COPY THE REPOSITORY URL:
+   - It will look like: https://github.com/YOUR_USERNAME/PersonalWebsite.git
+
+3. UPDATE THE REMOTE URL AND PUSH:
+   cd c:\Users\tusha\Desktop\Webite
+   git remote set-url origin YOUR_NEW_REPOSITORY_URL
+   git push -u origin main
+
+4. TRIGGER A NEW DEPLOYMENT ON RENDER:
+   - Go to your Render dashboard
+   - Trigger a manual deploy or wait for Render to auto-deploy
+
+This should resolve the "No such file or directory" error and allow your application to deploy successfully.
