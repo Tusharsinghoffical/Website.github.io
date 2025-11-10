@@ -98,21 +98,6 @@ else:
         }
     }
 
-# If you want to use MongoDB, uncomment the following and provide proper credentials
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "djongo",
-#         "NAME": "portfolio_freelance_db",
-#         "CLIENT": {
-#         "host": "mongodb://127.0.0.1:27017",
-#         "port": 27017,
-#         "username": "your_username",
-#         "password": "your_password",
-#         "authMechanism": "SCRAM-SHA-1",
-#         },
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
