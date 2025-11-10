@@ -4,7 +4,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils import timezone
 import json
+from decimal import Decimal
+from datetime import datetime
 from .models import Booking, Payment, Service
 
 def index(request):
@@ -98,16 +101,52 @@ def booking_submit(request):
             if '@' not in email:
                 return JsonResponse({'success': False, 'message': 'Please provide a valid email address.'})
             
+            # Parse date and time properly
+            try:
+                # Convert date string to date object
+                if isinstance(preferred_date, str):
+                    # Format: YYYY-MM-DD (HTML date input format)
+                    parsed_date = datetime.strptime(preferred_date, '%Y-%m-%d').date()
+                else:
+                    parsed_date = preferred_date
+            except Exception as e:
+                print(f"Date parsing error: {e}")
+                return JsonResponse({'success': False, 'message': 'Invalid date format. Please use YYYY-MM-DD format.'})
+            
+            try:
+                # Convert time string to time object
+                if isinstance(preferred_time, str):
+                    # Handle time format: HH:MM
+                    parsed_time = datetime.strptime(preferred_time, '%H:%M').time()
+                else:
+                    parsed_time = preferred_time
+            except Exception as e:
+                print(f"Time parsing error: {e}")
+                return JsonResponse({'success': False, 'message': 'Invalid time format. Please use HH:MM format.'})
+            
+            # Parse budget if provided
+            parsed_budget = None
+            if budget:
+                try:
+                    if isinstance(budget, str):
+                        parsed_budget = Decimal(budget)
+                    else:
+                        parsed_budget = budget
+                except Exception as e:
+                    print(f"Budget parsing error: {e}")
+                    # Don't fail if budget parsing fails, just set to None
+                    parsed_budget = None
+            
             # Save to database
             booking = Booking(
                 name=name,
                 email=email,
                 phone=phone,
                 service=service,
-                preferred_date=preferred_date,
-                preferred_time=preferred_time,
+                preferred_date=parsed_date,
+                preferred_time=parsed_time,
                 message=message,
-                budget=budget if budget else None
+                budget=parsed_budget
             )
             booking.save()
             
@@ -150,6 +189,8 @@ Please follow up with the client as soon as possible.
             return JsonResponse({'success': True, 'message': 'Your booking has been submitted successfully! We will contact you shortly to confirm the details.'})
         except Exception as e:
             print(f"Booking submission error: {e}")  # Debug print
+            import traceback
+            traceback.print_exc()  # Print full traceback for debugging
             return JsonResponse({'success': False, 'message': 'An error occurred while processing your booking. Please try again.'})
     
     return JsonResponse({'success': False, 'message': 'Invalid request method.'})
