@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
+from django.conf import settings
 import json
 from .models import Booking, Payment, Service
 
@@ -106,6 +108,37 @@ def booking_submit(request):
                 budget=budget if budget else None
             )
             booking.save()
+            
+            # Send email notification
+            try:
+                subject = f"New Booking Request: {service}"
+                message_body = f"""
+New Booking Request Details:
+
+Name: {name}
+Email: {email}
+Phone: {phone if phone else 'Not provided'}
+Service: {service}
+Preferred Date: {preferred_date}
+Preferred Time: {preferred_time}
+Budget: {budget if budget else 'Not specified'}
+
+Project Details:
+{message}
+
+Please follow up with the client as soon as possible.
+                """
+                
+                send_mail(
+                    subject=subject,
+                    message=message_body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.CONTACT_EMAIL],
+                    fail_silently=False,
+                )
+            except Exception as e:
+                # Log the error but don't fail the request
+                print(f"Email sending failed: {e}")
             
             return JsonResponse({'success': True, 'message': 'Your booking has been submitted successfully! We will contact you shortly to confirm the details.'})
         except Exception as e:
