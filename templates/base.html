@@ -36,6 +36,17 @@
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Prefetch important pages -->
+    <link rel="prefetch" href="{% url 'home' %}">
+    <link rel="prefetch" href="{% url 'about' %}">
+    <link rel="prefetch" href="{% url 'freelancing' %}">
+    <link rel="prefetch" href="{% url 'contact' %}">
+    
     <style>
       :root {
         --primary-color: #667eea;
@@ -222,339 +233,53 @@
         background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
       }
 
-      .hover-lift {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      .text-primary {
+        color: var(--primary-color) !important;
       }
 
-      .hover-lift:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
-      }
-
-      .feature-icon {
-        transition: transform 0.3s ease;
-      }
-
-      .feature-icon:hover {
-        transform: scale(1.2);
-      }
-
-      .footer {
-        background-color: #f8f9fa;
-        border-top: 1px solid var(--border-color);
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-        margin-top: auto;
-      }
-
-      .social-icon {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 8px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        background-color: #ffffff;
-        border: 1px solid var(--border-color);
-        color: var(--dark-text);
-        font-size: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        text-decoration: none;
-      }
-
-      .social-icon:hover {
-        transform: translateY(-6px) scale(1.12);
+      .divider {
+        height: 4px;
+        width: 60px;
         background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-        color: white;
-        border-color: transparent;
-        box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+        border-radius: 2px;
+        margin: 15px 0;
       }
 
-      /* Profile image styling */
-      .profile-image-container {
-        overflow: hidden;
-        border-radius: 15px 15px 0 0 !important;
+      .section-title {
+        margin-bottom: var(--section-spacing);
       }
-      
+
       .profile-image {
         width: 100%;
         height: auto;
         object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-      
-      .profile-image:hover {
-        transform: scale(1.05);
       }
 
-      /* Floating Buttons */
-      .floating-buttons {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        z-index: 1000;
+      .profile-image-mobile {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border: 5px solid #ffffff;
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
       }
 
-      .floating-button {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-        border: none;
-        outline: none;
-        animation: pulse 2s infinite;
-      }
-
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
-        }
-        70% {
-          box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
-        }
-      }
-
-      .whatsapp-button {
-        background-color: #25D366;
-      }
-
-      .chatbot-button {
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      }
-
-      .floating-button:hover {
-        transform: scale(1.1);
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-        animation: none;
-      }
-
-      /* Enhanced Chatbot Container */
-      .chatbot-container {
-        position: fixed;
-        bottom: 100px;
-        right: 20px;
-        width: 380px;
-        height: 500px;
-        background-color: #ffffff;
-        border: 1px solid var(--border-color);
-        border-radius: 20px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-        display: none;
-        flex-direction: column;
-        z-index: 1001;
+      .progress {
+        border-radius: 10px;
+        height: 10px;
         overflow: hidden;
-        transform: translateY(20px);
-        opacity: 0;
-        transition: all 0.3s ease;
       }
 
-      .chatbot-container.active {
-        display: flex;
-        transform: translateY(0);
-        opacity: 1;
+      .progress-bar {
+        border-radius: 10px;
       }
 
-      .chatbot-header {
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-        color: white;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .chatbot-close {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 0;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-      }
-
-      .chatbot-close:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: rotate(90deg);
-      }
-
-      .chatbot-body {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-
-      .chat-messages {
-        flex: 1;
-        padding: 20px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      .message {
-        max-width: 80%;
-        padding: 12px 16px;
-        border-radius: 18px;
-        position: relative;
-        animation: fadeIn 0.3s ease;
-      }
-
-      .user-message {
-        align-self: flex-end;
-        background: var(--chat-user-bg);
-        color: var(--chat-user-text);
-        border-bottom-right-radius: 5px;
-      }
-
-      .bot-message {
-        align-self: flex-start;
-        background: var(--chat-bot-bg);
-        color: var(--chat-bot-text);
-        border-bottom-left-radius: 5px;
-      }
-
-      .typing-indicator {
-        align-self: flex-start;
-        background: var(--chat-typing-bg);
-        padding: 12px 16px;
-        border-radius: 18px;
-        border-bottom-left-radius: 5px;
-      }
-
-      .typing-indicator span {
-        height: 8px;
-        width: 8px;
-        float: left;
-        margin: 0 2px;
-        background-color: #9E9EA1;
-        display: block;
-        border-radius: 50%;
-        opacity: 0.4;
-      }
-
-      .typing-indicator span:nth-of-type(1) {
-        animation: typing 1s infinite;
-      }
-
-      .typing-indicator span:nth-of-type(2) {
-        animation: typing 1s infinite 0.2s;
-      }
-
-      .typing-indicator span:nth-of-type(3) {
-        animation: typing 1s infinite 0.4s;
-      }
-
-      @keyframes typing {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-5px); }
-      }
-
-      .chat-input {
-        padding: 15px;
+      footer {
+        background-color: #f8f9fa;
         border-top: 1px solid var(--border-color);
-        display: flex;
-        gap: 10px;
-      }
-
-      .chat-input input {
-        flex: 1;
-        border: 1px solid var(--border-color);
-        border-radius: 25px;
-        padding: 10px 20px;
-        outline: none;
-        transition: border-color 0.3s ease;
-      }
-
-      .chat-input input:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-      }
-
-      .chat-input button {
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-        border: none;
-        color: white;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-      }
-
-      .chat-input button:hover {
-        transform: scale(1.1);
-      }
-
-      /* Enhanced responsive design */
-      @media (max-width: 992px) {
-        h1 {
-          font-size: 2.2rem;
-        }
-        
-        h2 {
-          font-size: 1.8rem;
-        }
-        
-        .navbar-brand {
-          font-size: 1.3rem;
-        }
+        margin-top: auto;
       }
 
       @media (max-width: 768px) {
-        .footer .row {
-          text-align: center;
-        }
-        
-        .footer h5 {
-          margin-top: 1.5rem;
-        }
-        
-        .footer .col-md-4, 
-        .footer .col-md-3, 
-        .footer .col-md-2 {
-          flex: 0 0 100%;
-          max-width: 100%;
-        }
-        
-        .footer ul {
-          padding-left: 0;
-        }
-        
-        .footer ul li {
-          margin-bottom: 0.75rem;
-        }
-        
         h1 {
           font-size: 2rem;
         }
@@ -563,150 +288,42 @@
           font-size: 1.75rem;
         }
         
-        .btn-lg {
-          padding: 10px 16px;
+        .profile-image-mobile {
+          width: 150px;
+          height: 150px;
+        }
+        
+        .nav-link {
+          padding: 8px 12px !important;
           font-size: 0.9rem;
         }
-        
-        /* Home page specific responsive adjustments */
-        .home-logo-container {
-          margin-top: 2rem;
-        }
-        
-        .home-logo {
-          width: 120px !important;
-          height: 120px !important;
-        }
-        
-        /* Chatbot responsive adjustments */
-        .chatbot-container {
-          width: calc(100% - 40px);
-          height: 70vh;
-          bottom: 80px;
-          right: 20px;
-        }
-        
-        /* Stats section responsive */
-        .stats-card {
-          margin-bottom: 1rem;
-        }
-        
-        .stats-card:last-child {
-          margin-bottom: 0;
-        }
-      }
-      
-      @media (max-width: 576px) {
-        .footer {
-          padding: 2rem 0;
-        }
-        
-        .footer .row {
-          gap: 1.5rem;
-        }
-        
-        .social-icon {
-          width: 40px;
-          height: 40px;
-          font-size: 1rem;
-          margin: 0 5px;
-        }
-        
-        h1 {
-          font-size: 1.75rem;
-        }
-        
-        h2 {
-          font-size: 1.5rem;
-        }
-        
-        .btn-lg {
-          padding: 8px 12px;
-          font-size: 0.85rem;
-        }
-        
-        /* Adjust hero section for small screens */
-        .hero-content {
-          text-align: center;
-        }
-        
-        .hero-buttons {
-          justify-content: center !important;
-        }
-        
-        /* Chatbot responsive adjustments */
-        .chatbot-container {
-          width: calc(100% - 20px);
-          right: 10px;
-          left: 10px;
-        }
-        
-        /* Profile image responsive */
-        .profile-image-mobile {
-          width: 120px !important;
-          height: 120px !important;
-        }
-        
-        /* Stats section responsive */
-        .stats-number {
-          font-size: 1.8rem !important;
-        }
-        
-        .stats-text {
-          font-size: 0.9rem !important;
-        }
-      }
-      
-      /* Additional responsive enhancements */
-      @media (max-width: 400px) {
-        .navbar-brand {
-          font-size: 1.1rem;
-        }
-        
-        h1 {
-          font-size: 1.5rem;
-        }
-        
-        h2 {
-          font-size: 1.3rem;
-        }
-        
-        .btn {
-          padding: 8px 12px;
-          font-size: 0.8rem;
-        }
-        
-        .card-body {
-          padding: 1.5rem !important;
-        }
       }
 
-      .nav-link.freelancing-highlight {
-        background: Black;
-        color: white !important;
-        font-weight: 600;
-        {% comment %} box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); {% endcomment %}
+      /* Lazy loading styles */
+      img[loading="lazy"] {
+        opacity: 0;
+        transition: opacity 0.3s;
       }
 
-      .nav-link.freelancing-highlight:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+      img[loading="lazy"].loaded {
+        opacity: 1;
       }
-
     </style>
   </head>
   <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="{% url 'home' %}">
-          <img src="{% static 'Image/Logo4.png' %}" alt="TUSHAR SINGH" style="height: 60px; width: auto; margin-right: 10px;">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <i class="fas fa-code me-2"></i>TUSHAR SINGH
         </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -723,11 +340,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link rounded-pill" href="{% url 'services' %}">
-                <i class="fas fa-cogs me-1"></i> Services
+              <a class="nav-link rounded-pill" href="{% url 'freelancing' %}">
+                <i class="fas fa-briefcase me-1"></i> Services
               </a>
             </li>
-            
             <li class="nav-item">
               <a class="nav-link rounded-pill" href="{% url 'about' %}">
                 <i class="fas fa-user me-1"></i> About
@@ -738,164 +354,106 @@
                 <i class="fas fa-envelope me-1"></i> Contact
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link rounded-pill freelancing-highlight" href="{% url 'freelancing' %}">
-                <i class="fas fa-briefcase me-1"></i> Freelancing
-              </a>
-            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-shrink-0">
+    <main>
       {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
-    <footer class="footer mt-auto py-5">
+    <footer class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-4 mb-md-0">
-            <h5 class="fw-bold mb-4">
-              <img src="{% static 'Image/Logo4.png' %}" alt="TUSHAR SINGH" style="height: 30px; width: auto; margin-right: 10px;">
-              TUSHAR SINGH
-            </h5>
-            <p class="text-muted">
-              Transforming ideas into reality through innovative technology solutions.
-              Specializing in AI, Data Science, and Full-Stack Development.
+            <h5><i class="fas fa-code me-2"></i>TUSHAR SINGH</h5>
+            <p class="mb-3">
+              Transforming ideas into reality through innovative technology solutions. Specializing in AI, Data Science, and Full-Stack Development.
             </p>
-            <div class="mt-4">
-              <a href="#" class="social-icon">
+            <div class="d-flex gap-2">
+              <a href="https://github.com/Tusharsinghoffical" class="btn btn-outline-dark rounded-circle" target="_blank">
                 <i class="fab fa-github"></i>
               </a>
-              <a href="#" class="social-icon">
+              <a href="https://www.linkedin.com/in/tushar-singh-437665253/" class="btn btn-outline-primary rounded-circle" target="_blank">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-instagram"></i>
+              <a href="https://wa.me/918851619647" class="btn btn-outline-success rounded-circle" target="_blank">
+                <i class="fab fa-whatsapp"></i>
               </a>
             </div>
           </div>
           <div class="col-md-2 mb-4 mb-md-0">
-            <h5 class="fw-bold mb-4">Quick Links</h5>
+            <h5>Quick Links</h5>
             <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="{% url 'home' %}" class="text-decoration-none text-muted">Home</a>
-              </li>
-              <li class="mb-2">
-                <a href="{% url 'about' %}" class="text-decoration-none text-muted">About</a>
-              </li>
-              <li class="mb-2">
-                <a href="{% url 'services' %}" class="text-decoration-none text-muted">Services</a>
-              </li>
-              <li class="mb-2">
-                <a href="{% url 'projects:projects' %}" class="text-decoration-none text-muted">Projects</a>
-              </li>
+              <li><a href="{% url 'home' %}" class="text-decoration-none">Home</a></li>
+              <li><a href="{% url 'about' %}" class="text-decoration-none">About</a></li>
+              <li><a href="{% url 'services' %}" class="text-decoration-none">Services</a></li>
+              <li><a href="{% url 'projects:projects' %}" class="text-decoration-none">Projects</a></li>
             </ul>
           </div>
           <div class="col-md-3 mb-4 mb-md-0">
-            <h5 class="fw-bold mb-4">Services</h5>
+            <h5>Services</h5>
             <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted">AI Development</a>
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted">Data Science</a>
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted">Web Development</a>
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none text-muted">Consulting</a>
-              </li>
+              <li><a href="#" class="text-decoration-none">AI Development</a></li>
+              <li><a href="#" class="text-decoration-none">Data Science</a></li>
+              <li><a href="#" class="text-decoration-none">Web Development</a></li>
+              <li><a href="#" class="text-decoration-none">Consulting</a></li>
             </ul>
           </div>
           <div class="col-md-3">
-            <h5 class="fw-bold mb-4">Contact Info</h5>
+            <h5>Contact Info</h5>
             <ul class="list-unstyled">
-              <li class="mb-2 text-muted">
-                <i class="fas fa-envelope me-2"></i> tusharsinghkumar04@gmail.com
+              <li class="mb-2">
+                <i class="fas fa-envelope me-2"></i>
+                <a href="mailto:tusharsinghkumar04@gmail.com" class="text-decoration-none">tusharsinghkumar04@gmail.com</a>
               </li>
-              <li class="mb-2 text-muted">
-                <i class="fas fa-map-marker-alt me-2"></i> New Delhi, India
+              <li class="mb-2">
+                <i class="fas fa-map-marker-alt me-2"></i>
+                New Delhi, India
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-phone me-2"></i>
+                <a href="tel:+918851619647" class="text-decoration-none">+91 8851619647</a>
               </li>
             </ul>
           </div>
         </div>
-        <hr class="my-4" />
-        <div class="row">
-          <div class="col-md-6 text-center text-md-start">
-            <p class="text-muted mb-md-0">
-              &copy; 2025 TUSHAR SINGH. All rights reserved.
-            </p>
-          </div>
-          <div class="col-md-6 text-center text-md-end">
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a href="#" class="text-decoration-none text-muted">Privacy Policy</a>
-              </li>
-              <li class="list-inline-item">|</li>
-              <li class="list-inline-item">
-                <a href="#" class="text-decoration-none text-muted">Terms of Service</a>
-              </li>
-            </ul>
+        <hr class="my-4">
+        <div class="text-center">
+          <p class="mb-0">
+            &copy; 2025 TUSHAR SINGH. All rights reserved.
+          </p>
+          <div class="mt-2">
+            <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+            <a href="#" class="text-decoration-none">Terms of Service</a>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Floating Buttons -->
-    <div class="floating-buttons">
-      <button class="floating-button whatsapp-button" title="Contact on WhatsApp" onclick="openWhatsApp()">
-        <i class="fab fa-whatsapp"></i>
-      </button>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
+      crossorigin="anonymous"
+      defer
+    ></script>
+    
     <script>
-      // Removed chatbot functionality
+      // Lazy loading for images
       document.addEventListener('DOMContentLoaded', function() {
-        // Form validation
-        const forms = document.querySelectorAll('.needs-validation');
-        Array.from(forms).forEach(form => {
-          form.addEventListener('submit', function(event) {
-            if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-
-        // CSRF token handling for AJAX requests
-        function getCookie(name) {
-          let cookieValue = null;
-          if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-              const cookie = cookies[i].trim();
-              if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-              }
-            }
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+          if (img.complete) {
+            img.classList.add('loaded');
+          } else {
+            img.addEventListener('load', function() {
+              img.classList.add('loaded');
+            });
           }
-          return cookieValue;
-        }
-
-        // Set up CSRF token for AJAX requests
-        const csrftoken = getCookie('csrftoken');
-        
-        // Make getCookie function globally available
-        window.getCookie = getCookie;
+        });
       });
-
+      
       // WhatsApp button functionality
       function openWhatsApp() {
         // Replace with your actual phone number in international format
@@ -904,6 +462,24 @@
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
       }
+      
+      // CSRF token function for AJAX requests
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
     </script>
+    
+    {% block extra_js %}{% endblock %}
   </body>
 </html>

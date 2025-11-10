@@ -3,142 +3,160 @@
 
 {% block content %}
 <div class="container mt-4">
-    <div class="text-center mb-5">
-        <h1 class="display-5 fw-bold"><i class="fas fa-envelope me-2"></i> Contact Me</h1>
-        <p class="lead">Feel free to reach out for collaborations, projects, or just to say hello!</p>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold mb-3">Get In Touch</h1>
+                <p class="lead fs-5 mb-4 text-primary">Let's start a conversation about your project</p>
                 <p class="fs-6">
-                    I'm always open to discussing new opportunities, creative projects, or potential collaborations. 
-                    Whether you have a question or just want to connect, I'll do my best to get back to you within 24 hours.
+                    Have a project in mind or want to discuss potential opportunities? 
+                    I'm always open to new ideas and collaborations. Reach out and let's make something amazing together.
                 </p>
             </div>
         </div>
     </div>
-    
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <div class="row">
-                        <div class="col-md-6 mb-4 mb-md-0">
-                            <h3 class="mb-4">Get in Touch</h3>
-                            
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-0">Email</h5>
-                                    <p class="mb-0">{{ email }}</p>
-                                </div>
-                            </div>
-                            
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-0">Phone</h5>
-                                    <p class="mb-0">{{ phone }}</p>
-                                </div>
-                            </div>
-                            
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-0">Location</h5>
-                                    <p class="mb-0">{{ location }}</p>
-                                </div>
-                            </div>
-                            
-                            <div class="alert alert-info d-flex align-items-center" role="alert">
-                                <i class="fas fa-clock me-2"></i>
-                                <div>
-                                    <strong>Response Time:</strong> I typically respond to emails within 24 hours during business days.
-                                </div>
-                            </div>
-                            
-                            <h4 class="mt-4 mb-3">Follow Me</h4>
-                            <div class="d-flex gap-2">
-                                <a href="https://www.linkedin.com/in/tusharsingh2011/" class="btn btn-outline-primary"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/Tusharsinghoffical" class="btn btn-outline-dark"><i class="fab fa-github"></i></a>
-                                <a href="https://www.youtube.com/@tusharsinghoffical" class="btn btn-outline-info"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.instagram.com/tusharsingh_2011/" class="btn btn-outline-danger"><i class="fab fa-instagram"></i></a>
+
+    <div class="row">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title mb-4"><i class="fas fa-paper-plane me-2"></i> Send a Message</h3>
+                    
+                    <form id="contactForm" novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="name" required>
+                                <div class="invalid-feedback">Please enter your name.</div>
                             </div>
                         </div>
                         
-                        <div class="col-md-6">
-                            <h3 class="mb-4">Send a Message</h3>
-                            <form id="contactForm" novalidate>
-                                {% csrf_token %}
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Full Name *</label>
-                                    <input type="text" class="form-control" id="name" required>
-                                    <div class="invalid-feedback">Please enter your name.</div>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email Address *</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                    <div class="invalid-feedback">Please enter a valid email address.</div>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone">
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="subject" class="form-label">Subject *</label>
-                                    <input type="text" class="form-control" id="subject" required>
-                                    <div class="invalid-feedback">Please enter a subject.</div>
-                                </div>
-                                
-                                <div class="mb-3">
-                                    <label for="message" class="form-label">Message *</label>
-                                    <textarea class="form-control" id="message" rows="4" required placeholder="Tell me about your project or how I can help you..."></textarea>
-                                    <div class="invalid-feedback">Please enter your message.</div>
-                                </div>
-                                
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-paper-plane me-2"></i> Send Message
-                                    </button>
-                                </div>
-                            </form>
-                            
-                            <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
-                                <i class="fas fa-check-circle me-2"></i> Your message has been sent successfully! I'll get back to you soon.
-                            </div>
-                            
-                            <div id="errorMessage" class="alert alert-danger mt-3 d-none" role="alert">
-                                <i class="fas fa-exclamation-circle me-2"></i> There was an error sending your message. Please try again.
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
                             </div>
                         </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                <input type="tel" class="form-control" id="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                <input type="text" class="form-control" id="subject" required>
+                                <div class="invalid-feedback">Please enter a subject.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-comment"></i></span>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Tell me about your project or inquiry..." required></textarea>
+                                <div class="invalid-feedback">Please enter your message.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i> Send Message
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
+                        <i class="fas fa-check-circle me-2"></i> Your message has been sent successfully! I'll get back to you soon.
+                    </div>
+                    
+                    <div id="errorMessage" class="alert alert-danger mt-3 d-none" role="alert">
+                        <i class="fas fa-exclamation-circle me-2"></i> There was an error sending your message. Please try again.
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="row mt-5">
-        <div class="col-12">
-            <div class="card border-0 shadow-sm bg-gradient-primary text-white">
-                <div class="card-body p-5 text-center">
-                    <h3 class="mb-3">Prefer a Direct Conversation?</h3>
-                    <p class="mb-4 lead">
-                        Schedule a call with me to discuss your project in detail and get personalized recommendations.
-                    </p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="https://calendly.com/tusharsinghkumar04/new-meeting" class="btn btn-light btn-lg px-4 py-3" target="_blank">
-                            <i class="fas fa-calendar-check me-2"></i> Schedule a Call
-                        </a>
-                        <a href="https://wa.me/918851619647" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank">
-                            <i class="fab fa-whatsapp me-2"></i> WhatsApp Chat
-                        </a>
+        
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title mb-4"><i class="fas fa-address-card me-2"></i> Contact Information</h3>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Location</h5>
+                            <p class="mb-0">New Delhi, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Email</h5>
+                            <p class="mb-0">
+                                <a href="mailto:tusharsinghkumar04@gmail.com" class="text-decoration-none">
+                                    tusharsinghkumar04@gmail.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Phone</h5>
+                            <p class="mb-0">
+                                <a href="tel:+918851619647" class="text-decoration-none">
+                                    +91 8851619647
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; flex-shrink: 0;">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">WhatsApp</h5>
+                            <p class="mb-0">
+                                <a href="https://wa.me/918851619647" class="text-decoration-none" target="_blank">
+                                    Chat with me on WhatsApp
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-light border-0">
+                        <div class="card-body p-4 text-center">
+                            <h4 class="mb-3">Prefer a Direct Conversation?</h4>
+                            <p class="mb-4 lead">
+                                Schedule a call with me to discuss your project in detail and get personalized recommendations.
+                            </p>
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <a href="https://calendly.com/tusharsinghkumar04/new-meeting" class="btn btn-light btn-lg px-4 py-3" target="_blank">
+                                    <i class="fas fa-calendar-check me-2"></i> Schedule a Call
+                                </a>
+                                <a href="https://wa.me/918851619647" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank">
+                                    <i class="fab fa-whatsapp me-2"></i> WhatsApp Chat
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,145 +1,109 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="row">
-        <div class="col-12">
+        <div class="col-lg-8">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'freelancing' %}">Freelancing</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'freelancing' %}">Services</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ service.name }}</li>
                 </ol>
             </nav>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-lg-8">
+            
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body">
-                    <div class="d-flex align-items-start mb-4">
-                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-4" style="width: 80px; height: 80px; flex-shrink: 0;">
-                            <i class="{{ service.icon_class|default:'fas fa-briefcase' }} fa-2x"></i>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                            <i class="{{ service.icon_class }} fa-2x"></i>
                         </div>
                         <div>
-                            <h1 class="mb-2">{{ service.name }}</h1>
-                            <p class="lead">{{ service.description }}</p>
+                            <h1 class="mb-0">{{ service.name }}</h1>
                             {% if service.price %}
-                            <h3 class="text-primary mb-0">${{ service.price }}</h3>
+                            <div class="h3 text-primary mb-0">${{ service.price }}</div>
                             {% endif %}
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body">
-                    <div class="alert alert-info d-flex align-items-center" role="alert">
-                        <i class="fas fa-lightbulb me-2 fa-lg"></i>
-                        <div>
-                            <strong>Expert Service:</strong> This service is backed by years of experience in solutions. 
-                            I ensure high-quality deliverables with clear communication throughout the project lifecycle.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body">
-                    <h3 class="mb-4"><i class="fas fa-info-circle me-2"></i> Service Details</h3>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100 border-0 bg-light">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-clock me-2"></i> Delivery Time</h5>
-                                    <p class="card-text">Typically delivered within 7-14 business days depending on project complexity.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100 border-0 bg-light">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Revisions</h5>
-                                    <p class="card-text">Includes up to 3 rounds of revisions to ensure your satisfaction.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100 border-0 bg-light">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-headset me-2"></i> Support</h5>
-                                    <p class="card-text">30 days of complimentary support after project delivery.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100 border-0 bg-light">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-file-contract me-2"></i> Agreement</h5>
-                                    <p class="card-text">Professional contract with clear terms and milestones.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card border-0 shadow-sm mb-4">
-                <div class="card-body">
-                    <h3 class="mb-4"><i class="fas fa-list-check me-2"></i> What's Included</h3>
-                    <div class="row">
+                    
+                    <p class="lead">{{ service.description }}</p>
+                    
+                    <div class="row mt-4">
                         <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item py-3">
-                                    <i class="fas fa-check-circle text-success me-3"></i> 
-                                    <strong>Consultation & Planning</strong> - Initial discussion to understand your requirements
-                                </li>
-                                <li class="list-group-item py-3">
-                                    <i class="fas fa-check-circle text-success me-3"></i> 
-                                    <strong>Design & Development</strong> - Creation of your custom solution
-                                </li>
-                                <li class="list-group-item py-3">
-                                    <i class="fas fa-check-circle text-success me-3"></i> 
-                                    <strong>Testing & Quality Assurance</strong> - Thorough testing to ensure functionality
-                                </li>
+                            <h4><i class="fas fa-info-circle me-2"></i> Service Details</h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Professional Service</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Expert Delivery</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Quality Assurance</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Clear Communication</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item py-3">
-                                    <i class="fas fa-check-circle text-success me-3"></i> 
-                                    <strong>Deployment</strong> - Launching your solution to production environment
-                                </li>
-                                <li class="list-group-item py-3">
-                                    <i class="fas fa-check-circle text-success me-3"></i> 
-                                    <strong>Documentation</strong> - Comprehensive documentation for your project
-                                </li>
-                            </ul>
+                            <h4><i class="fas fa-clock me-2"></i> Delivery Time</h4>
+                            <p>Typically delivered within 7-14 business days depending on project complexity.</p>
+                            
+                            <h4><i class="fas fa-sync-alt me-2"></i> Revisions</h4>
+                            <p>Includes up to 3 rounds of revisions to ensure your satisfaction.</p>
+                            
+                            <h4><i class="fas fa-headset me-2"></i> Support</h4>
+                            <p>30 days of complimentary support after project delivery.</p>
                         </div>
                     </div>
+                    
+                    <div class="mt-4">
+                        <h4><i class="fas fa-file-contract me-2"></i> Agreement</h4>
+                        <p>Professional contract with clear terms and milestones.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <h3><i class="fas fa-list me-2"></i> What's Included</h3>
+                    <div class="divider"></div>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Consultation & Planning</strong> - Initial discussion to understand your requirements</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Design & Development</strong> - Creation of your custom solution</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Testing & Quality Assurance</strong> - Thorough testing to ensure functionality</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Deployment</strong> - Launching your solution to production environment</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong>Documentation</strong> - Comprehensive documentation for your project</li>
+                    </ul>
                 </div>
             </div>
             
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
-                    <h3 class="mb-4"><i class="fas fa-graduation-cap me-2"></i> Expertise & Technologies</h3>
-                    <div class="row">
+                    <h3><i class="fas fa-tools me-2"></i> Expertise & Technologies</h3>
+                    <div class="divider"></div>
+                    
+                    <h5>Technologies Used</h5>
+                    <div class="row mb-4">
                         <div class="col-md-6">
-                            <h5 class="mb-3">Technologies Used</h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Python</li>
-                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Machine Learning</li>
-                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Data Science</li>
-                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Web Development</li>
+                                <li class="mb-2"><i class="fab fa-python text-primary me-2"></i> Python</li>
+                                <li class="mb-2"><i class="fas fa-brain text-primary me-2"></i> Machine Learning</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
-                            <h5 class="mb-3">Methodologies</h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Agile Development</li>
-                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Data-Driven Approach</li>
-                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> User-Centered Design</li>
-                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i> Continuous Integration</li>
+                                <li class="mb-2"><i class="fas fa-chart-line text-primary me-2"></i> Data Science</li>
+                                <li class="mb-2"><i class="fas fa-laptop-code text-primary me-2"></i> Web Development</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h5>Methodologies</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-sync text-primary me-2"></i> Agile Development</li>
+                                <li class="mb-2"><i class="fas fa-database text-primary me-2"></i> Data-Driven Approach</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-user-circle text-primary me-2"></i> User-Centered Design</li>
+                                <li class="mb-2"><i class="fas fa-code-branch text-primary me-2"></i> Continuous Integration</li>
                             </ul>
                         </div>
                     </div>
