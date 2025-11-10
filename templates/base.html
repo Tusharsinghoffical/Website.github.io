@@ -829,7 +829,7 @@
 
     <!-- Floating Buttons -->
     <div class="floating-buttons">
-      <button class="floating-button whatsapp-button" title="Contact on WhatsApp">
+      <button class="floating-button whatsapp-button" title="Contact on WhatsApp" onclick="openWhatsApp()">
         <i class="fab fa-whatsapp"></i>
       </button>
     </div>
@@ -870,6 +870,15 @@
         // Set up CSRF token for AJAX requests
         const csrftoken = getCookie('csrftoken');
       });
+
+      // WhatsApp button functionality
+      function openWhatsApp() {
+        // Replace with your actual phone number in international format
+        const phoneNumber = '918851619647'; // Your actual number: +91 for India followed by 10-digit number
+        const message = 'Hello Tushar, I would like to get in touch with you regarding your services.';
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+      }
     </script>
   </body>
 </html>
