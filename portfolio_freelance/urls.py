@@ -30,5 +30,5 @@ urlpatterns = [
     path("freelancing/", include("freelancing.urls")),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# Serve static files during development and also when DEBUG is False for local testing
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
