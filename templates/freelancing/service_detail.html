@@ -366,7 +366,12 @@
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.status);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
                     // Show success message
@@ -391,8 +396,9 @@
                 }
             })
             .catch(error => {
+                console.error('Booking error:', error);
                 // Show error message
-                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.textContent = 'An error occurred: ' + error.message + '. Please try again.';
                 errorMessage.classList.remove('d-none');
                 successMessage.classList.add('d-none');
             });

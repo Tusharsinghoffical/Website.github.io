@@ -869,6 +869,9 @@
 
         // Set up CSRF token for AJAX requests
         const csrftoken = getCookie('csrftoken');
+        
+        // Make getCookie function globally available
+        window.getCookie = getCookie;
       });
 
       // WhatsApp button functionality

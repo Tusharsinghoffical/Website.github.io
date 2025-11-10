@@ -79,6 +79,8 @@ def booking_submit(request):
             else:
                 data = request.POST
             
+            print("Booking data received:", data)  # Debug print
+            
             name = data.get('name')
             email = data.get('email')
             phone = data.get('phone', '')
@@ -109,6 +111,8 @@ def booking_submit(request):
             )
             booking.save()
             
+            print("Booking saved to database")  # Debug print
+            
             # Send email notification
             try:
                 subject = f"New Booking Request: {service}"
@@ -129,6 +133,8 @@ Project Details:
 Please follow up with the client as soon as possible.
                 """
                 
+                print("Sending email to:", settings.CONTACT_EMAIL)  # Debug print
+                
                 send_mail(
                     subject=subject,
                     message=message_body,
@@ -136,12 +142,14 @@ Please follow up with the client as soon as possible.
                     recipient_list=[settings.CONTACT_EMAIL],
                     fail_silently=False,
                 )
+                print("Email sent successfully")  # Debug print
             except Exception as e:
                 # Log the error but don't fail the request
                 print(f"Email sending failed: {e}")
             
             return JsonResponse({'success': True, 'message': 'Your booking has been submitted successfully! We will contact you shortly to confirm the details.'})
         except Exception as e:
+            print(f"Booking submission error: {e}")  # Debug print
             return JsonResponse({'success': False, 'message': 'An error occurred while processing your booking. Please try again.'})
     
     return JsonResponse({'success': False, 'message': 'Invalid request method.'})
