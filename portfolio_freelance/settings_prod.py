@@ -7,7 +7,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-l%y@vno^50mva&0r1qs34
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', '*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'freelancemrsingh.com', 'codewithmrsingh.tech', 'www.codewithmrsingh.tech', '*', 'freelancermrsingh.onrender.com']
 
 # Database
 # Use PostgreSQL in production
@@ -25,6 +25,9 @@ ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', '*']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Enable WhiteNoise for serving static files in production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Email configuration for production
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -45,3 +48,15 @@ SECURE_REDIRECT_EXEMPT = []
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+# Cache settings for production
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+# Session settings for production
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
