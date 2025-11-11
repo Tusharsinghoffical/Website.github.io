@@ -1,3 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tushar Singh - AI Agents Developer & Data Scientist. Expert in Python, Machine Learning, and building intelligent solutions that drive business value." />
+    <meta name="keywords" content="AI Developer, Data Scientist, Machine Learning, Python Developer, Web Development, AI Agents, Freelancer, India" />
+    <meta name="author" content="Tushar Singh" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Tushar Singh - AI Agents Developer & Data Scientist" />
+    <meta property="og:description" content="Transforming ideas into reality through innovative technology solutions. Specializing in AI, Data Science, and Full-Stack Development." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://freelancermrsingh.onrender.com" />
+    {% load static %}
+    <meta property="og:image" content="{% static 'Image/Bannerlogo.png' %}" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tushar Singh - AI Agents Developer & Data Scientist" />
+    <meta name="twitter:description" content="Transforming ideas into reality through innovative technology solutions. Specializing in AI, Data Science, and Full-Stack Development." />
+    <meta name="twitter:image" content="{% static 'Image/Bannerlogo.png' %}" />
+    <link rel="canonical" href="https://freelancermrsingh.onrender.com" />
+    <title>Tushar Singh - AI Agents Developer & Data Scientist</title>
+    <link rel="icon" type="image/png" href="{% static 'Image/Bannerlogo.png' %}">
+    
+    <!-- Bootstrap CSS -->
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+      rel="stylesheet" 
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+      crossorigin="anonymous"
+    >
+    
+    <!-- Font Awesome -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer" 
+    >
+    
     <style>
       :root {
         --primary-color: #667eea;
@@ -479,6 +520,113 @@
         animation: pulse 2s infinite;
       }
     </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'home' %}">
+          <img src="{% static 'Image/Logo4.png' %}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+          Tushar Singh
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="{% url 'home' %}">
+                <i class="fas fa-home me-1"></i> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="{% url 'projects:projects' %}">
+                <i class="fas fa-folder-open me-1"></i> Projects
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="{% url 'about' %}">
+                <i class="fas fa-user me-1"></i> About
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="{% url 'contact' %}">
+                <i class="fas fa-envelope me-1"></i> Contact
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="{% url 'freelancing' %}">
+                <i class="fas fa-briefcase me-1"></i> Freelancing
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-shrink-0">
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5><i class="fas fa-user me-2"></i> Tushar Singh</h5>
+            <p class="mb-0">AI Agents Developer & Data Scientist</p>
+            <p class="mb-0">Transforming ideas into reality through innovative technology solutions.</p>
+          </div>
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5><i class="fas fa-link me-2"></i> Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="{% url 'home' %}" class="text-decoration-none">Home</a></li>
+              <li><a href="{% url 'projects:projects' %}" class="text-decoration-none">Projects</a></li>
+              <li><a href="{% url 'about' %}" class="text-decoration-none">About</a></li>
+              <li><a href="{% url 'contact' %}" class="text-decoration-none">Contact</a></li>
+              <li><a href="{% url 'freelancing' %}" class="text-decoration-none">Freelancing</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5><i class="fas fa-address-book me-2"></i> Contact Info</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-envelope me-2"></i>
+                <a href="mailto:tusharsinghkumar04@gmail.com" class="text-decoration-none">tusharsinghkumar04@gmail.com</a>
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-phone me-2"></i>
+                <a href="tel:+918851619647" class="text-decoration-none">+91 8851619647</a>
+              </li>
+              <li class="mb-2">
+                <i class="fab fa-whatsapp me-2"></i>
+                <a href="https://wa.me/918851619647" class="text-decoration-none" target="_blank">WhatsApp Chat</a>
+              </li>
+            </ul>
+            <div class="d-flex gap-3">
+              <a href="https://github.com/Tusharsinghoffical" class="text-decoration-none" target="_blank">
+                <i class="fab fa-github fa-2x"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/tushar-singh-479569248/" class="text-decoration-none" target="_blank">
+                <i class="fab fa-linkedin fa-2x"></i>
+              </a>
+              <a href="https://www.instagram.com/tusharsinghoffical/" class="text-decoration-none" target="_blank">
+                <i class="fab fa-instagram fa-2x"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="text-center">
+          <p class="mb-0">&copy; 2025 Tushar Singh. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
     <script 
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
