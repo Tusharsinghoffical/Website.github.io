@@ -13,6 +13,3 @@ python manage.py migrate
 
 # Create cache table for database caching (if needed)
 # python manage.py createcachetable
-
-# Optimize database
-python manage.py vacuum
