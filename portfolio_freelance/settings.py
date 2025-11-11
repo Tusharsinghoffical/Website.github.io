@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,8 +84,6 @@ WSGI_APPLICATION = "portfolio_freelance.wsgi.application"
 
 # For development purposes, use SQLite as default
 # For production, use PostgreSQL database provided by Render
-import dj_database_url
-
 database_url = os.environ.get('DATABASE_URL')
 if database_url:
     DATABASES = {

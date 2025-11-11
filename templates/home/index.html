@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="row align-items-center">
-                <div class="col-md-8">
+                <div class="col-md-8 animate-on-scroll">
                     <h1 class="display-4 fw-bold mb-3">Tushar Singh - AI Agents Developer</h1>
                     <p class="lead fs-5 mb-4 text-primary">Data Scientist & AI Solutions Expert</p>
                     <div class="mb-4">
@@ -29,7 +29,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-md-4 text-center animate-on-scroll">
                     <div class="position-relative d-inline-block">
                         <img src="{% static 'Profile pictures/Me.jpg' %}" alt="Tushar Singh - Data Scientist and AI Developer" class="rounded-circle profile-image-mobile" loading="lazy" style="width: 180px; height: 180px; object-fit: cover; border: 5px solid #ffffff; box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);">
                     </div>
@@ -41,7 +41,7 @@
     <!-- Features Section -->
     <div class="row mt-5">
         <div class="col-12">
-            <div class="section-title text-center">
+            <div class="section-title text-center animate-on-scroll">
                 <h2><i class="fas fa-star me-2"></i> Why Choose Me</h2>
                 <div class="divider mx-auto"></div>
             </div>
@@ -50,8 +50,8 @@
 
     <div class="row">
         {% for feature in features %}
-        <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card h-100 border-0 shadow-sm text-center">
+        <div class="col-md-6 col-lg-3 mb-4 animate-on-scroll">
+            <div class="card h-100 border-0 shadow-sm text-center feature-card">
                 <div class="card-body">
                     <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
                         <i class="{{ feature.icon_class }} fa-2x"></i>
@@ -67,7 +67,7 @@
     <!-- Services Section -->
     <div class="row mt-5">
         <div class="col-12">
-            <div class="section-title text-center">
+            <div class="section-title text-center animate-on-scroll">
                 <h2><i class="fas fa-briefcase me-2"></i> My Services</h2>
                 <div class="divider mx-auto"></div>
                 <p class="lead">Explore my range of professional services designed to help your business thrive in the digital age.</p>
@@ -76,8 +76,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+        <div class="col-md-4 mb-4 animate-on-scroll">
+            <div class="card h-100 border-0 shadow-sm service-card">
                 <div class="card-body">
                     <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
                         <i class="fas fa-brain fa-2x"></i>
@@ -87,8 +87,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+        <div class="col-md-4 mb-4 animate-on-scroll">
+            <div class="card h-100 border-0 shadow-sm service-card">
                 <div class="card-body">
                     <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
                         <i class="fas fa-chart-line fa-2x"></i>
@@ -98,8 +98,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
+        <div class="col-md-4 mb-4 animate-on-scroll">
+            <div class="card h-100 border-0 shadow-sm service-card">
                 <div class="card-body">
                     <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
                         <i class="fas fa-laptop-code fa-2x"></i>
@@ -112,7 +112,7 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center animate-on-scroll">
             <a href="{% url 'freelancing' %}" class="btn btn-primary btn-lg px-5 py-3">
                 <i class="fas fa-rocket me-2"></i> Explore All Services
             </a>
@@ -122,7 +122,7 @@
     <!-- CTA Section -->
     <div class="row mt-5">
         <div class="col-12">
-            <div class="card border-0 shadow-sm bg-gradient-primary text-white">
+            <div class="card border-0 shadow-sm bg-gradient-primary text-white animate-on-scroll">
                 <div class="card-body text-center p-5">
                     <h2 class="card-title text-white">
                         <i class="fas fa-comments me-2"></i> Let's Work Together
