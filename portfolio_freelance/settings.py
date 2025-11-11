@@ -150,14 +150,19 @@ WHITENOISE_AUTOREFRESH = True
 WHITENOISE_MANIFEST_STRICT = False
 
 # Security settings for production
+# Only enable SSL redirect in production, not in development
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+else:
+    SECURE_SSL_REDIRECT = True
+
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_REDIRECT_EXEMPT = []
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True if not DEBUG else False
+CSRF_COOKIE_SECURE = True if not DEBUG else False
 
 # Additional security headers
 SECURE_HSTS_PRELOAD = True
