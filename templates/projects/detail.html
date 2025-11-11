@@ -43,9 +43,9 @@
                         
                         <div class="col-lg-4">
                             {% if project.image %}
-                            <img src="{{ project.image.url }}" class="img-fluid rounded mb-4" alt="{{ project.title }}">
+                            <img src="{{ project.image.url }}" data-src="{{ project.image.url }}" class="img-fluid rounded mb-4" alt="{{ project.title }}" loading="lazy">
                             {% elif project.image_url %}
-                            <img src="{{ project.image_url }}" class="img-fluid rounded mb-4" alt="{{ project.title }}">
+                            <img src="{{ project.image_url }}" data-src="{{ project.image_url }}" class="img-fluid rounded mb-4" alt="{{ project.title }}" loading="lazy">
                             {% else %}
                             <div class="bg-light d-flex align-items-center justify-content-center rounded mb-4" style="height: 250px;">
                                 <i class="fas fa-folder fa-5x text-muted"></i>

@@ -30,9 +30,9 @@
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100 border-0 shadow-sm hover-lift">
                     {% if project.image %}
-                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+                    <img src="{{ project.image.url }}" data-src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;" loading="lazy">
                     {% elif project.image_url %}
-                    <img src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+                    <img src="{{ project.image_url }}" data-src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;" loading="lazy">
                     {% else %}
                     <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
                         <i class="fas fa-folder fa-3x text-muted"></i>

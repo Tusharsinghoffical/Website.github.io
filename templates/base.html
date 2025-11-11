@@ -653,7 +653,10 @@
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               const img = entry.target;
-              img.src = img.dataset.src;
+              // Only process images that have data-src attribute
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+              }
               img.classList.add('loaded');
               imageObserver.unobserve(img);
             }
@@ -661,7 +664,13 @@
         });
         
         images.forEach(img => {
-          imageObserver.observe(img);
+          // Only observe images that have data-src attribute
+          if (img.dataset.src) {
+            imageObserver.observe(img);
+          } else {
+            // For images that don't use lazy loading, mark them as loaded immediately
+            img.classList.add('loaded');
+          }
         });
         
         // Animation on scroll
