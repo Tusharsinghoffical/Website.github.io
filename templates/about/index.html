@@ -1,4 +1,29 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<!-- Structured Data for About Page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tushar Singh",
+  "jobTitle": "AI Agents Developer & Data Scientist",
+  "description": "{{ profile.bio }}",
+  "url": "https://freelancermrsingh.onrender.com/about",
+  "image": "{% static 'Profile pictures/Me.jpg' %}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "New Delhi",
+    "addressCountry": "India"
+  },
+  "email": "mailto:tusharsinghkumar04@gmail.com",
+  "telephone": "+91-8851619647",
+  "sameAs": [
+    "https://github.com/Tusharsinghoffical",
+    "https://www.linkedin.com/in/tushar-singh-479569248/",
+    "https://www.instagram.com/tusharsinghoffical/"
+  ]
+}
+</script>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-12">
