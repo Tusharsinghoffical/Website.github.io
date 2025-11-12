@@ -104,31 +104,31 @@ def sitemap(request):
     sitemap_xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://freelancermrsingh.onrender.com/</loc>
+        <loc>https://codewithmrsingh.tech/</loc>
         <lastmod>2025-11-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://freelancermrsingh.onrender.com/projects/</loc>
+        <loc>https://codewithmrsingh.tech/projects/</loc>
         <lastmod>2025-11-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://freelancermrsingh.onrender.com/about/</loc>
+        <loc>https://codewithmrsingh.tech/about/</loc>
         <lastmod>2025-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://freelancermrsingh.onrender.com/contact/</loc>
+        <loc>https://codewithmrsingh.tech/contact/</loc>
         <lastmod>2025-11-11</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://freelancermrsingh.onrender.com/freelancing/</loc>
+        <loc>https://codewithmrsingh.tech/freelancing/</loc>
         <lastmod>2025-11-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
