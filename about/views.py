@@ -10,7 +10,7 @@ def index(request):
         profile = Profile.objects.create(
             name='Tushar Singh',
             title='AI Agents Developer',
-            bio='A passionate Data Scientist and AI Agents Developer with expertise in Python, Machine Learning, and building intelligent AI Agents. I transform complex data into actionable insights and create smart solutions that make a difference.',
+            bio='As a seasoned Data Scientist and AI Agents Developer, I specialize in transforming complex data into strategic business insights and developing intelligent automation systems that drive measurable results. With expertise in Python, Machine Learning, and cutting-edge AI technologies, I deliver tailored solutions that solve real-world challenges and create sustainable competitive advantages for businesses.',
             email='email@example.com',
             phone='+91 8851619647',
             location='City, Country'
