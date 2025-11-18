@@ -548,6 +548,56 @@
       .btn-pulse {
         animation: pulse 2s infinite;
       }
+      
+      @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+        }
+      }
+      
+      /* Footer enhancements */
+      footer h5 {
+        position: relative;
+        padding-bottom: 10px;
+      }
+      
+      footer h5::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        border-radius: 3px;
+      }
+      
+      footer ul li a:hover {
+        color: var(--primary-color) !important;
+        transition: all 0.3s ease;
+      }
+      
+      footer .form-control {
+        border-radius: 8px 0 0 8px;
+      }
+      
+      footer .btn {
+        border-radius: 0 8px 8px 0;
+      }
+      
+      footer hr {
+        opacity: 0.2;
+      }
+      
+      .text-light-50 {
+        color: rgba(255, 255, 255, 0.75) !important;
+      }
     </style>
   </head>
   <body>
@@ -601,65 +651,83 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-light py-4 mt-5">
+    <footer class="bg-dark text-light py-5">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 mb-4 mb-md-0">
-            <h5><i class="fas fa-user me-2"></i> Tushar Singh</h5>
-            <p class="mb-0">AI Agents Developer & Data Scientist Using AI\ML</p>
-            <p class="mb-0">Transforming ideas into reality through innovative technology solutions.</p>
-          </div>
-          <div class="col-md-4 mb-4 mb-md-0">
-            <h5><i class="fas fa-link me-2"></i> Quick Links</h5>
-            <ul class="list-unstyled">
-              <li><a href="{% url 'home' %}" class="text-decoration-none">Home</a></li>
-              <li><a href="{% url 'projects:projects' %}" class="text-decoration-none">Projects</a></li>
-              <li><a href="{% url 'about' %}" class="text-decoration-none">About</a></li>
-              <li><a href="{% url 'contact' %}" class="text-decoration-none">Contact</a></li>
-              <li><a href="{% url 'freelancing' %}" class="text-decoration-none">Freelancing</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h5><i class="fas fa-address-book me-2"></i> Contact Info</h5>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <i class="fas fa-envelope me-2"></i>
-                <a href="mailto:tusharsinghkumar04@gmail.com" class="text-decoration-none">tusharsinghkumar04@gmail.com</a>
-              </li>
-              <li class="mb-2">
-                <i class="fas fa-phone me-2"></i>
-                <a href="tel:+918851619647" class="text-decoration-none">+91 8851619647</a>
-              </li>
-              <li class="mb-2">
-                <i class="fab fa-whatsapp me-2"></i>
-                <a href="https://wa.me/918851619647" class="text-decoration-none" target="_blank">WhatsApp Chat</a>
-              </li>
-            </ul>
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <div class="d-flex align-items-center mb-3">
+              <div class="rounded-circle bg-primary bg-opacity-10 p-2 me-3">
+                <i class="fas fa-user text-primary" style="font-size: 1.5rem;"></i>
+              </div>
+              <h4 class="mb-0 text-light">Tushar Singh</h4>
+            </div>
+            <p class="mb-3 text-light-50">AI Agents Developer & Data Scientist Using AI\ML</p>
+            <p class="mb-4 text-light-50">Transforming ideas into reality through innovative technology solutions.</p>
             <div class="d-flex gap-3">
-              <a href="https://github.com/Tusharsinghoffical" class="text-decoration-none" target="_blank">
+              <a href="https://github.com/Tusharsinghoffical" class="text-light text-decoration-none" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
               </a>
-              <a href="https://www.linkedin.com/in/tushar-singh-479569248/" class="text-decoration-none" target="_blank">
+              <a href="https://www.linkedin.com/in/tusharsingh2011/" class="text-light text-decoration-none" target="_blank">
                 <i class="fab fa-linkedin fa-2x"></i>
               </a>
-              <a href="https://www.linkedin.com/in/tusharsingh2011/" class="text-decoration-none" target="_blank">
-                <i class="fab fa-linkedin fa-2x"></i>
-              </a>
-              <a href="https://www.instagram.com/tusharsinghoffical/" class="text-decoration-none" target="_blank">
+              <a href="https://www.instagram.com/tusharsingh.dev/" class="text-light text-decoration-none" target="_blank">
                 <i class="fab fa-instagram fa-2x"></i>
               </a>
-              <a href="https://www.instagram.com/tusharsingh.dev/" class="text-decoration-none" target="_blank">
-                <i class="fab fa-instagram fa-2x"></i>
-              </a>
-              <a href="https://www.youtube.com/@codewithmrsingh4u" class="text-decoration-none" target="_blank">
+              <a href="https://www.youtube.com/@codewithmrsingh4u" class="text-light text-decoration-none" target="_blank">
                 <i class="fab fa-youtube fa-2x"></i>
               </a>
             </div>
           </div>
+          
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <h5 class="mb-4 position-relative pb-2 text-light" style="font-weight: 600;">Quick Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="{% url 'home' %}" class="text-light-50 text-decoration-none">Home</a></li>
+              <li class="mb-2"><a href="{% url 'projects:projects' %}" class="text-light-50 text-decoration-none">Projects</a></li>
+              <li class="mb-2"><a href="{% url 'about' %}" class="text-light-50 text-decoration-none">About</a></li>
+              <li class="mb-2"><a href="{% url 'contact' %}" class="text-light-50 text-decoration-none">Contact</a></li>
+              <li class="mb-2"><a href="{% url 'freelancing' %}" class="text-light-50 text-decoration-none">Freelancing</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="mb-4 position-relative pb-2 text-light" style="font-weight: 600;"><i class="fas fa-address-book me-2"></i> Contact Info</h5>
+            <ul class="list-unstyled">
+              <li class="mb-3 d-flex align-items-start">
+                <i class="fas fa-envelope mt-1 me-2 text-primary"></i>
+                <a href="mailto:tusharsinghkumar04@gmail.com" class="text-light-50 text-decoration-none">tusharsinghkumar04@gmail.com</a>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="fas fa-phone mt-1 me-2 text-primary"></i>
+                <a href="tel:+918851619647" class="text-light-50 text-decoration-none">+91 8851619647</a>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="fab fa-whatsapp mt-1 me-2 text-primary"></i>
+                <a href="https://wa.me/918851619647" class="text-light-50 text-decoration-none" target="_blank">WhatsApp Chat</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <h5 class="mb-4 position-relative pb-2 text-light" style="font-weight: 600;"><i class="fas fa-paper-plane me-2"></i> Stay Connected</h5>
+            <p class="mb-3 text-light-50">Subscribe to my newsletter for the latest updates and offers.</p>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control bg-dark text-light border-secondary" placeholder="Your Email" aria-label="Your Email">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </div>
         </div>
-        <hr>
-        <div class="text-center">
-          <p class="mb-0">&copy; 2025 Tushar Singh. All rights reserved.</p>
+        
+        <hr class="my-4 bg-secondary">
+        
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <p class="mb-0 text-light-50">&copy; 2025 Tushar Singh. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <a href="#" class="text-light-50 text-decoration-none me-3">Privacy Policy</a>
+            <a href="#" class="text-light-50 text-decoration-none">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>

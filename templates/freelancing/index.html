@@ -127,6 +127,11 @@
     </div>
 </div>
 
+<!-- Toast Container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
+    <!-- Toast will be dynamically inserted here -->
+</div>
+
 <!-- Booking Modal -->
 <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -137,6 +142,7 @@
             </div>
             <div class="modal-body">
                 <form id="bookingForm" novalidate>
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="bookingName" class="form-label">Full Name *</label>
@@ -272,6 +278,41 @@
         const bookingSuccess = document.getElementById('bookingSuccess');
         const bookingError = document.getElementById('bookingError');
         
+        // Function to create toast notifications
+        function createBookingToast(type, message) {
+            const toastContainer = document.querySelector('.toast-container');
+            
+            // Create toast element
+            const toastEl = document.createElement('div');
+            toastEl.className = `toast align-items-center border-0 text-white bg-${type === 'success' ? 'success' : 'danger'}`;
+            toastEl.setAttribute('role', 'alert');
+            toastEl.setAttribute('aria-live', 'assertive');
+            toastEl.setAttribute('aria-atomic', 'true');
+            
+            toastEl.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'} me-2"></i>
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+            
+            toastContainer.appendChild(toastEl);
+            
+            // Initialize and show toast
+            const toast = new bootstrap.Toast(toastEl, {
+                delay: 5000
+            });
+            toast.show();
+            
+            // Remove toast from DOM after it's hidden
+            toastEl.addEventListener('hidden.bs.toast', function() {
+                toastEl.remove();
+            });
+        }
+        
         bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -294,12 +335,15 @@
                 budget: document.getElementById('bookingBudget').value || null
             };
             
+            // Get CSRF token from the form
+            const csrfToken = document.querySelector('#bookingForm [name=csrfmiddlewaretoken]').value;
+            
             // Send AJAX request
             fetch('{% url "booking_submit" %}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
+                    'X-CSRFToken': csrfToken
                 },
                 body: JSON.stringify(formData)
             })
@@ -320,16 +364,20 @@
                     bookingForm.reset();
                     bookingForm.classList.remove('was-validated');
                     
-                    // Hide modal after 3 seconds
+                    // Hide modal after 3 seconds but keep success message visible on page
                     setTimeout(() => {
                         bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
-                        bookingSuccess.classList.add('d-none');
+                        // Create a toast notification for persistent success message
+                        createBookingToast('success', data.message);
                     }, 3000);
                 } else {
                     // Show error message
                     bookingError.textContent = data.message;
                     bookingError.classList.remove('d-none');
                     bookingSuccess.classList.add('d-none');
+                    
+                    // Create error toast
+                    createBookingToast('error', data.message);
                 }
             })
             .catch(error => {
@@ -338,6 +386,9 @@
                 bookingError.textContent = 'An error occurred while processing your booking. Please try again.';
                 bookingError.classList.remove('d-none');
                 bookingSuccess.classList.add('d-none');
+                
+                // Create error toast
+                createBookingToast('error', 'An error occurred while processing your booking. Please try again.');
             });
         });
     });

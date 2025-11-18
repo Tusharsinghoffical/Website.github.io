@@ -105,13 +105,23 @@ def booking_submit(request):
             try:
                 # Convert date string to date object
                 if isinstance(preferred_date, str):
-                    # Format: YYYY-MM-DD (HTML date input format)
-                    parsed_date = datetime.strptime(preferred_date, '%Y-%m-%d').date()
+                    # Try multiple date formats
+                    date_formats = ['%Y-%m-%d', '%d-%m-%Y', '%m/%d/%Y']
+                    parsed_date = None
+                    for fmt in date_formats:
+                        try:
+                            parsed_date = datetime.strptime(preferred_date, fmt).date()
+                            break
+                        except ValueError:
+                            continue
+                    
+                    if parsed_date is None:
+                        return JsonResponse({'success': False, 'message': 'Invalid date format. Please use YYYY-MM-DD, DD-MM-YYYY, or MM/DD/YYYY format.'})
                 else:
                     parsed_date = preferred_date
             except Exception as e:
                 print(f"Date parsing error: {e}")
-                return JsonResponse({'success': False, 'message': 'Invalid date format. Please use YYYY-MM-DD format.'})
+                return JsonResponse({'success': False, 'message': 'Invalid date format. Please use YYYY-MM-DD, DD-MM-YYYY, or MM/DD/YYYY format.'})
             
             try:
                 # Convert time string to time object

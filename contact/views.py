@@ -60,13 +60,14 @@ def contact_submit(request):
             contact_message = ContactMessage(
                 name=name,
                 email=email,
+                phone=phone,
                 subject=subject,
                 message=message
             )
             contact_message.save()
             
             # Send email notification asynchronously
-            email_subject = f"Message form the website: {subject}"
+            email_subject = f"Message from the website: {subject}"
             email_message = f"""
 Subject: {subject}
 
