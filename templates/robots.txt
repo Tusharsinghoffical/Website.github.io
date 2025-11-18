@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://freelancermrsingh.onrender.com/sitemap.xml
+Sitemap: https://codewithmrsingh.tech/sitemap.xml
