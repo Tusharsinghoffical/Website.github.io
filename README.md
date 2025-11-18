@@ -310,7 +310,7 @@ For business inquiries or collaborations, feel free to reach out:
 ## 🔐 Admin Credentials
 
 **Admin ID**: tusharsinghkumar2002
-**Password**: Tushar@2002#
+**Password**: Tushar@2002
 
 ## 📈 SEO & Analytics
 
