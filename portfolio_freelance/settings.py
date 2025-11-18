@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-l%y@vno^50mva&0r1qs34cgimeu_p197&s-g)88s)g!bimt99q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'freelancemrsingh.com', 'codewithmrsingh.tech', 'www.codewithmrsingh.tech', '*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'freelancemrsingh.com', 'www.freelancemrsingh.com', 'codewithmrsingh.tech', 'www.codewithmrsingh.tech']
 
 
 # Application definition
@@ -169,6 +169,16 @@ CSRF_COOKIE_SECURE = True if not DEBUG else False
 SECURE_HSTS_PRELOAD = True
 SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
+# Additional security for CSRF
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1',
+    'https://freelancemrsingh.com',
+    'https://www.freelancemrsingh.com',
+    'https://codewithmrsingh.tech',
+    'https://www.codewithmrsingh.tech'
+]
+
 # Cache settings for better performance
 CACHES = {
     'default': {
@@ -223,9 +233,9 @@ else:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'tusharsinghoffical@gmail.com')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'cprzfpsrgpaxlixa')
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'Portfolio Contact <tusharsinghoffical@gmail.com>')
-    CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'tusharsinghoffical@gmail.com')
+    CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL')
 
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyAq9Th8kseI7k-uo7XX9mstcJ92rGDn4DQ')  # Your provided API key

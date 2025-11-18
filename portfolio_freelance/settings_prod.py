@@ -7,7 +7,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-l%y@vno^50mva&0r1qs34
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'freelancemrsingh.com', 'codewithmrsingh.tech', 'www.codewithmrsingh.tech', '*']
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    'freelancemrsingh.com', 
+    'www.freelancemrsingh.com',
+    'codewithmrsingh.tech', 
+    'www.codewithmrsingh.tech'
+]
 
 # Database
 # Use PostgreSQL in production
@@ -34,10 +41,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'tusharsinghoffical@gmail.com')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'cprzfpsrgpaxlixa')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'Portfolio Contact <tusharsinghoffical@gmail.com>')
-CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL', 'tusharsinghoffical@gmail.com')
+CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL')
 
 # Security settings for production
 SECURE_BROWSER_XSS_FILTER = True
@@ -48,6 +55,14 @@ SECURE_REDIRECT_EXEMPT = []
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+# Additional security for CSRF
+CSRF_TRUSTED_ORIGINS = [
+    'https://freelancemrsingh.com',
+    'https://www.freelancemrsingh.com',
+    'https://codewithmrsingh.tech',
+    'https://www.codewithmrsingh.tech'
+]
 
 # Cache settings for production
 CACHES = {

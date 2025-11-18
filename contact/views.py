@@ -7,7 +7,11 @@ from django.core.mail import send_mail
 from django.conf import settings
 import json
 import threading
+import logging
 from .models import ContactMessage
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 def send_email_async(subject, message, from_email, recipient_list):
     """Send email in a separate thread to avoid blocking the response"""
@@ -21,7 +25,7 @@ def send_email_async(subject, message, from_email, recipient_list):
         )
     except Exception as e:
         # Log the error but don't fail the request
-        print(f"Email sending failed: {e}")
+        logger.error(f"Email sending failed: {e}")
 
 def index(request):
     # You can pass dynamic contact information here if needed
@@ -88,6 +92,7 @@ Phone: {phone if phone else 'Not provided'}
             
             return JsonResponse({'success': True, 'message': 'Your message has been sent successfully! We will get back to you soon.'})
         except Exception as e:
+            logger.error(f"Contact form submission error: {e}")
             return JsonResponse({'success': False, 'message': 'An error occurred while sending your message. Please try again.'})
     
     return JsonResponse({'success': False, 'message': 'Invalid request method.'})
