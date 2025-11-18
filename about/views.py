@@ -3,11 +3,11 @@ from .models import Profile, SkillCategory, Skill, Education, Certification
 
 def index(request):
     # Get profile from database
-    profile = Profile.objects.first()
+    profile = Profile.objects.first()  # type: ignore
     
     # If no profile exists, create a default one
     if not profile:
-        profile = Profile.objects.create(
+        profile = Profile.objects.create(  # type: ignore
             name='Tushar Singh',
             title='AI Agents Developer',
             bio='As a seasoned Data Scientist and AI Agents Developer, I specialize in transforming complex data into strategic business insights and developing intelligent automation systems that drive measurable results. With expertise in Python, Machine Learning, and cutting-edge AI technologies, I deliver tailored solutions that solve real-world challenges and create sustainable competitive advantages for businesses.',
@@ -17,7 +17,7 @@ def index(request):
         )
     
     # Get skills from database
-    skill_categories = SkillCategory.objects.all()
+    skill_categories = SkillCategory.objects.all()  # type: ignore
     
     # If no skill categories exist, create default ones
     if not skill_categories.exists():
@@ -29,9 +29,9 @@ def index(request):
         ]
         
         for category_data in categories_data:
-            SkillCategory.objects.create(**category_data)
+            SkillCategory.objects.create(**category_data)  # type: ignore
         
-        skill_categories = SkillCategory.objects.all()
+        skill_categories = SkillCategory.objects.all()  # type: ignore
     
     # Add skills to each category (without direct assignment)
     categories_with_skills = []
@@ -40,12 +40,12 @@ def index(request):
             'id': category.id,
             'name': category.name,
             'order': category.order,
-            'skills': Skill.objects.filter(category=category)
+            'skills': Skill.objects.filter(category=category)  # type: ignore
         }
         categories_with_skills.append(category_dict)
     
     # If no skills exist, create default ones
-    if not Skill.objects.exists():
+    if not Skill.objects.exists():  # type: ignore
         skills_data = [
             # Programming Languages
             {'category_id': 1, 'name': 'Python', 'proficiency_level': 95, 'order': 1},
@@ -69,21 +69,21 @@ def index(request):
         ]
         
         for skill_data in skills_data:
-            Skill.objects.create(**skill_data)
+            Skill.objects.create(**skill_data)  # type: ignore
         
         # Refresh categories with skills
         categories_with_skills = []
-        for category in SkillCategory.objects.all():
+        for category in SkillCategory.objects.all():  # type: ignore
             category_dict = {
                 'id': category.id,
                 'name': category.name,
                 'order': category.order,
-                'skills': Skill.objects.filter(category=category)
+                'skills': Skill.objects.filter(category=category)  # type: ignore
             }
             categories_with_skills.append(category_dict)
     
     # Get education from database
-    education = Education.objects.filter(profile=profile)
+    education = Education.objects.filter(profile=profile)  # type: ignore
     
     # If no education exists, create default ones
     if not education.exists():
@@ -113,12 +113,12 @@ def index(request):
         ]
         
         for edu_data in education_data:
-            Education.objects.create(**edu_data)
+            Education.objects.create(**edu_data)  # type: ignore
         
-        education = Education.objects.filter(profile=profile)
+        education = Education.objects.filter(profile=profile)  # type: ignore
     
     # Get certifications from database
-    certifications = Certification.objects.filter(profile=profile)
+    certifications = Certification.objects.filter(profile=profile)  # type: ignore
     
     # If no certifications exist, create default ones
     if not certifications.exists():
@@ -144,9 +144,9 @@ def index(request):
         ]
         
         for cert_data in certifications_data:
-            Certification.objects.create(**cert_data)
+            Certification.objects.create(**cert_data)  # type: ignore
         
-        certifications = Certification.objects.filter(profile=profile)
+        certifications = Certification.objects.filter(profile=profile)  # type: ignore
     
     context = {
         'profile': profile,

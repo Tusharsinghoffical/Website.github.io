@@ -1,0 +1,32 @@
+[
+  {
+    "id": "TC001",
+    "title": "homepage_loads_successfully",
+    "description": "Verify that the homepage loads successfully and displays the introduction to the freelancer."
+  },
+  {
+    "id": "TC002",
+    "title": "navigation_menu_functionality",
+    "description": "Test that the navigation menu is visible on the homepage and allows navigation to different sections of the portfolio."
+  },
+  {
+    "id": "TC003",
+    "title": "services_displayed_with_details",
+    "description": "Ensure all freelancing services are displayed on the services page with their descriptions and icons."
+  },
+  {
+    "id": "TC004",
+    "title": "projects_listed_and_details_shown",
+    "description": "Verify that the projects page lists all completed projects and clicking on a project shows its detailed information."
+  },
+  {
+    "id": "TC005",
+    "title": "about_section_information_display",
+    "description": "Check that the about page displays information about the freelancer including skills and experience clearly."
+  },
+  {
+    "id": "TC006",
+    "title": "contact_form_submission_and_notification",
+    "description": "Test that the contact form collects visitor information, sends an email notification upon submission, and shows a success message."
+  }
+]
