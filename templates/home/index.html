@@ -17,316 +17,385 @@
 }
 </script>
 
-<div class="container mt-4">
-    <!-- Hero Section -->
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="row align-items-center">
-                <div class="col-md-8 animate-on-scroll">
-                    <h1 class="display-4 fw-bold mb-3">Tushar Singh</h1>
-                    <p class="lead fs-4 mb-3 text-primary">AI Agents Developer & Data Scientist</p>
-                    <div class="mb-4">
-                        <p class="fs-6">
-                            I transform complex data into actionable insights and create intelligent automation systems that drive measurable business value.
-                        </p>
-                    </div>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="{% url 'projects:projects' %}" class="btn btn-primary btn-lg px-4 py-3">
-                            <i class="fas fa-folder-open me-2"></i> View My Work
-                        </a>
-                        <a href="{% url 'freelancing' %}" class="btn btn-success btn-lg px-4 py-3">
-                            <i class="fas fa-briefcase me-2"></i> Hire Me
-                        </a>
-                        <a href="{% url 'contact' %}" class="btn btn-outline-primary btn-lg px-4 py-3">
-                            <i class="fas fa-envelope me-2"></i> Contact Me
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center animate-on-scroll">
-                    <div class="position-relative d-inline-block">
-                        <img src="{% static 'Profile pictures/Me.jpg' %}" data-src="{% static 'Profile pictures/Me.jpg' %}" alt="Tushar Singh - Data Scientist and AI Developer" class="rounded-circle profile-image-mobile" loading="lazy" style="width: 200px; height: 200px; object-fit: cover; border: 5px solid #ffffff; box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);">
-                        <div class="position-absolute bottom-0 end-0 bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Stats Section -->
-    <div class="row mt-5">
-        <div class="col-md-3 col-6 mb-4">
-            <div class="text-center">
-                <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
-                    <i class="fas fa-project-diagram fa-lg"></i>
-                </div>
-                <h3 class="mb-0 fw-bold">20+</h3>
-                <p class="text-muted mb-0">Projects</p>
-            </div>
-        </div>
-        <div class="col-md-3 col-6 mb-4">
-            <div class="text-center">
-                <div class="rounded-circle bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
-                    <i class="fas fa-users fa-lg"></i>
-                </div>
-                <h3 class="mb-0 fw-bold">10+</h3>
-                <p class="text-muted mb-0">Clients</p>
-            </div>
-        </div>
-        <div class="col-md-3 col-6 mb-4">
-            <div class="text-center">
-                <div class="rounded-circle bg-info bg-opacity-10 text-info d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
-                    <i class="fas fa-award fa-lg"></i>
-                </div>
-                <h3 class="mb-0 fw-bold">3+</h3>
-                <p class="text-muted mb-0">Years</p>
-            </div>
-        </div>
-        <div class="col-md-3 col-6 mb-4">
-            <div class="text-center">
-                <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
-                    <i class="fas fa-medal fa-lg"></i>
-                </div>
-                <h3 class="mb-0 fw-bold">2+</h3>
-                <p class="text-muted mb-0">Awards</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Features Section -->
-    <div class="row mt-5">
-        <div class="col-12">
-            <div class="section-title text-center animate-on-scroll">
-                <h2><i class="fas fa-star me-2"></i> Why Choose Me</h2>
-                <div class="divider mx-auto"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        {% for feature in features %}
-        <div class="col-md-6 col-lg-3 mb-4 animate-on-scroll">
-            <div class="card h-100 border-0 shadow-sm text-center feature-card hover-lift">
-                <div class="card-body">
-                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
-                        <i class="{{ feature.icon_class }} fa-2x"></i>
-                    </div>
-                    <h5 class="card-title">{{ feature.title }}</h5>
-                    <p class="card-text">{{ feature.description }}</p>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <!-- Testimonials Carousel Section -->
-    {% if testimonials %}
-    <div class="row mt-5">
-        <div class="col-12">
-            <div class="section-title text-center animate-on-scroll">
-                <h2><i class="fas fa-comments me-2"></i> Client Testimonials</h2>
-                <div class="divider mx-auto"></div>
-                <p class="lead">See what my clients have to say about working with me</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                <div class="carousel-indicators">
-                    {% for testimonial in testimonials %}
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %} aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
-                    {% endfor %}
-                </div>
-                <div class="carousel-inner">
-                    {% for testimonial in testimonials %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-4 p-lg-5">
-                                <div class="text-center mb-4">
-                                    <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
-                                        <i class="fas fa-user fa-2x"></i>
-                                    </div>
-                                    <h4 class="mb-1">{{ testimonial.client_name }}</h4>
-                                    <p class="text-muted mb-2">{{ testimonial.client_company }} • {{ testimonial.client_location }}</p>
-                                    <p class="fw-bold mb-3">{{ testimonial.project_name }}</p>
-                                    <div class="text-warning mb-3">
-                                        {% for i in "12345"|make_list %}
-                                            {% if forloop.counter <= testimonial.rating %}
-                                                <i class="fas fa-star"></i>
-                                            {% else %}
-                                                <i class="far fa-star"></i>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <p class="fst-italic text-center mb-0">"{{ testimonial.testimonial_text }}"</p>
-                            </div>
-                            <div class="card-footer bg-transparent border-0 text-center">
-                                <small class="text-muted">{{ testimonial.date }}</small>
-                                {% if testimonial.client_type == 'foreign' %}
-                                <span class="badge bg-info ms-2">International Client</span>
-                                {% else %}
-                                <span class="badge bg-primary ms-2">Indian Client</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    <!-- Services Section -->
-    <div class="row mt-5">
-        <div class="col-12">
-            <div class="section-title text-center animate-on-scroll">
-                <h2><i class="fas fa-briefcase me-2"></i> My Services</h2>
-                <div class="divider mx-auto"></div>
-                <p class="lead">Explore my range of professional services designed to help your business thrive in the digital age.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 mb-4 animate-on-scroll">
-            <div class="card h-100 border-0 shadow-sm service-card hover-lift">
-                <div class="card-body">
-                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
-                        <i class="fas fa-brain fa-2x"></i>
-                    </div>
-                    <h5 class="card-title text-center">AI Development</h5>
-                    <p class="card-text">Creating intelligent AI agents and machine learning solutions that automate workflows and enhance productivity.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4 animate-on-scroll">
-            <div class="card h-100 border-0 shadow-sm service-card hover-lift">
-                <div class="card-body">
-                    <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
-                        <i class="fas fa-chart-line fa-2x"></i>
-                    </div>
-                    <h5 class="card-title text-center">Data Science</h5>
-                    <p class="card-text">Transforming complex data into actionable insights with advanced analytics and visualization techniques.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4 animate-on-scroll">
-            <div class="card h-100 border-0 shadow-sm service-card hover-lift">
-                <div class="card-body">
-                    <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
-                        <i class="fas fa-laptop-code fa-2x"></i>
-                    </div>
-                    <h5 class="card-title text-center">Web Development</h5>
-                    <p class="card-text">Building responsive and high-performance websites and applications with modern technologies.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-4">
-        <div class="col-12 text-center animate-on-scroll">
-            <a href="{% url 'freelancing' %}" class="btn btn-primary btn-lg px-5 py-3">
-                <i class="fas fa-rocket me-2"></i> Explore All Services
+<!-- Hero Section with Gradient Background -->
+<div class="position-relative overflow-hidden">
+  <div class="bg-gradient-primary text-white py-5 py-md-7">
+    <div class="container position-relative z-1">
+      <div class="row align-items-center">
+        <div class="col-lg-7 mb-5 mb-lg-0 animate-on-scroll">
+          <h1 class="display-3 fw-bold mb-3">Tushar Singh</h1>
+          <h2 class="display-6 fw-semibold mb-4 text-white">AI Agents Developer & Data Scientist</h2>
+          <p class="lead fs-5 mb-4">
+            Transforming complex data into actionable insights and creating intelligent automation systems that drive measurable business value.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="{% url 'projects:projects' %}" class="btn btn-light btn-lg px-4 py-3">
+              <i class="fas fa-folder-open me-2"></i> View My Work
             </a>
+            <a href="{% url 'freelancing' %}" class="btn btn-outline-light btn-lg px-4 py-3">
+              <i class="fas fa-briefcase me-2"></i> Hire Me
+            </a>
+          </div>
         </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="row mt-5">
-        <div class="col-12">
-            <div class="card border-0 shadow-sm bg-gradient-primary text-white animate-on-scroll">
-                <div class="card-body text-center p-5">
-                    <h2 class="card-title text-white">
-                        <i class="fas fa-comments me-2"></i> Let's Work Together
-                    </h2>
-                    <div class="divider mx-auto bg-white"></div>
-                    <p class="card-text lead mb-4">
-                        Ready to transform your ideas into reality? Let's discuss how I can help bring your vision to life.
-                    </p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="{% url 'contact' %}" class="btn btn-light btn-lg px-4 py-3">
-                            <i class="fas fa-envelope me-2"></i> Get In Touch
-                        </a>
-                        <a href="https://calendly.com/tusharsinghkumar04/new-meeting" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank">
-                            <i class="fas fa-calendar-check me-2"></i> Schedule a Call
-                        </a>
-                    </div>
-                </div>
+        <div class="col-lg-5 text-center animate-on-scroll">
+          <div class="position-relative">
+            <div class="rounded-circle bg-white bg-opacity-10 p-3 d-inline-block">
+              <img src="{% static 'Profile pictures/Me.jpg' %}" alt="Tushar Singh - Data Scientist and AI Developer" class="rounded-circle profile-image-hero" loading="lazy" style="width: 280px; height: 280px; object-fit: cover;">
             </div>
+            <div class="position-absolute bottom-0 end-0 bg-success text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width: 60px; height: 60px;">
+              <i class="fas fa-check fa-2x"></i>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  
+  <!-- Wave divider -->
+  <div class="wave-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+      <path fill="#ffffff" fill-opacity="1" d="M0,64L48,58.7C96,53,192,43,288,48C384,53,480,75,576,74.7C672,75,768,53,864,48C960,43,1056,53,1152,64C1248,75,1344,85,1392,90.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+    </svg>
+  </div>
 </div>
 
-<!-- Custom CSS for hover effects -->
+<!-- Stats Section -->
+<div class="container mt-n5 mt-md-n7 position-relative z-2">
+  <div class="row">
+    <div class="col-12">
+      <div class="card border-0 shadow-lg">
+        <div class="card-body py-4">
+          <div class="row text-center">
+            <div class="col-md-3 col-6 mb-4 mb-md-0">
+              <div class="mb-2">
+                <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
+                  <i class="fas fa-project-diagram fa-2x"></i>
+                </div>
+                <h3 class="mb-0 fw-bold display-5">50+</h3>
+                <p class="text-muted mb-0 fs-6">Projects</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4 mb-md-0">
+              <div class="mb-2">
+                <div class="rounded-circle bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
+                  <i class="fas fa-users fa-2x"></i>
+                </div>
+                <h3 class="mb-0 fw-bold display-5">30+</h3>
+                <p class="text-muted mb-0 fs-6">Clients</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="mb-2">
+                <div class="rounded-circle bg-info bg-opacity-10 text-info d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
+                  <i class="fas fa-award fa-2x"></i>
+                </div>
+                <h3 class="mb-0 fw-bold display-5">5+</h3>
+                <p class="text-muted mb-0 fs-6">Years</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="mb-2">
+                <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
+                  <i class="fas fa-medal fa-2x"></i>
+                </div>
+                <h3 class="mb-0 fw-bold display-5">15+</h3>
+                <p class="text-muted mb-0 fs-6">Awards</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <!-- Features Section -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="section-title text-center animate-on-scroll">
+        <h2><i class="fas fa-star me-2"></i> Why Choose Me</h2>
+        <div class="divider mx-auto"></div>
+        <p class="lead mt-3">I bring expertise and passion to every project, ensuring exceptional results</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {% for feature in features %}
+    <div class="col-md-6 col-lg-3 mb-4 animate-on-scroll">
+      <div class="card h-100 border-0 shadow-sm text-center feature-card hover-lift">
+        <div class="card-body">
+          <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+            <i class="{{ feature.icon_class }} fa-2x"></i>
+          </div>
+          <h5 class="card-title">{{ feature.title }}</h5>
+          <p class="card-text">{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Testimonials Carousel Section -->
+  {% if testimonials %}
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="section-title text-center animate-on-scroll">
+        <h2><i class="fas fa-comments me-2"></i> Client Testimonials</h2>
+        <div class="divider mx-auto"></div>
+        <p class="lead">See what my clients have to say about working with me</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="false">
+        <div class="carousel-indicators">
+          {% for testimonial in testimonials %}
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %} aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+          {% endfor %}
+        </div>
+        <div class="carousel-inner">
+          {% for testimonial in testimonials %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="card border-0 shadow-lg mx-auto" style="max-width: 800px;">
+              <div class="card-body p-4 p-lg-5">
+                <div class="text-center mb-4">
+                  <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 90px; height: 90px;">
+                    <i class="fas fa-user fa-3x"></i>
+                  </div>
+                  <h4 class="mb-1">{{ testimonial.client_name }}</h4>
+                  <p class="text-muted mb-2">{{ testimonial.client_company }} • {{ testimonial.client_location }}</p>
+                  <p class="fw-bold mb-3">{{ testimonial.project_name }}</p>
+                  <div class="text-warning mb-3">
+                    {% for i in "12345"|make_list %}
+                      {% if forloop.counter <= testimonial.rating %}
+                        <i class="fas fa-star"></i>
+                      {% else %}
+                        <i class="far fa-star"></i>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <p class="fst-italic text-center mb-0 fs-5">"{{ testimonial.testimonial_text }}"</p>
+              </div>
+              <div class="card-footer bg-transparent border-0 text-center">
+                <small class="text-muted">{{ testimonial.date }}</small>
+                {% if testimonial.client_type == 'foreign' %}
+                <span class="badge bg-info ms-2">International Client</span>
+                {% else %}
+                <span class="badge bg-primary ms-2">Indian Client</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Services Section -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="section-title text-center animate-on-scroll">
+        <h2><i class="fas fa-briefcase me-2"></i> My Services</h2>
+        <div class="divider mx-auto"></div>
+        <p class="lead">Explore my range of professional services designed to help your business thrive in the digital age.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4 animate-on-scroll">
+      <div class="card h-100 border-0 shadow-sm service-card hover-lift">
+        <div class="card-body">
+          <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+            <i class="fas fa-brain fa-2x"></i>
+          </div>
+          <h5 class="card-title text-center">AI Development</h5>
+          <p class="card-text">Creating intelligent AI agents and machine learning solutions that automate workflows and enhance productivity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4 animate-on-scroll">
+      <div class="card h-100 border-0 shadow-sm service-card hover-lift">
+        <div class="card-body">
+          <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+            <i class="fas fa-chart-line fa-2x"></i>
+          </div>
+          <h5 class="card-title text-center">Data Science</h5>
+          <p class="card-text">Transforming complex data into actionable insights with advanced analytics and visualization techniques.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4 animate-on-scroll">
+      <div class="card h-100 border-0 shadow-sm service-card hover-lift">
+        <div class="card-body">
+          <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+            <i class="fas fa-laptop-code fa-2x"></i>
+          </div>
+          <h5 class="card-title text-center">Web Development</h5>
+          <p class="card-text">Building responsive and high-performance websites and applications with modern technologies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12 text-center animate-on-scroll">
+      <a href="{% url 'freelancing' %}" class="btn btn-primary btn-lg px-5 py-3">
+        <i class="fas fa-rocket me-2"></i> Explore All Services
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card border-0 shadow-sm bg-gradient-primary text-white animate-on-scroll">
+        <div class="card-body text-center p-5">
+          <h2 class="card-title text-white">
+            <i class="fas fa-comments me-2"></i> Let's Work Together
+          </h2>
+          <div class="divider mx-auto bg-white"></div>
+          <p class="card-text lead mb-4">
+            Ready to transform your ideas into reality? Let's discuss how I can help bring your vision to life.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="{% url 'contact' %}" class="btn btn-light btn-lg px-4 py-3">
+              <i class="fas fa-envelope me-2"></i> Get In Touch
+            </a>
+            <a href="https://calendly.com/tusharsinghkumar04/new-meeting" class="btn btn-outline-light btn-lg px-4 py-3" target="_blank">
+              <i class="fas fa-calendar-check me-2"></i> Schedule a Call
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Custom CSS for enhanced design -->
 <style>
 .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
 }
 
-.profile-image-mobile {
-    transition: transform 0.3s ease;
+.profile-image-hero {
+  transition: transform 0.3s ease;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-.profile-image-mobile:hover {
-    transform: scale(1.05);
+.profile-image-hero:hover {
+  transform: scale(1.03);
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgba(13, 110, 253, 0.7);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    background-size: 60% 60%;
+  background-color: rgba(13, 110, 253, 0.8);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-size: 60% 60%;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(13, 110, 253, 1);
 }
 
 .section-title h2 {
-    position: relative;
-    display: inline-block;
-    padding-bottom: 15px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
 }
 
 .section-title h2:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, #0d6efd, #667eea);
-    border-radius: 2px;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0d6efd, #667eea);
+  border-radius: 2px;
+}
+
+.wave-divider {
+  position: relative;
+  z-index: 1;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.display-5 {
+  font-size: calc(1.5rem + 1.5vw);
+}
+
+.display-6 {
+  font-size: calc(1.2rem + 1vw);
+}
+
+@media (min-width: 1200px) {
+  .display-5 {
+    font-size: 2.5rem;
+  }
+  .display-6 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-image-hero {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .card-body {
+    padding: 1.5rem !important;
+  }
 }
 </style>
 
 <!-- JavaScript to ensure carousel autoplays -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var testimonialCarousel = document.getElementById('testimonialCarousel');
-    if (testimonialCarousel) {
-        // Ensure carousel has the data attribute for autoplay
-        testimonialCarousel.setAttribute('data-bs-ride', 'carousel');
-        testimonialCarousel.setAttribute('data-bs-interval', '3000');
-        testimonialCarousel.setAttribute('data-bs-pause', 'false');
-    }
+  var testimonialCarousel = document.getElementById('testimonialCarousel');
+  if (testimonialCarousel) {
+    // Ensure carousel has the data attribute for autoplay
+    testimonialCarousel.setAttribute('data-bs-ride', 'carousel');
+    testimonialCarousel.setAttribute('data-bs-interval', '4000');
+    testimonialCarousel.setAttribute('data-bs-pause', 'false');
+  }
 });
 </script>
 {% endblock %}
