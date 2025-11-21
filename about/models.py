@@ -81,3 +81,30 @@ class Certification(models.Model):
         verbose_name = "Certification"
         verbose_name_plural = "Certifications"
         ordering = ['order']
+
+class Testimonial(models.Model):
+    CLIENT_TYPE_CHOICES = [
+        ('indian', 'Indian'),
+        ('foreign', 'Foreign'),
+    ]
+    
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='testimonials')
+    client_name = models.CharField(max_length=100)
+    client_company = models.CharField(max_length=100, blank=True)
+    client_location = models.CharField(max_length=100)
+    client_type = models.CharField(max_length=10, choices=CLIENT_TYPE_CHOICES, default='indian')
+    rating = models.IntegerField(help_text="Rating from 1-5")
+    testimonial_text = models.TextField()
+    project_name = models.CharField(max_length=200, blank=True)
+    date = models.DateField()
+    order = models.IntegerField(default=0)
+    is_featured = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return f"{self.client_name} - {self.project_name}"
+    
+    class Meta:
+        verbose_name = "Testimonial"
+        verbose_name_plural = "Testimonials"
+        ordering = ['order', '-date']

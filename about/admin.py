@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, SkillCategory, Skill, Education, Certification
+from .models import Profile, SkillCategory, Skill, Education, Certification, Testimonial
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
@@ -32,3 +32,10 @@ class CertificationAdmin(admin.ModelAdmin):
     list_filter = ('profile', 'issue_date', 'order')
     search_fields = ('name', 'issuing_organization', 'credential_id')
     ordering = ('order',)
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ('client_name', 'client_company', 'client_location', 'client_type', 'rating', 'project_name', 'date', 'is_featured')
+    list_filter = ('client_type', 'rating', 'is_featured', 'date')
+    search_fields = ('client_name', 'client_company', 'project_name', 'testimonial_text')
+    ordering = ('order', '-date')
