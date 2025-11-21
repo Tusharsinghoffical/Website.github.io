@@ -336,7 +336,14 @@
             };
             
             // Get CSRF token from the form
-            const csrfToken = document.querySelector('#bookingForm [name=csrfmiddlewaretoken]').value;
+            const csrfTokenElement = document.querySelector('#bookingForm [name=csrfmiddlewaretoken]');
+            if (!csrfTokenElement) {
+                console.error('CSRF token not found');
+                bookingError.textContent = 'Form security token missing. Please refresh the page and try again.';
+                bookingError.classList.remove('d-none');
+                return;
+            }
+            const csrfToken = csrfTokenElement.value;
             
             // Send AJAX request
             fetch('{% url "booking_submit" %}', {
