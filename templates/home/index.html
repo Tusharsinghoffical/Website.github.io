@@ -23,20 +23,18 @@
         <div class="col-lg-10">
             <div class="row align-items-center">
                 <div class="col-md-8 animate-on-scroll">
-                    <h1 class="display-4 fw-bold mb-3">Tushar Singh - AI Agents Developer</h1>
-                    <p class="lead fs-5 mb-4 text-primary">Data Scientist & AI Solutions Expert</p>
+                    <h1 class="display-4 fw-bold mb-3">Tushar Singh</h1>
+                    <p class="lead fs-4 mb-3 text-primary">AI Agents Developer & Data Scientist</p>
                     <div class="mb-4">
                         <p class="fs-6">
-                            I'm a passionate Data Scientist and AI Agents Developer with expertise in Python, Machine Learning, 
-                            and building intelligent solutions. I transform complex data into actionable insights and create 
-                            smart automation systems that drive business value.
+                            I transform complex data into actionable insights and create intelligent automation systems that drive measurable business value.
                         </p>
                     </div>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="{% url 'projects:projects' %}" class="btn btn-primary btn-lg px-4 py-3">
                             <i class="fas fa-folder-open me-2"></i> View My Work
                         </a>
-                        <a href="{% url 'freelancing' %}" class="btn btn-primary btn-lg px-4 py-3">
+                        <a href="{% url 'freelancing' %}" class="btn btn-success btn-lg px-4 py-3">
                             <i class="fas fa-briefcase me-2"></i> Hire Me
                         </a>
                         <a href="{% url 'contact' %}" class="btn btn-outline-primary btn-lg px-4 py-3">
@@ -46,9 +44,52 @@
                 </div>
                 <div class="col-md-4 text-center animate-on-scroll">
                     <div class="position-relative d-inline-block">
-                        <img src="{% static 'Profile pictures/Me.jpg' %}" data-src="{% static 'Profile pictures/Me.jpg' %}" alt="Tushar Singh - Data Scientist and AI Developer" class="rounded-circle profile-image-mobile" loading="lazy" style="width: 180px; height: 180px; object-fit: cover; border: 5px solid #ffffff; box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);">
+                        <img src="{% static 'Profile pictures/Me.jpg' %}" data-src="{% static 'Profile pictures/Me.jpg' %}" alt="Tushar Singh - Data Scientist and AI Developer" class="rounded-circle profile-image-mobile" loading="lazy" style="width: 200px; height: 200px; object-fit: cover; border: 5px solid #ffffff; box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);">
+                        <div class="position-absolute bottom-0 end-0 bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-check"></i>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="row mt-5">
+        <div class="col-md-3 col-6 mb-4">
+            <div class="text-center">
+                <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
+                    <i class="fas fa-project-diagram fa-lg"></i>
+                </div>
+                <h3 class="mb-0 fw-bold">50+</h3>
+                <p class="text-muted mb-0">Projects</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="text-center">
+                <div class="rounded-circle bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
+                    <i class="fas fa-users fa-lg"></i>
+                </div>
+                <h3 class="mb-0 fw-bold">30+</h3>
+                <p class="text-muted mb-0">Clients</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="text-center">
+                <div class="rounded-circle bg-info bg-opacity-10 text-info d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
+                    <i class="fas fa-award fa-lg"></i>
+                </div>
+                <h3 class="mb-0 fw-bold">5+</h3>
+                <p class="text-muted mb-0">Years</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6 mb-4">
+            <div class="text-center">
+                <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
+                    <i class="fas fa-medal fa-lg"></i>
+                </div>
+                <h3 class="mb-0 fw-bold">15+</h3>
+                <p class="text-muted mb-0">Awards</p>
             </div>
         </div>
     </div>
@@ -66,7 +107,7 @@
     <div class="row">
         {% for feature in features %}
         <div class="col-md-6 col-lg-3 mb-4 animate-on-scroll">
-            <div class="card h-100 border-0 shadow-sm text-center feature-card">
+            <div class="card h-100 border-0 shadow-sm text-center feature-card hover-lift">
                 <div class="card-body">
                     <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
                         <i class="{{ feature.icon_class }} fa-2x"></i>
@@ -161,7 +202,7 @@
 
     <div class="row">
         <div class="col-md-4 mb-4 animate-on-scroll">
-            <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card h-100 border-0 shadow-sm service-card hover-lift">
                 <div class="card-body">
                     <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
                         <i class="fas fa-brain fa-2x"></i>
@@ -172,9 +213,9 @@
             </div>
         </div>
         <div class="col-md-4 mb-4 animate-on-scroll">
-            <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card h-100 border-0 shadow-sm service-card hover-lift">
                 <div class="card-body">
-                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
+                    <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
                         <i class="fas fa-chart-line fa-2x"></i>
                     </div>
                     <h5 class="card-title text-center">Data Science</h5>
@@ -183,9 +224,9 @@
             </div>
         </div>
         <div class="col-md-4 mb-4 animate-on-scroll">
-            <div class="card h-100 border-0 shadow-sm service-card">
+            <div class="card h-100 border-0 shadow-sm service-card hover-lift">
                 <div class="card-body">
-                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
+                    <div class="rounded-circle bg-info text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
                         <i class="fas fa-laptop-code fa-2x"></i>
                     </div>
                     <h5 class="card-title text-center">Web Development</h5>
@@ -228,4 +269,51 @@
         </div>
     </div>
 </div>
+
+<!-- Custom CSS for hover effects -->
+<style>
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.profile-image-mobile {
+    transition: transform 0.3s ease;
+}
+
+.profile-image-mobile:hover {
+    transform: scale(1.05);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(13, 110, 253, 0.7);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-size: 60% 60%;
+}
+
+.section-title h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.section-title h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #0d6efd, #667eea);
+    border-radius: 2px;
+}
+</style>
 {% endblock %}
