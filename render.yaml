@@ -11,6 +11,8 @@ services:
         sync: false
       - key: DEBUG
         value: False
+      - key: DJANGO_SETTINGS_MODULE
+        value: portfolio_freelance.settings_prod
       - key: EMAIL_HOST_USER
         sync: false
       - key: EMAIL_HOST_PASSWORD
