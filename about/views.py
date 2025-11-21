@@ -146,73 +146,76 @@ def index(request):
     # Get testimonials from database
     testimonials = Testimonial.objects.filter(profile=profile)  # type: ignore
     
-    # If no testimonials exist, create default ones
+    # If no testimonials exist, create the specific ones you requested
     if not testimonials.exists():
         testimonials_data = [
-            # Indian clients
+            # Medical Website Project
             {
                 'profile': profile,
-                'client_name': 'Rajesh Kumar',
-                'client_company': 'TechInnovate Solutions',
-                'client_location': 'Mumbai, India',
+                'client_name': 'Dr. Anjali Mehta',
+                'client_company': 'MediCare Hospitals',
+                'client_location': 'Delhi, India',
                 'client_type': 'indian',
                 'rating': 5,
-                'testimonial_text': 'Tushar delivered an exceptional AI chatbot solution for our customer support system. His expertise in natural language processing and machine learning significantly improved our response times and customer satisfaction scores. Highly recommended for any AI projects!',
-                'project_name': 'AI-Powered Customer Support Chatbot',
-                'date': '2025-09-15',
+                'testimonial_text': 'Tushar developed a comprehensive medical website for our hospital chain with patient portal, appointment booking, and telemedicine features. The website has significantly improved our patient engagement and reduced administrative workload. His attention to healthcare compliance standards was impressive.',
+                'project_name': 'Medical Website Development for Healthcare Portal',
+                'date': '2025-10-15',
                 'order': 1,
                 'is_featured': True
             },
+            # AI Agent Project
             {
                 'profile': profile,
-                'client_name': 'Priya Sharma',
-                'client_company': 'DataDriven Analytics',
-                'client_location': 'Bangalore, India',
+                'client_name': 'Rajiv Sharma',
+                'client_company': 'TechFlow Solutions',
+                'client_location': 'Mumbai, India',
                 'client_type': 'indian',
                 'rating': 5,
-                'testimonial_text': 'Working with Tushar was a game-changer for our business. He developed a predictive analytics model that helped us optimize our supply chain operations, resulting in a 30% cost reduction. His technical skills combined with clear communication made the entire process seamless.',
-                'project_name': 'Supply Chain Optimization with Predictive Analytics',
-                'date': '2025-08-22',
+                'testimonial_text': 'The AI agent Tushar built for our customer support system has revolutionized our operations. It handles over 80% of routine queries automatically, freeing up our human agents for complex issues. The natural language processing capabilities are exceptional.',
+                'project_name': 'AI Agent for Customer Support Automation',
+                'date': '2025-09-22',
                 'order': 2,
                 'is_featured': True
             },
+            # Restaurant System Project
             {
                 'profile': profile,
-                'client_name': 'Amit Patel',
-                'client_company': 'HealthTech Innovations',
-                'client_location': 'Delhi, India',
+                'client_name': 'Vikram Patel',
+                'client_company': 'FoodExpress Chain',
+                'client_location': 'Bangalore, India',
                 'client_type': 'indian',
                 'rating': 4,
-                'testimonial_text': 'Tushar created a comprehensive healthcare dashboard for our telemedicine platform. The real-time analytics and patient monitoring features have been instrumental in improving our service quality. His attention to detail and commitment to deadlines are impressive.',
-                'project_name': 'Telemedicine Analytics Dashboard',
-                'date': '2025-07-30',
+                'testimonial_text': 'Tushar created a complete restaurant management system for our chain of outlets. The system handles order management, inventory tracking, staff scheduling, and customer loyalty programs. It has streamlined our operations and improved customer satisfaction significantly.',
+                'project_name': 'Restaurant Management System with Delivery Integration',
+                'date': '2025-08-30',
                 'order': 3,
-                'is_featured': False
+                'is_featured': True
             },
+            # IPO Project
             {
                 'profile': profile,
-                'client_name': 'Sneha Gupta',
-                'client_company': 'FinEdge Solutions',
-                'client_location': 'Pune, India',
+                'client_name': 'Priya Krishnan',
+                'client_company': 'FinTech Innovations Ltd',
+                'client_location': 'Chennai, India',
                 'client_type': 'indian',
                 'rating': 5,
-                'testimonial_text': 'We hired Tushar to develop a fraud detection system for our fintech platform. His machine learning approach was innovative and highly effective, reducing fraudulent transactions by 85%. He provided excellent documentation and training for our team.',
-                'project_name': 'AI-Based Fraud Detection System',
-                'date': '2025-10-05',
+                'testimonial_text': 'For our company\'s IPO preparation, Tushar developed a sophisticated financial data analysis platform that helped us present our growth metrics effectively to potential investors. The real-time dashboard and predictive modeling features were crucial in our successful public offering.',
+                'project_name': 'IPO Preparation - Financial Data Analysis Platform',
+                'date': '2025-11-05',
                 'order': 4,
                 'is_featured': True
             },
-            # Foreign client
+            # Thumbnail Design Project
             {
                 'profile': profile,
-                'client_name': 'Michael Johnson',
-                'client_company': 'GlobalTech Solutions',
-                'client_location': 'San Francisco, USA',
+                'client_name': 'David Wilson',
+                'client_company': 'Global Media Corp',
+                'client_location': 'New York, USA',
                 'client_type': 'foreign',
                 'rating': 5,
-                'testimonial_text': 'Tushar\'s expertise in AI agents development transformed our business operations. The automation solutions he built for our data processing pipeline saved us over 200 hours per month. His professionalism and technical depth are outstanding. Will definitely work with him again.',
-                'project_name': 'Enterprise Data Processing Automation',
-                'date': '2025-09-28',
+                'testimonial_text': 'Tushar\'s creative thumbnail designs for our YouTube channel increased our click-through rates by 65%. His understanding of visual psychology and platform algorithms resulted in a significant boost to our subscriber count and engagement metrics.',
+                'project_name': 'Thumbnail Design for Digital Marketing Campaign',
+                'date': '2025-10-28',
                 'order': 5,
                 'is_featured': True
             }
