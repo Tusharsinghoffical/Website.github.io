@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import HomePageContent, Feature
+from about.models import Testimonial
 from typing import Any
 
 def index(request) -> Any:
@@ -51,9 +52,13 @@ def index(request) -> Any:
         
         features = Feature.objects.all()  # type: ignore
     
+    # Get featured testimonials
+    testimonials = Testimonial.objects.filter(is_featured=True)[:5]  # type: ignore
+    
     context = {
         'content': content,
         'features': features,
+        'testimonials': testimonials,
     }
     
     return render(request, 'home/index.html', context)

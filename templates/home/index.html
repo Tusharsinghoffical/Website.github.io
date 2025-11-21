@@ -79,6 +79,75 @@
         {% endfor %}
     </div>
 
+    <!-- Testimonials Carousel Section -->
+    {% if testimonials %}
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="section-title text-center animate-on-scroll">
+                <h2><i class="fas fa-comments me-2"></i> Client Testimonials</h2>
+                <div class="divider mx-auto"></div>
+                <p class="lead">See what my clients have to say about working with me</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    {% for testimonial in testimonials %}
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %} aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+                    {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                    {% for testimonial in testimonials %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="text-center mb-4">
+                                    <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
+                                        <i class="fas fa-user fa-2x"></i>
+                                    </div>
+                                    <h4 class="mb-1">{{ testimonial.client_name }}</h4>
+                                    <p class="text-muted mb-2">{{ testimonial.client_company }} • {{ testimonial.client_location }}</p>
+                                    <p class="fw-bold mb-3">{{ testimonial.project_name }}</p>
+                                    <div class="text-warning mb-3">
+                                        {% for i in "12345"|make_list %}
+                                            {% if forloop.counter <= testimonial.rating %}
+                                                <i class="fas fa-star"></i>
+                                            {% else %}
+                                                <i class="far fa-star"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <p class="fst-italic text-center mb-0">"{{ testimonial.testimonial_text }}"</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 text-center">
+                                <small class="text-muted">{{ testimonial.date }}</small>
+                                {% if testimonial.client_type == 'foreign' %}
+                                <span class="badge bg-info ms-2">International Client</span>
+                                {% else %}
+                                <span class="badge bg-primary ms-2">Indian Client</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     <!-- Services Section -->
     <div class="row mt-5">
         <div class="col-12">
