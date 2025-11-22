@@ -367,6 +367,15 @@
                     bookingSuccess.classList.remove('d-none');
                     bookingError.classList.add('d-none');
                     
+                    // Trigger Google Ads conversion tracking
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-17673705659/ThWNCN3U7MQbELuxvetB',
+                            'value': 1.0,
+                            'currency': 'INR'
+                        });
+                    }
+                    
                     // Reset form
                     bookingForm.reset();
                     bookingForm.classList.remove('was-validated');
