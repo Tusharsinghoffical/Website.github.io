@@ -104,8 +104,8 @@ Phone: {phone if phone else 'Not provided'}
             
             logger.info("Preparing to send email")
             # Check if email settings are properly configured
-            if not hasattr(settings, 'CONTACT_EMAIL') or not settings.CONTACT_EMAIL:
-                logger.warning("CONTACT_EMAIL not configured, skipping email notification")
+            if not hasattr(settings, 'CONTACT_EMAIL') or not settings.CONTACT_EMAIL or not settings.EMAIL_HOST_PASSWORD:
+                logger.warning("Email settings not fully configured, skipping email notification")
             else:
                 logger.info(f"Sending email to {settings.CONTACT_EMAIL}")
                 # Send email in a separate thread to avoid blocking the response
