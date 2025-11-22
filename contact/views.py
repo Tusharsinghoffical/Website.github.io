@@ -16,6 +16,11 @@ logger = logging.getLogger(__name__)
 def send_email_async(subject, message, from_email, recipient_list):
     """Send email in a separate thread to avoid blocking the response"""
     try:
+        # Check if required email settings are available
+        if not hasattr(settings, 'EMAIL_HOST_USER') or not settings.EMAIL_HOST_USER:
+            logger.warning("Email settings not configured properly")
+            return
+            
         send_mail(
             subject=subject,
             message=message,
@@ -83,16 +88,20 @@ Email: {email}
 Phone: {phone if phone else 'Not provided'}
 """
             
-            # Send email in a separate thread to avoid blocking the response
-            email_thread = threading.Thread(
-                target=send_email_async,
-                args=(email_subject, email_message, settings.DEFAULT_FROM_EMAIL, [settings.CONTACT_EMAIL])
-            )
-            email_thread.start()
+            # Check if email settings are properly configured
+            if not hasattr(settings, 'CONTACT_EMAIL') or not settings.CONTACT_EMAIL:
+                logger.warning("CONTACT_EMAIL not configured, skipping email notification")
+            else:
+                # Send email in a separate thread to avoid blocking the response
+                email_thread = threading.Thread(
+                    target=send_email_async,
+                    args=(email_subject, email_message, settings.DEFAULT_FROM_EMAIL, [settings.CONTACT_EMAIL])
+                )
+                email_thread.start()
             
             return JsonResponse({'success': True, 'message': 'Your message has been sent successfully! We will get back to you soon.'})
         except Exception as e:
-            logger.error(f"Contact form submission error: {e}")
+            logger.error(f"Contact form submission error: {e}", exc_info=True)
             return JsonResponse({'success': False, 'message': 'An error occurred while sending your message. Please try again.'})
     
     return JsonResponse({'success': False, 'message': 'Invalid request method.'})
