@@ -161,7 +161,7 @@ class ChatView(View):
         
         elif 'contact' in user_message:
             return ("You can reach us through multiple channels:\n\n"
-                    "📧 Email: tusharsinghkumar04@gmail.com\n"
+                    "📧 Email: tusharsinghoffical@gmail.com\n"
                     "📱 Phone: +91 8851619647\n"
                     "📍 Location: Delhi, India\n\n"
                     "🌐 Online:\n"

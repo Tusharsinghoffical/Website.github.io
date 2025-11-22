@@ -36,7 +36,7 @@ def index(request):
     try:
         # You can pass dynamic contact information here if needed
         context = {
-            'email': 'tusharsinghkumar04@gmail.com',
+            'email': 'tusharsinghoffical@gmail.com',
             'phone': '+91 8851619647',
             'location': 'Delhi, India'
         }
