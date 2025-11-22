@@ -27,7 +27,7 @@ urlpatterns = [
     path("services/", include("services.urls")),
     path("projects/", include("projects.urls")),
     path("about/", include("about.urls")),
-    path("contact/", include("contact.urls")),
+    path("contact/", include("contact.urls", namespace="contact")),
     path("freelancing/", include("freelancing.urls")),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     path("sitemap.xml", TemplateView.as_view(template_name="sitemap.xml", content_type="application/xml")),
