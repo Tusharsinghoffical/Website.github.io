@@ -91,10 +91,17 @@ WSGI_APPLICATION = 'portfolio_freelance.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# For MongoDB
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'portfolio_db',
+        'CLIENT': {
+            'host': 'mongodb+srv://tushar2002:Tushar@2002@cluster0.np3np8j.mongodb.net/',
+            'username': 'tushar2002',
+            'password': 'Tushar@2002',
+            'authMechanism': 'SCRAM-SHA-256',
+        }
     }
 }
 

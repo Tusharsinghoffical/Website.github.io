@@ -18,14 +18,18 @@ ALLOWED_HOSTS = [
 
 # Database
 # Use PostgreSQL in production
-import dj_database_url
-
+# For MongoDB
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', ''),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'portfolio_db',
+        'CLIENT': {
+            'host': 'mongodb+srv://tushar2002:Tushar@2002@cluster0.np3np8j.mongodb.net/',
+            'username': 'tushar2002',
+            'password': 'Tushar@2002',
+            'authMechanism': 'SCRAM-SHA-256',
+        }
+    }
 }
 
 # Static files (CSS, JavaScript, Images)
