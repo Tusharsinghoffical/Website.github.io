@@ -97,7 +97,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'portfolio_db',
         'CLIENT': {
-            'host': 'mongodb+srv://tushar2002:Tushar@2002@cluster0.np3np8j.mongodb.net/',
+            'host': 'mongodb+srv://tushar2002:Tushar@2002@cluster0.np3np8j.mongodb.net/?appName=Cluster0',
             'username': 'tushar2002',
             'password': 'Tushar@2002',
             'authMechanism': 'SCRAM-SHA-256',
