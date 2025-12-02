@@ -5,7 +5,7 @@ from .settings import *
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-l%y@vno^50mva&0r1qs34cgimeu_p197&s-g)88s)g!bimt99q')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost', 
@@ -18,16 +18,15 @@ ALLOWED_HOSTS = [
 
 # Database
 # Use PostgreSQL in production
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get('DB_NAME', 'portfolio_db'),
-#         'USER': os.environ.get('DB_USER', 'portfolio_user'),
-#         'PASSWORD': os.environ.get('DB_PASSWORD', 'secure_password'),
-#         'HOST': os.environ.get('DB_HOST', 'localhost'),
-#         'PORT': os.environ.get('DB_PORT', '5432'),
-#     }
-# }
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL', ''),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -53,9 +52,9 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_REDIRECT_EXEMPT = []
-SECURE_SSL_REDIRECT = False  # Temporarily disabled for development
-SESSION_COOKIE_SECURE = False  # Temporarily disabled for development
-CSRF_COOKIE_SECURE = False  # Temporarily disabled for development
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Additional security for CSRF
 CSRF_TRUSTED_ORIGINS = [
