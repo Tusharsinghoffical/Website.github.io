@@ -2,6 +2,12 @@
 
 A professional portfolio website showcasing projects, services, and skills as a Data Scientist and AI Agents Developer.
 
+## 🛠️ Recent Deployment Fixes
+
+1. **Fixed Python version incompatibility (December 2025)**: Resolved `ModuleNotFoundError: No module named 'distutils'` error during deployment. The project now correctly uses Python 3.9.16 which is compatible with Django 3.1.12.
+
+2. **Fixed MongoDB connection issue (December 2025)**: Resolved MongoDB connection URI encoding issue where special characters in passwords needed to be URL-encoded according to RFC 3986.
+
 ## 🌐 Live Demo
 
 - **Development**: [http://127.0.0.1:8000](http://127.0.0.1:8000)
@@ -14,8 +20,8 @@ This portfolio website highlights the work of Tushar Singh, a seasoned Data Scie
 ## 🛠️ Technologies Used
 
 ### Core Technologies
-- **Django 5.2.6** - Web framework
-- **Python 3.12** - Programming language
+- **Django 3.1.12** - Web framework
+- **Python 3.9.16** - Programming language
 - **HTML5/CSS3** - Markup and styling
 - **JavaScript (ES6+)** - Client-side scripting
 - **Bootstrap 5** - CSS framework
@@ -98,7 +104,7 @@ services:
     startCommand: "gunicorn portfolio_freelance.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.12.0
+        value: 3.9.16
       - key: SECRET_KEY
         sync: false
       - key: DEBUG
@@ -111,7 +117,7 @@ services:
 web: gunicorn portfolio_freelance.wsgi:application --log-file -
 
 # runtime.txt
-python-3.12.0
+python-3.9.16
 ```
 
 #### Build Process
@@ -124,7 +130,7 @@ set -o errexit
 pip install -r requirements.txt
 
 # Collect static files
-python manage.py collectstatic --no-input --verbosity=2
+python manage.py collectstatic --no-input
 
 # Run migrations
 python manage.py migrate
@@ -186,7 +192,7 @@ CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL')
 ## 📦 Development Setup
 
 ### Prerequisites
-- Python 3.12+
+- Python 3.9.16
 - pip package manager
 - Virtual environment (recommended)
 

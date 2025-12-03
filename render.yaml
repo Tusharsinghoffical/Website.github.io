@@ -4,6 +4,8 @@ services:
     env: python
     buildCommand: "chmod +x build.sh && ./build.sh"
     startCommand: "gunicorn portfolio_freelance.wsgi:application"
+    # Explicitly set the Python version
+    pythonVersion: "3.9.16"
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.16
