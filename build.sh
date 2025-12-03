@@ -2,9 +2,9 @@
 # exit on error
 set -o errexit
 
-# Force Python 3.9
-export PYTHON_VERSION=3.9
-export PYENV_VERSION=3.9.16
+# Force Python 3.12
+export PYTHON_VERSION=3.12
+export PYENV_VERSION=3.12.9
 
 # Upgrade pip
 pip install --upgrade pip

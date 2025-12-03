@@ -20,8 +20,8 @@ This portfolio website highlights the work of Tushar Singh, a seasoned Data Scie
 ## 🛠️ Technologies Used
 
 ### Core Technologies
-- **Django 3.1.12** - Web framework
-- **Python 3.9.16** - Programming language
+- **Django 4.2** - Web framework
+- **Python 3.12.9** - Programming language
 - **HTML5/CSS3** - Markup and styling
 - **JavaScript (ES6+)** - Client-side scripting
 - **Bootstrap 5** - CSS framework
@@ -99,11 +99,11 @@ services:
   - type: web
     name: Freelancermrsingh
     env: python
-    buildCommand: "chmod +x build.sh && ./build.sh"
-    startCommand: "gunicorn portfolio_freelance.wsgi:application"
+    buildCommand: "chmod +x build.sh && PYTHON_VERSION=3.12 ./build.sh"
+    startCommand: "PYTHON_VERSION=3.12 gunicorn portfolio_freelance.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.16
+        value: 3.12.9
       - key: SECRET_KEY
         sync: false
       - key: DEBUG
@@ -124,7 +124,7 @@ services:
 web: gunicorn portfolio_freelance.wsgi:application --log-file -
 
 # runtime.txt
-python-3.9.16
+python-3.12.9
 ```
 
 #### Build Process
@@ -132,6 +132,13 @@ python-3.9.16
 # build.sh
 #!/usr/bin/env bash
 set -o errexit
+
+# Force Python 3.12
+export PYTHON_VERSION=3.12
+export PYENV_VERSION=3.12.9
+
+# Upgrade pip
+pip install --upgrade pip
 
 # Install dependencies
 pip install -r requirements.txt
@@ -151,6 +158,7 @@ python manage.py migrate
 |----------|-------------|---------------|
 | `SECRET_KEY` | Django secret key | Generated |
 | `DEBUG` | Debug mode | `True` |
+| `PYTHON_VERSION` | Python version | 3.12.9 |
 | `DB_NAME` | PostgreSQL database name | portfolio_db |
 | `DB_USER` | PostgreSQL username | postgres |
 | `DB_PASSWORD` | PostgreSQL password |  |
@@ -210,7 +218,7 @@ CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL')
 ## 📦 Development Setup
 
 ### Prerequisites
-- Python 3.9.16 (Important: Python 3.13+ is not supported due to missing 'cgi' module)
+- Python 3.12.9
 - pip package manager
 - Virtual environment (recommended)
 
@@ -304,7 +312,6 @@ python manage.py help
    - Ensure all dependencies are in requirements.txt
    - Check runtime.txt for correct Python version
    - Verify build.sh has execute permissions
-   - Ensure Python version is 3.9.16 (Python 3.13+ is not supported due to missing 'cgi' module)
 
 ### Debugging Tips
 
