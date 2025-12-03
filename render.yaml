@@ -15,6 +15,14 @@ services:
         value: False
       - key: DJANGO_SETTINGS_MODULE
         value: portfolio_freelance.settings_prod
+      - key: DB_NAME
+        value: portfolio_db
+      - key: DB_USER
+        value: postgres
+      - key: DB_HOST
+        value: localhost
+      - key: DB_PORT
+        value: 5432
       - key: EMAIL_HOST_USER
         sync: false
       - key: EMAIL_HOST_PASSWORD

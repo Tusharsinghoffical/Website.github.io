@@ -6,7 +6,7 @@ A professional portfolio website showcasing projects, services, and skills as a 
 
 1. **Fixed Python version incompatibility (December 2025)**: Resolved `ModuleNotFoundError: No module named 'distutils'` error during deployment. The project now correctly uses Python 3.9.16 which is compatible with Django 3.1.12.
 
-2. **Fixed MongoDB connection issue (December 2025)**: Resolved MongoDB connection URI encoding issue where special characters in passwords needed to be URL-encoded according to RFC 3986.
+2. **Removed MongoDB and switched to PostgreSQL (December 2025)**: Replaced MongoDB with PostgreSQL for better compatibility and reliability.
 
 ## 🌐 Live Demo
 
@@ -31,7 +31,6 @@ This portfolio website highlights the work of Tushar Singh, a seasoned Data Scie
 ### Libraries & Tools
 - **Gunicorn** - Production WSGI server
 - **Whitenoise** - Static file serving
-- **dj-database-url** - Database URL parsing
 - **django-extensions** - Development utilities
 - **Pillow** - Image processing
 - **Requests** - HTTP library
@@ -109,6 +108,14 @@ services:
         sync: false
       - key: DEBUG
         value: False
+      - key: DB_NAME
+        value: portfolio_db
+      - key: DB_USER
+        value: postgres
+      - key: DB_HOST
+        value: localhost
+      - key: DB_PORT
+        value: 5432
 ```
 
 #### Heroku Deployment
@@ -144,7 +151,11 @@ python manage.py migrate
 |----------|-------------|---------------|
 | `SECRET_KEY` | Django secret key | Generated |
 | `DEBUG` | Debug mode | `True` |
-| `DATABASE_URL` | Database connection | SQLite |
+| `DB_NAME` | PostgreSQL database name | portfolio_db |
+| `DB_USER` | PostgreSQL username | postgres |
+| `DB_PASSWORD` | PostgreSQL password |  |
+| `DB_HOST` | PostgreSQL host | localhost |
+| `DB_PORT` | PostgreSQL port | 5432 |
 | `EMAIL_HOST_USER` | Gmail username | - |
 | `EMAIL_HOST_PASSWORD` | Gmail app password | - |
 | `GEMINI_API_KEY` | AI API key | - |
@@ -164,7 +175,14 @@ DATABASES = {
 #### Production (PostgreSQL)
 ```python
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'portfolio_db'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
 }
 ```
 
@@ -192,7 +210,7 @@ CONTACT_EMAIL = os.environ.get('CONTACT_EMAIL')
 ## 📦 Development Setup
 
 ### Prerequisites
-- Python 3.9.16
+- Python 3.9.16 (Important: Python 3.13+ is not supported due to missing 'cgi' module)
 - pip package manager
 - Virtual environment (recommended)
 
@@ -286,6 +304,7 @@ python manage.py help
    - Ensure all dependencies are in requirements.txt
    - Check runtime.txt for correct Python version
    - Verify build.sh has execute permissions
+   - Ensure Python version is 3.9.16 (Python 3.13+ is not supported due to missing 'cgi' module)
 
 ### Debugging Tips
 

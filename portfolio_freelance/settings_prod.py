@@ -18,17 +18,14 @@ ALLOWED_HOSTS = [
 
 # Database
 # Use PostgreSQL in production
-# For MongoDB
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'portfolio_db',
-        'CLIENT': {
-            'host': 'mongodb+srv://tushar2002:Tushar%402002@cluster0.np3np8j.mongodb.net/?appName=Cluster0',
-            'username': 'tushar2002',
-            'password': 'Tushar@2002',
-            'authMechanism': 'SCRAM-SHA-256',
-        }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'portfolio_db'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 
