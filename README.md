@@ -20,7 +20,7 @@ This portfolio website highlights the work of Tushar Singh, a seasoned Data Scie
 ## 🛠️ Technologies Used
 
 ### Core Technologies
-- **Django 4.2** - Web framework
+- **Django 5.2** - Web framework
 - **Python 3.12.9** - Programming language
 - **HTML5/CSS3** - Markup and styling
 - **JavaScript (ES6+)** - Client-side scripting

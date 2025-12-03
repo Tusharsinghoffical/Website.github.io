@@ -30,7 +30,7 @@ DATABASES = {
 }
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Enable WhiteNoise for serving static files in production

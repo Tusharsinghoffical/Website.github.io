@@ -2,6 +2,7 @@
 """
 Deployment script for the portfolio website.
 This script automates the deployment process to various platforms.
+Version: 2.0.0
 """
 
 import os
