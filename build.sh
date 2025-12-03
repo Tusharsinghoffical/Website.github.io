@@ -2,8 +2,12 @@
 # exit on error
 set -o errexit
 
-# Ensure we're using the correct Python version
-export PYTHON_VERSION=3.9.16
+# Force Python 3.9
+export PYTHON_VERSION=3.9
+export PYENV_VERSION=3.9.16
+
+# Upgrade pip
+pip install --upgrade pip
 
 # Install dependencies
 pip install -r requirements.txt
